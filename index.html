@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cobalt Learning Paths — V4</title>
+<title>Cobalt Learning Paths</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 </head>
@@ -14,205 +14,49 @@
 const { useState } = React;
 const TRACKS = {
     market: {
-        label: "See Your Market",
-        color: "#2563EB",
-        bg: "#EFF6FF",
-        letter: "M",
-        desc: "Understand your category, size your opportunity, and find white space you are missing.",
-        intro: "This path helps you understand your total addressable market on Amazon, identify opportunities your competitors are missing, and validate new product or category ideas inside Cobalt.",
+        label: "See Your Market", color: "#2563EB", bg: "#EFF6FF",
+        desc: "Understand your category, size your opportunity, and find white space.",
         topics: [
-            { title: "Size your total category on Amazon", desc: "Understand overall category revenue and drill into subcategory-level detail.", time: "15 min", goal: "By the end of this topic, you will know how to pull total category revenue, break it down by subcategory, and identify which segments are driving growth.", steps: [["Navigate to Market Overview", "Open Cobalt and click Market in the left nav. Select your primary category from the dropdown. You will see the total monthly revenue estimate at the top of the page."], ["Drill into subcategories", "Scroll to the Subcategory Breakdown table. Sort by revenue to see which product types drive the most volume. Click any row to see brand-level detail."], ["Set your date range", "Use the date picker in the top-right to compare periods. Try Last 3 months vs prior 3 months to spot category growth or decline trends."], ["Export your findings", "Click Export then CSV to pull the data into a spreadsheet. Useful for sharing category sizing with your team."]], tip: "Start broad and narrow down. Sizing the full category first gives you a baseline to measure your own market share against.", resources: [["Market Overview Guide", "Article"], ["Category Sizing Walkthrough", "Video"], ["Try it in Cobalt", "Tour"]] },
-            { title: "Understand your market share", desc: "Benchmark your brand share vs the category and spot where you are falling behind.", time: "15 min", goal: "You will learn how to calculate and track your brand market share at the category and subcategory level.", steps: [["Open Market Share view", "From the Market module, click the Share tab. Your brand share is calculated automatically based on revenue data."], ["Compare against top brands", "The brand leaderboard shows the top 10 brands by share. Find your position."], ["Break down by subcategory", "Switch to Subcategory view to see where you over or under index."], ["Track share over time", "Toggle to the trend view to see month-over-month changes."]], tip: "Market share in a growing category is different from share in a declining one. Always check category growth alongside your share trend.", resources: [["Market Share Explained", "Article"], ["Share Analysis Checklist", "Checklist"]] },
-            { title: "Analyze market dynamics", desc: "Track pricing trends, new entrants, and shifts in category growth.", time: "15 min", goal: "You will understand where your category is heading and which subcategories are growing or declining.", steps: [["Open Category Trends", "Navigate to Market then Trends. This view shows category-level performance over time."], ["Identify growth segments", "Sort subcategories by growth rate to find the fastest-moving segments."], ["Track new entrants", "Check the New Brands tab to see who has entered the category recently and how fast they are growing."], ["Spot pricing shifts", "Use the Pricing Trends chart to see whether average selling prices are rising or falling across the category."]], tip: "Market dynamics tell you where the opportunity is moving. Combine this with your share data to find where you are losing ground in growing segments.", resources: [["Category Trends Guide", "Article"], ["Market Dynamics Checklist", "Checklist"]] },
-            { title: "Identify white space and validate new opportunities", desc: "Find gaps where demand exists but competition is low.", time: "15 min", goal: "You will use Cobalt market data to identify product niches with high demand and low competition.", steps: [["Open the Opportunity Finder", "Navigate to Market then Opportunities. This view cross-references search demand with competitive density."], ["Filter for high demand low competition", "Set the demand filter to High and competition to Low."], ["Evaluate opportunity size", "Click into any opportunity to see estimated monthly revenue, average price point, and review count."], ["Validate with keyword data", "Cross-reference with Search module to confirm search volume trends support the opportunity."]], tip: "White space does not guarantee success. Validate with search volume trends and check for barriers to entry before investing.", resources: [["Finding White Space Guide", "Article"], ["Opportunity Finder Demo", "Video"]] }
+            { title: "Size your total category", goal: "Understand overall category revenue.", time: "15 min", steps: [["Navigate to Market Overview", "Open Market in the left nav and select your category."], ["Drill into subcategories", "Scroll to the Subcategory Breakdown table and sort by revenue."], ["Set your date range", "Use the date picker to compare periods."], ["Export your findings", "Click Export then CSV."]], tip: "Start broad and narrow down.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Understand your market share", goal: "Benchmark your brand share.", time: "15 min", steps: [["Open Market Share view", "From Market, click the Share tab."], ["Compare against top brands", "Find your position in the leaderboard."], ["Break down by subcategory", "Switch to Subcategory view."], ["Track share over time", "Toggle to the trend view."]], tip: "Always check category growth alongside your share trend.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Analyze market dynamics", goal: "Track pricing trends and new entrants.", time: "15 min", steps: [["Open Category Trends", "Navigate to Market then Trends."], ["Identify growth segments", "Sort subcategories by growth rate."], ["Track new entrants", "Check the New Brands tab."], ["Spot pricing shifts", "Use the Pricing Trends chart."]], tip: "Market dynamics tell you where the opportunity is moving.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Identify white space", goal: "Find gaps where demand exists but competition is low.", time: "15 min", steps: [["Open the Opportunity Finder", "Navigate to Market then Opportunities."], ["Filter for high demand", "Set demand to High and competition to Low."], ["Evaluate opportunity size", "Click into any opportunity."], ["Validate with keyword data", "Cross-reference with Search module."]], tip: "Validate with search volume trends before investing.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
     compete: {
-        label: "Know Your Competition",
-        color: "#7C3AED",
-        bg: "#F5F3FF",
-        letter: "C",
-        badge: "Phase 1 MVP",
+        label: "Know Your Competition", color: "#7C3AED", bg: "#F5F3FF",
         desc: "Track competitors, benchmark performance, and turn competitive intel into action.",
-        intro: "This is the highest-demand use case across Scale customers and the first module we are building end-to-end. This path shows you how to set up competitive tracking, benchmark performance, and spot category disruption inside Cobalt.",
         topics: [
-            { title: "Create custom market segments for your product lines", desc: "Set up segments that group your products alongside the right competitors in your space.", time: "12 min", goal: "You will have custom segments set up so you can get a detailed, custom view of the competitive landscape.", steps: [["Navigate to Competitors", "Click Competitors in the left nav. Your competitive dashboard is empty until you add brands."], ["Add your key competitors", "Click Add Competitor and search by brand name or ASIN. Add 3-5 key competitors to start."], ["Create a custom segment", "Click New Segment. Group your products alongside the specific competitors you want to track in each product line or category."], ["Review your segment dashboard", "Your dashboard now shows side-by-side revenue estimates, market share, and product counts within each segment."]], tip: "Start with 3-5 most direct competitors per segment. Too many at once makes the dashboard noisy. You can always add more later.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Video Walkthrough", "Video", "https://fast.wistia.com/embed/channel/a2tgtglkx9?wchannelid=a2tgtglkx9&wmediaid=f68pehg2a9", "video"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Written%20Guide/", "iframe"], ["How to build a market segment", "Article", "https://cobaltjs.zendesk.com/hc/en-us/articles/39016391623063-Market-Analysis-How-to-Create-a-Segment", "iframe"], ["Try it in Cobalt", "Tour", "https://jsc.junglescout.com/?gs-key=nguide-kyc-topic-1-create-s", "external"]] },
-            { title: "Benchmark your performance vs. competitors", desc: "Understand market share performance in the context of revenue, unit, and ASP movements.", time: "15 min", goal: "You will be able to run head-to-head comparisons across revenue, units, and ASP and interpret what benchmarks mean for your business.", steps: [["Open Competitor Benchmarks", "From your segment dashboard, click Benchmarks."], ["Compare revenue trends", "Look for crossover points where a competitor is gaining on you or where you are pulling ahead."], ["Check share of category", "See how category revenue splits between you and competitors within your segments."], ["Drill into subcategory benchmarks", "Find hidden weaknesses or strengths at the subcategory level that the top-line numbers might mask."]], tip: "Benchmarking works best monthly. Set a calendar reminder to review at the start of each month.", resources: [["Benchmarking Best Practices", "Article"], ["Monthly Review Checklist", "Checklist"]] },
-            { title: "Identify category disruption", desc: "Spot new entrants and emerging brands or products capturing share in your category.", time: "15 min", goal: "You can spot competitive threats early — new entrants, emerging brands, and products gaining traction — before they become real problems.", steps: [["Review new entrants in your category", "Find new brands and ASINs that have entered your competitive segments recently. Check what data Cobalt surfaces about their early performance."], ["Assess early velocity of emerging brands", "Evaluate whether a new entrant is gaining real traction by looking at sales velocity, review growth, and keyword positions."], ["Identify which brands and products are capturing share", "Sort competitors by share change. See which brands are gaining share in your segments and at what pace."], ["Contextualize the disruption", "For each disruptor, understand what is driving it. Frame what it means for your position."]], tip: "Not every new entrant is a threat. Focus on brands showing sustained velocity over 60-90 days rather than one-time spikes.", resources: [["Competitive Response Framework", "Article"], ["Category Disruption Guide", "Article"]] }
+            { title: "Create custom market segments for your product lines", goal: "You will have custom segments set up so you can get a detailed, custom view of the competitive landscape.", time: "12 min", steps: [["Navigate to Market Analysis", "Click Market Trends then Market Analysis in the left nav. Click Start Market Analysis."], ["Apply your filters", "Start with Category or Product Title. Add Price, Star Rating, and Rating Count to refine."], ["Validate on the Overview tab", "Check that the products shown match your competitive set. Ask: are these the right products?"], ["Name and save your segment", "Click Save Segment, give it a clear name, and repeat with Save as New to create narrower views."]], tip: "Start broad, then tighten. Let the data tell you when the segment looks right.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Video Walkthrough", "Video", "https://fast.wistia.com/embed/channel/a2tgtglkx9?wchannelid=a2tgtglkx9&wmediaid=f68pehg2a9", "video"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Written%20Guide/", "iframe"], ["How to build a market segment", "Article", "https://cobaltjs.zendesk.com/hc/en-us/articles/39016391623063-Market-Analysis-How-to-Create-a-Segment", "iframe"], ["Try it in Cobalt", "Tour", "https://jsc.junglescout.com/?gs-key=nguide-kyc-topic-1-create-s", "external"]] },
+            { title: "Benchmark your performance vs. competitors", goal: "Understand your market share within your custom segments.", time: "15 min", steps: [["Open your segment", "Navigate to Market Analysis and select your saved segment."], ["Review the Brands tab", "See revenue, units, and ASP side-by-side for your brand and competitors."], ["Check the Overview tab", "Review market share trends over your selected date range."], ["Identify gaps", "Look for competitors gaining share in segments where you are flat or declining."]], tip: "Use a consistent date range when comparing across segments to keep benchmarks accurate.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Identify category threats and opportunities", goal: "Spot market shifts before they impact your performance.", time: "15 min", steps: [["Check new entrants", "Review brands that have recently entered your segment."], ["Watch ASP trends", "Rising or falling average selling prices signal competitive pressure."], ["Review unit share vs revenue share", "A gap between the two can signal a pricing or mix problem."], ["Set a review cadence", "Check your segment dashboard monthly to catch trends early."]], tip: "Threats often show up in unit share before they show up in revenue.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
     search: {
-        label: "Win the Search",
-        color: "#D97706",
-        bg: "#FFFBEB",
-        letter: "S",
-        desc: "Optimize keywords, monitor ads, and improve your share of voice on Amazon.",
-        intro: "This path helps you understand how shoppers find products on Amazon, optimize your keyword strategy, and improve your share of voice against competitors.",
+        label: "Win the Search", color: "#0891B2", bg: "#ECFEFF",
+        desc: "Optimize your listings to win more organic and sponsored placements.",
         topics: [
-            { title: "Run keyword research for your products", desc: "Discover high-value keywords and understand search demand in your category.", time: "12 min", goal: "You will build your keyword tracking list with the terms that matter most.", steps: [["Open the Keywords module", "Navigate to Search then Keywords."], ["Evaluate keyword volume", "Each keyword shows monthly search volume, trend direction, and click concentration."], ["Add to your tracking list", "Click Track on any keyword. Aim for 20-50 terms to start."], ["Review your keyword dashboard", "Tracked keywords appear in My Keywords with daily rank tracking."]], tip: "Track category terms and competitor brand terms too, not just your own brand terms.", resources: [["Keyword Research Guide", "Article"], ["Try it in Cobalt", "Tour"]] },
-            { title: "Track Share of Voice over time", desc: "Monitor your brand visibility in search results relative to competitors.", time: "15 min", goal: "You will learn what SOV means on Amazon and how to track it over time.", steps: [["Navigate to Share of Voice", "Click Share of Voice in the Search module."], ["Break down by keyword", "Click any keyword to see who owns the top positions."], ["Identify SOV gaps", "Find high-volume keywords where your SOV is low."], ["Track SOV trends", "Monitor how SOV shifts over time and correlate with revenue."]], tip: "SOV is a leading indicator of market share. Improvements today translate to revenue gains in 30-60 days.", resources: [["SOV Explained", "Article"], ["SOV Dashboard Tour", "Video"]] },
-            { title: "Analyze competitor keyword strategies", desc: "See what keywords competitors are winning on and find the gaps.", time: "15 min", goal: "You will use Cobalt ad intelligence to understand competitor keyword and ad strategy.", steps: [["Open Ad Intelligence", "Navigate to Search then Ads."], ["See who is bidding on your terms", "View which brands appear in sponsored placements for each keyword."], ["Track ad spend estimates", "Use the Spend Trends chart to spot investment increases by competitors."], ["Find keyword gaps", "Look for high-value keywords where competitors rank but you do not."]], tip: "Cobalt shows the landscape; your Amazon Ads console executes the strategy.", resources: [["Ad Intelligence Guide", "Article"], ["Keyword Gap Checklist", "Checklist"]] },
-            { title: "Optimize ad spend and improve ROAS", desc: "Use Cobalt data to reduce wasted spend and improve campaign performance.", time: "15 min", goal: "You will identify opportunities to cut wasteful ad spend and reallocate to higher-performing keywords.", steps: [["Review your keyword performance", "In Search, look at your tracked keywords sorted by estimated ad spend."], ["Identify low-ROAS keywords", "Find keywords where you are spending heavily but not converting or ranking."], ["Find high-opportunity keywords", "Look for keywords with high search volume and low competition where increased spend could move the needle."], ["Build your optimization plan", "Export a list of keywords to reduce spend on and keywords to increase spend on."]], tip: "Optimization is ongoing, not one-time. Review weekly and adjust. Small, frequent changes outperform large infrequent ones.", resources: [["Ad Optimization Guide", "Article"], ["ROAS Improvement Checklist", "Checklist"]] },
-            { title: "Optimize your listings with keyword intelligence", desc: "Improve organic ranking through data-driven listing updates.", time: "15 min", goal: "You will map keyword data to listing optimization actions in Seller Central.", steps: [["Pull your keyword gap report", "Filter for terms where you rank below position 20."], ["Prioritize by impact", "Sort by search volume. Focus on highest-volume gap terms."], ["Map keywords to listings", "Check if each keyword appears in your title, bullets, and backend terms."], ["Track the impact", "Monitor rank movement over 2-4 weeks after changes."]], tip: "Cobalt tells you what to optimize. You make the changes in Seller Central.", resources: [["Listing Optimization Guide", "Article"]] }
+            { title: "Audit your keyword coverage", goal: "Find the keywords you are missing.", time: "15 min", steps: [["Open Keyword Research", "Navigate to Search then Keywords."], ["Enter your main keyword", "Type your primary search term and review the results."], ["Filter for high volume low competition", "Look for keywords with strong search volume and fewer competing products."], ["Export your keyword list", "Download the list and prioritize by opportunity score."]], tip: "Your most important keyword is the one customers use when they have buying intent, not just browsing intent.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
-    protect: {
-        label: "Protect Your Brand",
-        color: "#DC2626",
-        bg: "#FEF2F2",
-        letter: "P",
-        desc: "Monitor 3P sellers, catch unauthorized resellers, and defend your Buy Box.",
-        intro: "This path helps you monitor third-party sellers on your listings, identify unauthorized resellers, and protect your Buy Box. Critical for brands on Amazon.",
+    brand: {
+        label: "Protect Your Brand", color: "#DC2626", bg: "#FEF2F2",
+        desc: "Monitor your brand health, flag listing issues, and stay ahead of policy risks.",
         topics: [
-            { title: "Review 3P activity on your ASINs", desc: "See who is selling your products, at what prices, and whether they are authorized.", time: "12 min", goal: "You will have full visibility into all third-party sellers on your listings, including Buy Box status.", steps: [["Navigate to Brand Protection", "Click Protect in the left nav."], ["Add your ASINs", "Click Add Products and paste your ASINs or search by product name."], ["Review current sellers", "See all active sellers per ASIN: name, price, fulfillment method, and Buy Box status."], ["Enable new seller alerts", "Get email notifications within 24 hours of a new 3P seller appearing on your listings."]], tip: "Start with your top 20 ASINs by revenue. These are where unauthorized sellers hurt most.", resources: [["3P Monitoring Guide", "Article"], ["Try it in Cobalt", "Tour"]] },
-            { title: "Set up your authorized and unauthorized seller lists", desc: "Classify your sellers so you can monitor activity and spot new unauthorized entrants.", time: "15 min", goal: "You will flag unauthorized sellers and build your enforcement list.", steps: [["Review your seller list", "Go to Sellers to see all 3P sellers across tracked ASINs."], ["Mark authorized sellers", "Click the checkmark next to known authorized sellers to filter them out."], ["Investigate unknowns", "Click any seller to see their profile, products, and pricing history."], ["Build your enforcement list", "Flag and export unauthorized sellers for your legal or compliance team."]], tip: "Some unauthorized sellers are retail arbitrage. Understanding the source helps determine the right response.", resources: [["Unauthorized Seller Guide", "Article"], ["Seller Classification Checklist", "Checklist"]] },
-            { title: "Quantify revenue impact from unauthorized sellers and Buy Box loss", desc: "Put a dollar figure on what unauthorized sellers and Buy Box erosion are costing you.", time: "15 min", goal: "You will have a clear, quantified view of the revenue impact from 3P seller issues.", steps: [["Open Buy Box Monitor", "Click the Buy Box tab in Protect. Sort by Buy Box Rate ascending to find your most at-risk listings."], ["Calculate Buy Box loss impact", "For each ASIN, see estimated revenue lost when you do not own the Buy Box."], ["Quantify unauthorized seller revenue", "See what percentage of your ASIN revenue is going to unauthorized sellers."], ["Build your business case", "Export the data to build a dollar-figure case for enforcement investment."]], tip: "Buy Box loss is often a pricing issue. Check if an unauthorized seller is undercutting you before assuming it is a technical problem.", resources: [["Buy Box Strategy Guide", "Article"], ["Revenue Impact Calculator", "Article"]] },
-            { title: "Build enforcement evidence and compliance cases", desc: "Use Cobalt data to support legal or brand registry actions against unauthorized sellers.", time: "15 min", goal: "You will know how to pull the evidence you need for enforcement actions.", steps: [["Set your MAP prices", "Go to Pricing Rules and enter MAP for each tracked ASIN. Cobalt flags any seller pricing below your MAP."], ["Document violation history", "See all MAP violations with seller name, product, price, and duration details."], ["Compile seller dossiers", "For each unauthorized seller, export their full activity: products sold, pricing history, and estimated revenue."], ["Export for legal", "Export the complete violation and seller activity logs for your legal or compliance team."]], tip: "Consistent enforcement matters. A well-documented pattern of violations is much stronger than a single screenshot.", resources: [["Enforcement Evidence Guide", "Article"], ["Compliance Case Template", "Article"]] }
-        ]
-    },
-    optimize: {
-        label: "Optimize & Grow",
-        color: "#059669",
-        bg: "#ECFDF5",
-        letter: "O",
-        desc: "Act on your data — analyze your catalog, pricing, and portfolio to drive growth.",
-        intro: "This path turns market, competitive, and search intelligence into decisions about your own products, pricing, and catalog strategy. It is where insight becomes action.",
-        topics: [
-            { title: "Get to know your product catalog in Cobalt", desc: "Navigate your own product-level data and understand what Cobalt shows you.", time: "15 min", goal: "You will have a clear picture of how each of your products is performing on Amazon and know where to find your own data.", steps: [["Open your Product Catalog", "Navigate to Products in the left nav. This is your complete ASIN-level view."], ["Sort and filter your catalog", "Sort by revenue, units, or growth rate. Use filters to narrow by category or status."], ["Review product detail pages", "Click any ASIN to see its full performance profile: sales trend, pricing history, review trajectory."], ["Identify native views vs dashboard needs", "Some data is available in standard product views. For custom analysis, you will need to build a dashboard — covered in Report With Confidence."]], tip: "Spend time here first before building dashboards. Understanding what is available natively saves you from building dashboards you do not need.", resources: [["Product Catalog Guide", "Article"], ["Try it in Cobalt", "Tour"]] },
-            { title: "Analyze your product portfolio", desc: "Find your winners and losers and build a framework for portfolio decisions.", time: "15 min", goal: "You will identify your most profitable products vs highest revenue, spot underperformers, and know where to focus.", steps: [["Build a portfolio view", "In Products, add columns for revenue, units, estimated margin, and growth rate."], ["Identify revenue drivers vs profit drivers", "Sort by revenue then by margin. Look for products that are high revenue but low margin, or low revenue but high margin."], ["Flag underperformers", "Filter for products with declining revenue or negative growth. These need investigation."], ["Create your action list", "Export your findings. Categorize products: double down, investigate, consider cutting."]], tip: "High revenue does not always mean high profit. This analysis often reveals surprising gaps between your best sellers and your most profitable products.", resources: [["Portfolio Analysis Framework", "Article"], ["Product Prioritization Checklist", "Checklist"]] },
-            { title: "Run a pricing analysis", desc: "Understand your pricing position and find opportunities to optimize.", time: "15 min", goal: "You will make data-backed pricing decisions that protect margins and drive volume.", steps: [["Open Pricing Intelligence", "Navigate to the pricing view for your tracked products."], ["Compare your prices to competitors", "See where you are priced above, below, or in line with direct competitors for similar products."], ["Track price changes over time", "Use the price history chart to see how competitor pricing has shifted and whether the category is trending up or down."], ["Identify pricing opportunities", "Look for products where you have room to raise prices without losing position, or where a price reduction could capture significant volume."]], tip: "Pricing decisions should always consider competitive context. A price that looks high in isolation may be perfectly positioned within your competitive set.", resources: [["Pricing Analysis Guide", "Article"], ["Competitive Pricing Checklist", "Checklist"]] },
-            { title: "Identify catalog gaps using search and market data", desc: "Find where shoppers are searching but your catalog does not have a product.", time: "15 min", goal: "You will cross-reference demand data with your catalog to find product opportunities you are missing.", steps: [["Start with keyword demand", "Go to Search then Keywords. Look at high-volume terms in your category."], ["Cross-reference with your catalog", "For each high-demand keyword, check whether you have a product that ranks for it."], ["Evaluate the gap", "For keywords where you have no product, check the competitive landscape: how many sellers, what price points, what review counts."], ["Prioritize opportunities", "Rank gaps by demand volume, competitive intensity, and fit with your brand. Export your prioritized list."]], tip: "Not every gap is worth filling. Focus on gaps where you have a credible right to win — brand authority, supply chain advantage, or differentiated positioning.", resources: [["Catalog Gap Analysis Guide", "Article"], ["Opportunity Prioritization Template", "Article"]] }
+            { title: "Monitor your brand health score", goal: "Know where your brand stands and what to fix first.", time: "15 min", steps: [["Open Brand Analytics", "Navigate to Brand in the left nav."], ["Review your health score", "Your score is calculated from listing quality, reviews, and policy flags."], ["Prioritize the top issues", "Sort by impact to find the issues hurting your score most."], ["Set up alerts", "Enable email alerts so you are notified when your score changes."]], tip: "A single suppressed listing can drop your score significantly. Check the flags tab first.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
     report: {
-        label: "Report With Confidence",
-        color: "#D97706",
-        bg: "#FFFBEB",
-        letter: "R",
-        desc: "Build dashboards, master visualization, and present Amazon data to any audience.",
-        intro: "This cross-cutting path teaches you to navigate standard reports, build custom dashboards, customize them with labels and events, and get your data in front of the people who need to see it.",
+        label: "Report With Confidence", color: "#059669", bg: "#ECFDF5",
+        desc: "Build repeatable reports that stakeholders trust and act on.",
         topics: [
-            { title: "Explore Cobalt's standard reports and views", desc: "Know what is available out of the box before you build anything custom.", time: "12 min", goal: "You will understand every standard view Cobalt provides and when to use each one.", steps: [["Tour the main modules", "Click through Market, Competitors, Search, and Protect in the left nav. Each has standard views with pre-built visualizations."], ["Understand view types", "Standard views show aggregated data. Product views show ASIN-level detail. Dashboard views let you combine both."], ["Check the Reports library", "Navigate to Reports to see pre-built report templates organized by use case."], ["Decide when to go custom", "If a standard view answers your question, use it. If you need to combine data from multiple modules or customize the layout, build a dashboard."]], tip: "Standard views are maintained by Cobalt and update automatically. Dashboards give you flexibility but require setup. Start with standard views and build custom only when you need to.", resources: [["Standard Views Guide", "Article"], ["Try it in Cobalt", "Tour"]] },
-            { title: "Build a custom dashboard", desc: "Create, configure, and arrange widgets for your specific use case.", time: "15 min", goal: "You will have a working custom dashboard tailored to your needs.", steps: [["Go to Dashboards", "Click Dashboards in the left nav. Click New Dashboard."], ["Start from a template or blank", "Browse available templates for your use case, or start from a blank canvas."], ["Add and configure widgets", "Click Add Widget. Choose from revenue trends, market share, SOV, competitor comparisons, and more. Configure each widget with your specific filters."], ["Arrange your layout", "Drag and resize widgets. Put the most important metrics at the top. Aim for 4-6 focused widgets."]], tip: "Less is more. A dashboard with 4-6 focused widgets tells a clearer story than one with 15. You can always create multiple dashboards for different purposes.", resources: [["Dashboard Quick Start", "Article"], ["Dashboard Templates Gallery", "Article"], ["Try it in Cobalt", "Tour"]] },
-            { title: "Customize your dashboards with labels and events", desc: "Use labels and events to make your dashboards more powerful and contextual.", time: "15 min", goal: "You will use labels to group and filter data, and events to correlate business actions with results.", steps: [["Create labels for your products", "Go to Settings then Labels. Create labels to group products by line, priority, lifecycle stage, or any custom grouping."], ["Apply labels to filter dashboards", "In any dashboard widget, use the label filter to show data for just one product group. This lets you build one dashboard that serves multiple views."], ["Add events to time series charts", "Click the Events toggle on any trend chart. Add events like price changes, promotions, or product launches."], ["Read the impact", "Look at how your metrics changed before and after each event. This connects your actions to measurable outcomes."]], tip: "Labels are the most underused feature in Cobalt. Once you set them up, every dashboard and view becomes more powerful because you can slice your data any way you want.", resources: [["Labels and Events Guide", "Article"], ["Advanced Dashboard Tips", "Article"]] },
-            { title: "Present and share your data", desc: "Get Cobalt data out of the platform and into the hands of decision-makers.", time: "12 min", goal: "You will have a repeatable process for sharing the right data with the right people.", steps: [["Export a dashboard snapshot", "Open any dashboard and click Export. Choose PDF for a formatted snapshot or CSV for raw data."], ["Schedule recurring reports", "Click Settings then Schedule on any dashboard. Choose daily, weekly, or monthly delivery. Add recipient email addresses."], ["Frame your data for the audience", "For leadership: lead with the headline, add one-line annotations to each chart, end with recommended actions. For teams: include the detail and let them explore."], ["Copy charts for presentations", "Hover over any chart and click the copy icon. Paste directly into slides or documents."]], tip: "The best reports answer So what. Every data point should connect to a business decision or recommended action.", resources: [["Sharing and Export Guide", "Article"], ["Presentation Framework", "Article"]] }
+            { title: "Build your first performance report", goal: "Produce a clean, stakeholder-ready performance summary.", time: "15 min", steps: [["Open the Reports module", "Navigate to Reports in the left nav."], ["Select your metrics", "Choose revenue, units, and market share as your core metrics."], ["Set your comparison period", "Pick your current period and the prior period for benchmarking."], ["Export and share", "Export as PDF or share the live link with your team."]], tip: "Less is more. A report with three clear metrics beats a dashboard with twenty confusing ones.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     }
 };
-const CHAT_ANSWERS = {
-    "How do I track a competitor?": "Head to Competitors in the left nav, click Add Competitor, and search by brand name. Then create a custom segment to group them with your products. The Know Your Competition path, Topic 1, walks through the full setup.",
-    "What is share of voice?": "SOV measures how visible your brand is in Amazon search results vs competitors. It is the percentage of top positions your products occupy. See Win the Search, Topic 2 for details.",
-    "Help me build a dashboard": "Go to Dashboards, click New, and add widgets from any module. Start with 4-6 widgets max. The Report With Confidence path, Topic 2 has the full guide.",
-    "How do I analyze my pricing?": "The Optimize and Grow path, Topic 3 walks you through running a pricing analysis — comparing your prices to competitors, tracking trends, and finding optimization opportunities."
-};
-const SUGGESTIONS = Object.keys(CHAT_ANSWERS);
-function LearningPaths() {
-    const [page, setPage] = useState("home");
-    const [tid, setTid] = useState(null);
-    const [topIdx, setTopIdx] = useState(null);
-    const [done, setDone] = useState({});
-    const [chatOpen, setChatOpen] = useState(false);
-    const [msgs, setMsgs] = useState([{ f: "b", t: "Hi! I can help you get the most out of Cobalt. Ask me anything about features, data, or these learning paths." }]);
-    const [inp, setInp] = useState("");
-    const [sugg, setSugg] = useState(true);
-    const goHome = () => { setPage("home"); setTid(null); setTopIdx(null); };
-    const goTrack = (id) => { setPage("track"); setTid(id); setTopIdx(null); };
-    const goTopic = (id, i) => { setPage("topic"); setTid(id); setTopIdx(i); };
-    const markDone = (id, i) => { const k = id + "-" + i; setDone(p => (Object.assign(Object.assign({}, p), { [k]: !p[k] }))); };
-    const sendMsg = (text) => {
-        if (!text.trim())
-            return;
-        const newM = [...msgs, { f: "u", t: text }];
-        setMsgs(newM);
-        setInp("");
-        setSugg(false);
-        setTimeout(() => {
-            const a = CHAT_ANSWERS[text] || "Great question! In the full version I would search the knowledge base to give you a specific answer. For now, check the learning paths for common workflows.";
-            setMsgs(p => [...p, { f: "b", t: a }]);
-        }, 500);
-    };
-    const trk = tid ? TRACKS[tid] : null;
-    const top = trk && topIdx !== null ? trk.topics[topIdx] : null;
-    const dc = trk ? Object.keys(done).filter(k => k.startsWith(tid) && done[k]).length : 0;
-    return (React.createElement("div", { style: { fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif", background: "#FAFAF8", minHeight: "100vh", color: "#1a1a1a", fontSize: 14 } },
-        React.createElement("div", { style: { background: "#fff", borderBottom: "1px solid #e5e5e5", padding: "0 20px", height: 48, display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 100 } },
-            React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 14 } },
-                React.createElement("span", { style: { fontWeight: 700, fontSize: 17 } },
-                    "cobalt",
-                    React.createElement("span", { style: { color: "#2563EB" } }, ".")),
-                React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#888" } },
-                    React.createElement("span", { onClick: goHome, style: { cursor: "pointer", textDecoration: page !== "home" ? "underline" : "none" } }, "Learning Paths"),
-                    tid && (React.createElement(React.Fragment, null,
-                        React.createElement("span", { style: { opacity: 0.4 } }, "/"),
-                        topIdx !== null ? (React.createElement(React.Fragment, null,
-                            React.createElement("span", { onClick: () => goTrack(tid), style: { cursor: "pointer", textDecoration: "underline" } }, trk.label),
-                            React.createElement("span", { style: { opacity: 0.4 } }, "/"),
-                            React.createElement("span", { style: { color: "#333", fontWeight: 500 } }, top.title.length > 30 ? top.title.slice(0, 30) + "..." : top.title))) : (React.createElement("span", { style: { color: "#333", fontWeight: 500 } }, trk.label)))))),
-            React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10 } },
-                React.createElement("button", { onClick: () => setChatOpen(o => !o), style: { fontSize: 12, color: "#666", background: "#f5f5f5", border: "1px solid #e5e5e5", padding: "4px 12px", borderRadius: 16, cursor: "pointer" } }, "Ask AI"),
-                React.createElement("div", { style: { width: 28, height: 28, borderRadius: 14, background: "linear-gradient(135deg,#2563EB,#7C3AED)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 600 } }, "CJ"))),
-        page === "home" && (React.createElement("div", null,
-            React.createElement("div", { style: { maxWidth: 820, margin: "0 auto", padding: "48px 20px 32px", textAlign: "center" } },
-                React.createElement("h1", { style: { fontSize: 32, fontWeight: 700, letterSpacing: -0.8, lineHeight: 1.25, marginBottom: 10 } },
-                    "Learn Cobalt by doing ",
-                    React.createElement("em", { style: { fontStyle: "italic", color: "#2563EB" } }, "your"),
-                    " work"),
-                React.createElement("p", { style: { fontSize: 15, color: "#777", maxWidth: 500, margin: "0 auto 6px", lineHeight: 1.6 } }, "Choose the path that matches what you are trying to accomplish. Each one walks you through Cobalt step-by-step with real tasks."),
-                React.createElement("p", { style: { fontSize: 12, color: "#aaa" } }, "6 modules / 25 guided topics / ~15 min each")),
-            React.createElement("div", { style: { maxWidth: 600, margin: "0 auto 14px", textAlign: "center" } },
-                React.createElement("h2", { style: { fontSize: 18, fontWeight: 600, marginBottom: 2 } }, "What are you trying to do?"),
-                React.createElement("p", { style: { fontSize: 13, color: "#888" } }, "Pick the use case that matters most right now.")),
-            React.createElement("div", { style: { maxWidth: 1020, margin: "0 auto", padding: "0 20px 60px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(270px, 1fr))", gap: 12 } }, Object.entries(TRACKS).map(([id, t]) => (React.createElement("div", { key: id, onClick: () => goTrack(id), style: { background: "#fff", border: "1px solid #e5e5e5", borderTop: "3px solid " + t.color, borderRadius: 10, padding: "20px 18px", cursor: "pointer", position: "relative" } },
-                t.badge && React.createElement("span", { style: { position: "absolute", top: 10, right: 10, fontSize: 9, fontWeight: 600, padding: "2px 8px", borderRadius: 10, background: t.bg, color: t.color, textTransform: "uppercase" } }, t.badge),
-                React.createElement("div", { style: { width: 34, height: 34, borderRadius: 8, background: t.bg, color: t.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700, marginBottom: 10 } }, t.letter),
-                React.createElement("div", { style: { fontSize: 15, fontWeight: 600, marginBottom: 4 } }, t.label),
-                React.createElement("div", { style: { fontSize: 13, color: "#777", lineHeight: 1.5, marginBottom: 10 } }, t.desc),
-                React.createElement("div", { style: { display: "flex", gap: 8, fontSize: 11, color: "#aaa" } },
-                    React.createElement("span", null,
-                        t.topics.length,
-                        " topics"),
-                    React.createElement("span", null, "/"),
-                    React.createElement("span", null,
-                        "~",
-                        t.topics.length * 15,
-                        " min")),
-                React.createElement("div", { style: { marginTop: 10, fontSize: 13, fontWeight: 500, color: t.color } }, "Start path \u2192"))))))),
-        page === "track" && trk && (React.createElement("div", { style: { maxWidth: 760, margin: "0 auto", padding: "28px 20px 60px" } },
-            React.createElement("div", { onClick: goHome, style: { fontSize: 13, color: "#888", cursor: "pointer", marginBottom: 16 } }, "\u2190 All Learning Paths"),
-            React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5, color: trk.color, marginBottom: 6 } },
-                React.createElement("span", { style: { width: 7, height: 7, borderRadius: 4, background: trk.color, display: "inline-block" } }),
-                trk.label),
-            React.createElement("h1", { style: { fontSize: 26, fontWeight: 700, marginBottom: 8 } }, trk.label),
-            React.createElement("p", { style: { fontSize: 14, color: "#777", lineHeight: 1.6, maxWidth: 560, marginBottom: 16 } }, trk.intro),
-            React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10, marginBottom: 28 } },
-                React.createElement("div", { style: { flex: 1, height: 5, background: "#eee", borderRadius: 3, overflow: "hidden" } },
-                    React.createElement("div", { style: { height: "100%", background: trk.color, borderRadius: 3, width: (dc / trk.topics.length * 100) + "%", transition: "width 0.3s" } })),
-                React.createElement("span", { style: { fontSize: 12, color: "#999" } },
-                    dc,
-                    " of ",
-                    trk.topics.length,
-                    " done")),
-            React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 8 } }, trk.topics.map((t, i) => {
-                const d = done[tid + "-" + i];
-                return (React.createElement("div", { key: i, onClick: () => goTopic(tid, i), style: { background: "#fff", border: "1px solid #e5e5e5", borderRadius: 10, padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 12 } },
-                    React.createElement("div", { style: { width: 28, height: 28, borderRadius: 14, background: d ? "#ecfdf5" : trk.bg, color: d ? "#059669" : trk.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 600, flexShrink: 0 } }, d ? "\u2713" : i + 1),
-                    React.createElement("div", { style: { flex: 1 } },
-                        React.createElement("div", { style: { fontSize: 14, fontWeight: 600, marginBottom: 2 } }, t.title),
-                        React.createElement("div", { style: { fontSize: 12, color: "#888" } }, t.desc)),
-                    React.createElement("div", { style: { textAlign: "right", flexShrink: 0 } },
-                        React.createElement("div", { style: { fontSize: 11, color: "#bbb" } }, t.time),
-                        React.createElement("div", { style: { fontSize: 15, color: trk.color, marginTop: 4 } }, "\u2192"))));
-            })))),
-        page === "topic" && trk && top && (() => {
-            const allResources = top.resources || [];
-            const inlineResource = allResources.find(r => r[3] === "inline");
-            const videoResource = allResources.find(r => r[3] === "video");
-            const wistiaEmbedId = videoResource && videoResource[2] && videoResource[2].includes("wmediaid=")
-              ? videoResource[2].split("wmediaid=")[1] : null;
-            const [activeResource, setActiveResource] = React.useState(null);
-            const QSG_STYLES = `
+const QSG_STYLES = `
   :root {
-    /* Brand palette from Scale Strategy */
+    
     --ink: #1a1a2e;
     --slate: #3d3d5c;
     --muted: #6b6b8a;
@@ -222,7 +66,7 @@ function LearningPaths() {
     --accent: #5046e5;
     --accent-light: #7c74f0;
     --accent-bg: #eae8fd;
-    /* KYC module color */
+    
     --purple: #7c3aed;
     --purple-bg: #f5f3ff;
     --purple-mid: #c4b5fd;
@@ -248,7 +92,7 @@ function LearningPaths() {
 
   .page { max-width: 1080px; margin: 0 auto; }
 
-  /* ── MASTHEAD ── */
+  
   .masthead {
     background: var(--ink);
     border-radius: 12px 12px 0 0;
@@ -302,7 +146,7 @@ function LearningPaths() {
     text-align: right;
   }
 
-  /* ── BEFORE STRIP ── */
+  
   .before-strip {
     background: #21213a;
     display: grid;
@@ -328,7 +172,7 @@ function LearningPaths() {
     line-height: 1.45;
   }
 
-  /* ── SECTION HEADER ── */
+  
   .sec-header {
     display: flex;
     align-items: center;
@@ -357,7 +201,7 @@ function LearningPaths() {
     padding: 4px 12px;
   }
 
-  /* ── MAIN CONTENT CARD ── */
+  
   .card {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -365,7 +209,7 @@ function LearningPaths() {
   }
   .card-inner { padding: 32px 40px; }
 
-  /* ── VERTICAL STEPS ── */
+  
   .steps-list {
     display: flex;
     flex-direction: column;
@@ -418,7 +262,7 @@ function LearningPaths() {
     justify-content: center;
     text-align: center;
   }
-  /* Right panel: text on top, screenshots below full-width */
+  
   .step-right {
     padding: 0;
     display: flex;
@@ -471,14 +315,14 @@ function LearningPaths() {
     line-height: 1.5;
   }
   .step-warn strong { color: #451a03; font-weight: 700; }
-  /* Screenshots row — full width under text */
+  
   .step-shots {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
     border-top: 1px solid var(--line);
   }
-  /* Step 1: two images stacked full width */
+  
   .step-shots-stack {
     display: flex;
     flex-direction: column;
@@ -493,7 +337,7 @@ function LearningPaths() {
     width: 100%;
     height: auto;
   }
-  /* Step 1: tall-left + two stacked right */
+  
   .step-shots-1up {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -525,7 +369,7 @@ function LearningPaths() {
     width: 100%;
     height: auto;
   }
-  /* Step 3: side by side, natural height */
+  
   .step-shots-eq {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -537,7 +381,7 @@ function LearningPaths() {
     width: 100%;
     height: auto;
   }
-  /* All step shots: natural height, no cropping */
+  
   .step-shot {
     background: var(--warm);
     border-right: 1px solid var(--line);
@@ -554,7 +398,7 @@ function LearningPaths() {
     width: 100%;
     height: auto;
   }
-  /* Sub-step layout: text left, image right */
+  
   .step-substep {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -597,7 +441,7 @@ function LearningPaths() {
     line-height: 1.3;
   }
 
-  /* ── LOWER SECTIONS — full width stacked ── */
+  
   .lower-stack {
     display: flex;
     flex-direction: column;
@@ -629,7 +473,7 @@ function LearningPaths() {
   }
   .lower-card-body { padding: 20px 22px; }
 
-  /* Tips list — 2 column grid */
+  
   .tip-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -654,7 +498,7 @@ function LearningPaths() {
   .tip-text { color: var(--slate); line-height: 1.5; }
   .tip-text strong { color: var(--ink); font-weight: 600; }
 
-  /* ── EXAMPLE SECTION — flat rows, no inner box ── */
+  
   .seg-intro {
     font-size: 14px;
     color: var(--muted);
@@ -676,7 +520,7 @@ function LearningPaths() {
   .seg-row:first-child { border-radius: 6px 6px 0 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
   .seg-row:last-child { border-bottom: 1px solid var(--line); border-left: 1px solid var(--line); border-right: 1px solid var(--line); border-radius: 0 0 6px 6px; }
   .seg-row:not(:first-child):not(:last-child) { border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
-  /* Number + text left column */
+  
   .seg-left {
     display: none;
   }
@@ -731,7 +575,7 @@ function LearningPaths() {
     color: var(--purple);
     line-height: 1;
   }
-  /* Image right column — fixed 320px, natural height */
+  
   .seg-img-col {
     padding: 0;
     overflow: hidden;
@@ -773,7 +617,7 @@ function LearningPaths() {
     white-space: nowrap;
   }
 
-  /* footer */
+  
   .footer {
     padding: 18px 40px;
     display: flex;
@@ -793,7 +637,7 @@ function LearningPaths() {
     padding: 5px 14px;
   }
 `;
-            const QSG_BODY = `<div class="page">
+const QSG_BODY = `<div class="page">
 <div class="card">
 
   
@@ -1115,84 +959,192 @@ function LearningPaths() {
 
 </div>
 </div>`;
-            const handleSidebarClick = (r) => {
-              if (r[3] === "external") { window.open(r[2], "_blank"); return; }
-              if (r[3] === "inline") { setActiveResource(null); return; }
-              if (r[2]) setActiveResource(r);
-            };
-            const isActive = (r) => {
-              if (r[3] === "inline") return activeResource === null;
-              return activeResource && activeResource[0] === r[0];
-            };
-            return React.createElement("div", { style: { maxWidth: 980, margin: "0 auto", padding: "28px 20px 80px", display: "grid", gridTemplateColumns: "1fr 240px", gap: 24, alignItems: "start" } },
-              React.createElement("div", null,
-                React.createElement("div", { onClick: () => { goTrack(tid); setActiveResource(null); }, style: { fontSize: 13, color: "#888", cursor: "pointer", marginBottom: 20 } }, "\u2190 Back to " + trk.label),
-                React.createElement("div", { style: { marginBottom: 20, paddingBottom: 18, borderBottom: "1px solid #eee" } },
-                  React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.4, color: trk.color, marginBottom: 8 } },
-                    React.createElement("span", { style: { padding: "2px 8px", borderRadius: 10, background: trk.bg, fontSize: 10 } }, trk.label),
-                    React.createElement("span", { style: { fontWeight: 400 } }, "Topic " + (topIdx+1) + " of " + trk.topics.length)),
-                  React.createElement("h1", { style: { fontSize: 22, fontWeight: 700, marginBottom: 6 } }, top.title),
-                  React.createElement("p", { style: { fontSize: 14, color: "#777", lineHeight: 1.6 } }, top.goal),
-                  React.createElement("div", { style: { display: "flex", gap: 14, marginTop: 10, fontSize: 12, color: "#999" } }, React.createElement("span", null, top.time))),
-                wistiaEmbedId && React.createElement("div", { style: { marginBottom: 24 } },
-                  React.createElement("div", { style: { position: "relative", paddingBottom: "56.25%", height: 0, borderRadius: 10, overflow: "hidden", border: "1px solid #e5e5e5" } },
-                    React.createElement("iframe", { src: "https://fast.wistia.net/embed/iframe/" + wistiaEmbedId + "?seo=true&videoFoam=true", title: "Video Walkthrough", allow: "autoplay; fullscreen", allowTransparency: true, frameBorder: "0", scrolling: "no", style: { position: "absolute", top: 0, left: 0, width: "100%", height: "100%" } }))),
-                activeResource === null && inlineResource
-                  ? React.createElement("div", null,
-                      React.createElement("style", { dangerouslySetInnerHTML: { __html: QSG_STYLES } }),
-                      React.createElement("div", { dangerouslySetInnerHTML: { __html: QSG_BODY } }))
-                  : activeResource && activeResource[3] === "iframe"
-                  ? React.createElement("div", null,
-                      React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 } },
-                        React.createElement("div", { style: { fontSize: 13, fontWeight: 600, color: "#333" } }, activeResource[0]),
-                        React.createElement("a", { href: activeResource[2], target: "_blank", rel: "noopener noreferrer", style: { fontSize: 12, color: trk.color, textDecoration: "none" } }, "Open in new tab \u2197")),
-                      React.createElement("iframe", { src: activeResource[2], style: { width: "100%", height: "80vh", border: "1px solid #e5e5e5", borderRadius: 10 }, title: activeResource[0] }))
-                  : React.createElement("div", null,
-                      React.createElement("h2", { style: { fontSize: 16, fontWeight: 600, marginBottom: 10 } }, "Step-by-step guide"),
-                      React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 } },
-                        top.steps.map((st, i) => React.createElement("div", { key: i, style: { background: "#fff", border: "1px solid #e5e5e5", borderRadius: 10, padding: "14px 16px", display: "flex", gap: 12, alignItems: "flex-start" } },
-                          React.createElement("div", { style: { width: 22, height: 22, borderRadius: 11, background: trk.color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, flexShrink: 0 } }, i+1),
-                          React.createElement("div", null, React.createElement("div", { style: { fontSize: 13, fontWeight: 600, marginBottom: 2 } }, st[0]), React.createElement("div", { style: { fontSize: 13, color: "#777", lineHeight: 1.5 } }, st[1]))))),
-                      React.createElement("div", { style: { borderRadius: 10, padding: "14px 16px", background: trk.bg, borderLeft: "3px solid " + trk.color, fontSize: 13, lineHeight: 1.6, margin: "16px 0" } }, React.createElement("strong", null, "Pro tip: "), top.tip)),
-                React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 32, paddingTop: 14, borderTop: "1px solid #eee" } },
-                  topIdx > 0 ? React.createElement("button", { onClick: () => { goTopic(tid, topIdx-1); setActiveResource(null); }, style: { padding: "7px 14px", borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: "pointer", border: "1px solid #e5e5e5", background: "#fff", color: "#333" } }, "\u2190 Previous") : React.createElement("div", null),
-                  React.createElement("button", { onClick: () => markDone(tid, topIdx), style: { background: done[tid+"-"+topIdx] ? "#ecfdf5" : "transparent", border: done[tid+"-"+topIdx] ? "1px solid #059669" : "1px dashed #ccc", color: done[tid+"-"+topIdx] ? "#059669" : "#999", fontSize: 12, padding: "5px 12px", borderRadius: 14, cursor: "pointer" } }, done[tid+"-"+topIdx] ? "\u2713 Completed" : "Mark complete"),
-                  topIdx < trk.topics.length - 1 ? React.createElement("button", { onClick: () => { goTopic(tid, topIdx+1); setActiveResource(null); }, style: { padding: "7px 14px", borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: "pointer", border: "none", background: trk.color, color: "#fff" } }, "Next topic \u2192") : React.createElement("button", { onClick: goHome, style: { padding: "7px 14px", borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: "pointer", border: "none", background: trk.color, color: "#fff" } }, "Finish path \u2713"))),
-              React.createElement("div", { style: { position: "sticky", top: 68 } },
-                React.createElement("div", { style: { borderRadius: 12, overflow: "hidden", border: "2px solid " + trk.color } },
-                  React.createElement("div", { style: { background: "#00022B", padding: "12px 14px" } },
-                    React.createElement("div", { style: { fontSize: 9, fontWeight: 700, color: trk.color, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 3 } }, "Learn your way"),
-                    React.createElement("div", { style: { fontSize: 11, color: "rgba(255,255,255,0.45)", lineHeight: 1.4 } }, "Choose the format that works best for you")),
-                  React.createElement("div", { style: { background: "#00022B", display: "flex", flexDirection: "column", borderTop: "1px solid rgba(255,255,255,0.08)" } },
-                    allResources.map((r, i) => {
-                      const active = isActive(r);
-                      const hasAction = r[3] === "inline" || r[2];
-                      const isGuide = r[1] === "Guide";
-                      const isVideo = r[1] === "Video";
-                      const isTour = r[1] === "Tour";
-                      const icon = isTour ? "\uD83E\uDDED" : isVideo ? "\u25BA" : r[1] === "Article" ? "\uD83D\uDCC4" : isGuide ? "\u26A1" : "\uD83D\uDCCE";
-                      const textColor = active ? trk.color : "#fff";
-                      return React.createElement("div", { key: i, onClick: () => handleSidebarClick(r), style: { display: "flex", alignItems: "flex-start", gap: 10, padding: "11px 14px", background: active ? "rgba(255,255,255,0.09)" : "transparent", borderLeft: active ? "3px solid " + trk.color : "3px solid transparent", cursor: "pointer", opacity: !hasAction ? 0.35 : 1, transition: "background 0.15s" } },
-                        React.createElement("div", { style: { width: 26, height: 26, borderRadius: 5, background: active ? trk.color : "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: isVideo ? 9 : 12, flexShrink: 0, color: "#fff", marginTop: 1 } }, icon),
-                        React.createElement("div", { style: { flex: 1, minWidth: 0 } },
-                          React.createElement("div", { style: { fontSize: 12, fontWeight: active ? 700 : 500, color: textColor, lineHeight: 1.35 } }, r[0]),
-                          React.createElement("div", { style: { fontSize: 10, color: "rgba(255,255,255,0.3)", marginTop: 2 } }, r[1])),
-                        hasAction && React.createElement("span", { style: { fontSize: 10, color: trk.color, flexShrink: 0, opacity: 0.7 } }, isTour ? "\u2197" : active ? "\u2022" : "\u2192"));
-                    })),
-                  React.createElement("div", { style: { background: "#000118", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "10px 14px", display: "flex", flexDirection: "column", gap: 6 } },
-                    React.createElement("a", { href: "https://cobaltjs.zendesk.com/hc/en-us", target: "_blank", rel: "noopener noreferrer", style: { fontSize: 11, color: "rgba(255,255,255,0.4)", textDecoration: "none", display: "flex", alignItems: "center", gap: 6 } }, "\uD83D\uDCDA Help Center"),
-                    React.createElement("a", { href: "https://fast.wistia.com/embed/channel/a2tgtglkx9", target: "_blank", rel: "noopener noreferrer", style: { fontSize: 11, color: "rgba(255,255,255,0.4)", textDecoration: "none", display: "flex", alignItems: "center", gap: 6 } }, "\u25B6 Video Learning Hub"))))))),
-        setChatOpen(o => !o), style: { position: "fixed", bottom: 16, right: 16, width: 46, height: 46, borderRadius: 23, background: "linear-gradient(135deg,#2563EB,#7C3AED)", color: "#fff", border: "none", cursor: "pointer", boxShadow: "0 4px 16px rgba(37,99,235,0.3)", fontSize: 18, zIndex: 200 } }, chatOpen ? "\u00D7" : "?"),
+function LearningPaths() {
+    const [page, setPage] = useState("home");
+    const [tid, setTid] = useState(null);
+    const [topIdx, setTopIdx] = useState(0);
+    const [done, setDone] = useState({});
+    const [chatOpen, setChatOpen] = useState(false);
+    const [msgs, setMsgs] = useState([{ f: "b", t: "Hi! I can help you get the most out of Cobalt. What are you working on?" }]);
+    const [inp, setInp] = useState("");
+    const [sugg, setSugg] = useState(true);
+    const [activeResource, setActiveResource] = useState(null);
+    const handleSidebarClick = (r) => {
+        if (r[3] === "external") {
+            window.open(r[2], "_blank");
+            return;
+        }
+        if (r[3] === "inline") {
+            setActiveResource(null);
+            return;
+        }
+        if (r[2])
+            setActiveResource(r);
+    };
+    const isTopicActive = (r) => {
+        if (r[3] === "inline")
+            return activeResource === null;
+        return activeResource && activeResource[0] === r[0];
+    };
+    const goHome = () => { setActiveResource(null); setPage("home"); setTid(null); };
+    const goTrack = (id) => { setActiveResource(null); setTid(id); setTopIdx(0); setPage("track"); };
+    const goTopic = (id, i) => { setActiveResource(null); setTid(id); setTopIdx(i); setPage("topic"); };
+    const markDone = (id, i) => setDone(d => (Object.assign(Object.assign({}, d), { [id + "-" + i]: !d[id + "-" + i] })));
+    const sendMsg = (text) => {
+        if (!text.trim())
+            return;
+        setMsgs(m => [...m, { f: "u", t: text }, { f: "b", t: "Great question. The best place to start is the " + (tid ? TRACKS[tid].label : "Learning Paths") + " module. Which topic are you finding most challenging?" }]);
+        setInp("");
+        setSugg(false);
+    };
+    const trk = tid ? TRACKS[tid] : null;
+    const top = trk && trk.topics[topIdx] ? trk.topics[topIdx] : null;
+    const doneCount = (id) => Object.keys(done).filter(k => k.startsWith(id + "-") && done[k]).length;
+    return (React.createElement("div", { style: { fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif", background: "#FAFAF8", minHeight: "100vh", color: "#1a1a1a", fontSize: 14 } },
+        React.createElement("div", { style: { background: "#fff", borderBottom: "1px solid #e5e5e5", padding: "0 20px", height: 48, display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 100 } },
+            React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 16 } },
+                React.createElement("span", { onClick: goHome, style: { fontWeight: 700, fontSize: 15, cursor: "pointer", color: "#00022B", letterSpacing: -0.3 } }, "cobalt."),
+                React.createElement("span", { style: { color: "#ddd" } }, "|"),
+                React.createElement("span", { style: { fontSize: 13, color: "#888" } }, "Learning Paths"),
+                trk && React.createElement(React.Fragment, null,
+                    React.createElement("span", { style: { color: "#ddd" } }, "\u203A"),
+                    React.createElement("span", { onClick: () => goTrack(tid), style: { fontSize: 13, color: trk.color, cursor: "pointer", fontWeight: 500 } }, trk.label)),
+                top && React.createElement(React.Fragment, null,
+                    React.createElement("span", { style: { color: "#ddd" } }, "\u203A"),
+                    React.createElement("span", { style: { fontSize: 13, color: "#555", maxWidth: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" } }, top.title))),
+            React.createElement("button", { onClick: () => setChatOpen(o => !o), style: { fontSize: 12, color: "#666", background: "#f5f5f5", border: "1px solid #e5e5e5", borderRadius: 14, padding: "4px 12px", cursor: "pointer" } }, "Ask AI \u2726")),
+        page === "home" && (React.createElement("div", { style: { maxWidth: 820, margin: "0 auto", padding: "48px 20px 80px" } },
+            React.createElement("div", { style: { marginBottom: 40 } },
+                React.createElement("div", { style: { fontSize: 11, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 8 } }, "Cobalt Learning Paths"),
+                React.createElement("h1", { style: { fontSize: 30, fontWeight: 700, marginBottom: 10, lineHeight: 1.25 } },
+                    "Get more out of Cobalt,",
+                    React.createElement("br", null),
+                    "one use case at a time."),
+                React.createElement("p", { style: { fontSize: 15, color: "#777", maxWidth: 500, lineHeight: 1.7 } }, "Pick a path that matches what you are trying to do. Each path walks you through the exact steps \u2014 no guessing.")),
+            React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 14 } }, Object.entries(TRACKS).map(([id, trk]) => {
+                const dc = doneCount(id);
+                const total = trk.topics.length;
+                return (React.createElement("div", { key: id, onClick: () => goTrack(id), style: { background: "#fff", border: "1px solid #e5e5e5", borderRadius: 12, padding: "20px", cursor: "pointer", transition: "box-shadow 0.15s", position: "relative", overflow: "hidden" } },
+                    trk.badge && React.createElement("div", { style: { position: "absolute", top: 12, right: 12, background: trk.color, color: "#fff", fontSize: 9, fontWeight: 700, padding: "2px 7px", borderRadius: 10, textTransform: "uppercase", letterSpacing: 0.5 } }, trk.badge),
+                    React.createElement("div", { style: { width: 36, height: 36, borderRadius: 8, background: trk.bg, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 } },
+                        React.createElement("span", { style: { fontSize: 16, fontWeight: 700, color: trk.color } }, trk.label.charAt(0))),
+                    React.createElement("div", { style: { fontSize: 14, fontWeight: 700, marginBottom: 6, color: "#1a1a1a", lineHeight: 1.3 } }, trk.label),
+                    React.createElement("div", { style: { fontSize: 12, color: "#888", lineHeight: 1.5, marginBottom: 14 } }, trk.desc),
+                    React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } },
+                        React.createElement("div", { style: { flex: 1, height: 4, background: "#eee", borderRadius: 3, overflow: "hidden" } },
+                            React.createElement("div", { style: { height: "100%", background: trk.color, borderRadius: 3, width: (dc / total * 100) + "%", transition: "width 0.3s" } })),
+                        React.createElement("span", { style: { fontSize: 11, color: "#aaa", flexShrink: 0 } },
+                            dc,
+                            "/",
+                            total))));
+            })))),
+        page === "track" && trk && (React.createElement("div", { style: { maxWidth: 700, margin: "0 auto", padding: "36px 20px 80px" } },
+            React.createElement("div", { onClick: goHome, style: { fontSize: 13, color: "#888", cursor: "pointer", marginBottom: 24 } }, "\u2190 Back to Learning Paths"),
+            React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10, marginBottom: 6 } },
+                React.createElement("div", { style: { width: 40, height: 40, borderRadius: 10, background: trk.bg, display: "flex", alignItems: "center", justifyContent: "center" } },
+                    React.createElement("span", { style: { fontSize: 18, fontWeight: 700, color: trk.color } }, trk.label.charAt(0))),
+                React.createElement("h1", { style: { fontSize: 22, fontWeight: 700 } }, trk.label)),
+            React.createElement("p", { style: { fontSize: 14, color: "#777", lineHeight: 1.7, marginBottom: 28, maxWidth: 520 } }, trk.desc),
+            React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 10 } }, trk.topics.map((t, i) => {
+                const isDone = done[tid + "-" + i];
+                return (React.createElement("div", { key: i, onClick: () => goTopic(tid, i), style: { background: "#fff", border: "1px solid #e5e5e5", borderRadius: 10, padding: "16px 18px", cursor: "pointer", display: "flex", alignItems: "center", gap: 14 } },
+                    React.createElement("div", { style: { width: 28, height: 28, borderRadius: 14, background: isDone ? "#059669" : trk.bg, border: isDone ? "none" : "2px solid " + trk.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 } }, isDone ? React.createElement("span", { style: { color: "#fff", fontSize: 13 } }, "\u2713") : React.createElement("span", { style: { fontSize: 12, fontWeight: 600, color: trk.color } }, i + 1)),
+                    React.createElement("div", { style: { flex: 1 } },
+                        React.createElement("div", { style: { fontSize: 14, fontWeight: 600, marginBottom: 3 } }, t.title),
+                        React.createElement("div", { style: { fontSize: 12, color: "#888" } }, t.desc)),
+                    React.createElement("div", { style: { textAlign: "right", flexShrink: 0 } },
+                        React.createElement("div", { style: { fontSize: 11, color: "#bbb" } }, t.time),
+                        React.createElement("div", { style: { fontSize: 15, color: trk.color, marginTop: 4 } }, "\u2192"))));
+            })))),
+        page === "topic" && trk && top && (() => {
+            const allResources = top.resources || [];
+            const inlineResource = allResources.find(r => r[3] === "inline");
+            const videoResource = allResources.find(r => r[3] === "video");
+            const wistiaEmbedId = videoResource && videoResource[2] && videoResource[2].includes("wmediaid=")
+                ? videoResource[2].split("wmediaid=")[1]
+                : null;
+            return (React.createElement("div", { style: { maxWidth: 980, margin: "0 auto", padding: "28px 20px 80px", display: "grid", gridTemplateColumns: "1fr 240px", gap: 24, alignItems: "start" } },
+                React.createElement("div", null,
+                    React.createElement("div", { onClick: () => goTrack(tid), style: { fontSize: 13, color: "#888", cursor: "pointer", marginBottom: 20 } },
+                        "\u2190 Back to ",
+                        trk.label),
+                    React.createElement("div", { style: { marginBottom: 20, paddingBottom: 18, borderBottom: "1px solid #eee" } },
+                        React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.4, color: trk.color, marginBottom: 8 } },
+                            React.createElement("span", { style: { padding: "2px 8px", borderRadius: 10, background: trk.bg, fontSize: 10 } }, trk.label),
+                            React.createElement("span", { style: { fontWeight: 400 } },
+                                "Topic ",
+                                topIdx + 1,
+                                " of ",
+                                trk.topics.length)),
+                        React.createElement("h1", { style: { fontSize: 22, fontWeight: 700, marginBottom: 6 } }, top.title),
+                        React.createElement("p", { style: { fontSize: 14, color: "#777", lineHeight: 1.6 } }, top.goal),
+                        React.createElement("div", { style: { display: "flex", gap: 14, marginTop: 10, fontSize: 12, color: "#999" } },
+                            React.createElement("span", null, top.time))),
+                    wistiaEmbedId && (React.createElement("div", { style: { marginBottom: 24 } },
+                        React.createElement("div", { style: { position: "relative", paddingBottom: "56.25%", height: 0, borderRadius: 10, overflow: "hidden", border: "1px solid #e5e5e5" } },
+                            React.createElement("iframe", { src: `https://fast.wistia.net/embed/iframe/${wistiaEmbedId}?seo=true&videoFoam=true`, title: "Video Walkthrough", allow: "autoplay; fullscreen", allowTransparency: true, frameBorder: "0", scrolling: "no", style: { position: "absolute", top: 0, left: 0, width: "100%", height: "100%" } })))),
+                    activeResource === null && inlineResource
+                        ? (React.createElement("div", null,
+                            React.createElement("style", { dangerouslySetInnerHTML: { __html: QSG_STYLES } }),
+                            React.createElement("div", { dangerouslySetInnerHTML: { __html: QSG_BODY } })))
+                        : activeResource && activeResource[3] === "iframe"
+                            ? (React.createElement("div", null,
+                                React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 } },
+                                    React.createElement("div", { style: { fontSize: 13, fontWeight: 600, color: "#333" } }, activeResource[0]),
+                                    React.createElement("a", { href: activeResource[2], target: "_blank", rel: "noopener noreferrer", style: { fontSize: 12, color: trk.color, textDecoration: "none" } }, "Open in new tab \u2197")),
+                                React.createElement("iframe", { src: activeResource[2], style: { width: "100%", height: "80vh", border: "1px solid #e5e5e5", borderRadius: 10 }, title: activeResource[0] })))
+                            : (React.createElement("div", null,
+                                React.createElement("h2", { style: { fontSize: 16, fontWeight: 600, marginBottom: 10 } }, "Step-by-step guide"),
+                                React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 } }, top.steps.map((st, i) => (React.createElement("div", { key: i, style: { background: "#fff", border: "1px solid #e5e5e5", borderRadius: 10, padding: "14px 16px", display: "flex", gap: 12, alignItems: "flex-start" } },
+                                    React.createElement("div", { style: { width: 22, height: 22, borderRadius: 11, background: trk.color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, flexShrink: 0 } }, i + 1),
+                                    React.createElement("div", null,
+                                        React.createElement("div", { style: { fontSize: 13, fontWeight: 600, marginBottom: 2 } }, st[0]),
+                                        React.createElement("div", { style: { fontSize: 13, color: "#777", lineHeight: 1.5 } }, st[1])))))),
+                                React.createElement("div", { style: { borderRadius: 10, padding: "14px 16px", background: trk.bg, borderLeft: "3px solid " + trk.color, fontSize: 13, lineHeight: 1.6, margin: "16px 0" } },
+                                    React.createElement("strong", null, "Pro tip: "),
+                                    top.tip))),
+                    React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 32, paddingTop: 14, borderTop: "1px solid #eee" } },
+                        topIdx > 0
+                            ? React.createElement("button", { onClick: () => goTopic(tid, topIdx - 1), style: { padding: "7px 14px", borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: "pointer", border: "1px solid #e5e5e5", background: "#fff", color: "#333" } }, "\u2190 Previous")
+                            : React.createElement("div", null),
+                        React.createElement("button", { onClick: () => markDone(tid, topIdx), style: { background: done[tid + "-" + topIdx] ? "#ecfdf5" : "transparent", border: done[tid + "-" + topIdx] ? "1px solid #059669" : "1px dashed #ccc", color: done[tid + "-" + topIdx] ? "#059669" : "#999", fontSize: 12, padding: "5px 12px", borderRadius: 14, cursor: "pointer" } }, done[tid + "-" + topIdx] ? "✓ Completed" : "Mark complete"),
+                        topIdx < trk.topics.length - 1
+                            ? React.createElement("button", { onClick: () => goTopic(tid, topIdx + 1), style: { padding: "7px 14px", borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: "pointer", border: "none", background: trk.color, color: "#fff" } }, "Next topic \u2192")
+                            : React.createElement("button", { onClick: goHome, style: { padding: "7px 14px", borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: "pointer", border: "none", background: trk.color, color: "#fff" } }, "Finish path \u2713"))),
+                React.createElement("div", { style: { position: "sticky", top: 68 } },
+                    React.createElement("div", { style: { borderRadius: 12, overflow: "hidden", border: "2px solid " + trk.color } },
+                        React.createElement("div", { style: { background: "#00022B", padding: "12px 14px" } },
+                            React.createElement("div", { style: { fontSize: 9, fontWeight: 700, color: trk.color, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 3 } }, "Learn your way"),
+                            React.createElement("div", { style: { fontSize: 11, color: "rgba(255,255,255,0.45)", lineHeight: 1.4 } }, "Choose the format that works best for you")),
+                        React.createElement("div", { style: { background: "#00022B", display: "flex", flexDirection: "column", borderTop: "1px solid rgba(255,255,255,0.08)" } }, allResources.map((r, i) => {
+                            const active = isTopicActive(r);
+                            const hasAction = r[3] === "inline" || r[2];
+                            const isGuide = r[1] === "Guide";
+                            const isVideo = r[1] === "Video";
+                            const isTour = r[1] === "Tour";
+                            const icon = isTour ? "🧭" : isVideo ? "▶" : r[1] === "Article" ? "📄" : isGuide ? "⚡" : "📎";
+                            const textColor = active ? trk.color : "#fff";
+                            return (React.createElement("div", { key: i, onClick: () => handleSidebarClick(r), style: { display: "flex", alignItems: "flex-start", gap: 10, padding: "11px 14px", background: active ? "rgba(255,255,255,0.09)" : "transparent", borderLeft: active ? "3px solid " + trk.color : "3px solid transparent", cursor: "pointer", opacity: !hasAction ? 0.35 : 1, transition: "background 0.15s" } },
+                                React.createElement("div", { style: { width: 26, height: 26, borderRadius: 5, background: active ? trk.color : "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: isVideo ? 9 : 12, flexShrink: 0, color: "#fff", marginTop: 1 } }, icon),
+                                React.createElement("div", { style: { flex: 1, minWidth: 0 } },
+                                    React.createElement("div", { style: { fontSize: 12, fontWeight: active ? 700 : 500, color: textColor, lineHeight: 1.35 } }, r[0]),
+                                    React.createElement("div", { style: { fontSize: 10, color: "rgba(255,255,255,0.3)", marginTop: 2 } }, r[1])),
+                                hasAction && React.createElement("span", { style: { fontSize: 10, color: trk.color, flexShrink: 0, opacity: 0.7 } }, isTour ? "↗" : active ? "•" : "→")));
+                        })),
+                        React.createElement("div", { style: { background: "#000118", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "10px 14px", display: "flex", flexDirection: "column", gap: 6 } },
+                            React.createElement("a", { href: "https://cobaltjs.zendesk.com/hc/en-us", target: "_blank", rel: "noopener noreferrer", style: { fontSize: 11, color: "rgba(255,255,255,0.4)", textDecoration: "none", display: "flex", alignItems: "center", gap: 6 } }, "\uD83D\uDCDA Help Center"),
+                            React.createElement("a", { href: "https://fast.wistia.com/embed/channel/a2tgtglkx9", target: "_blank", rel: "noopener noreferrer", style: { fontSize: 11, color: "rgba(255,255,255,0.4)", textDecoration: "none", display: "flex", alignItems: "center", gap: 6 } }, "\u25B6 Video Learning Hub"))))));
+        })(),
+        React.createElement("button", { onClick: () => setChatOpen(o => !o), style: { position: "fixed", bottom: 16, right: 16, width: 46, height: 46, borderRadius: 23, background: "linear-gradient(135deg,#2563EB,#7C3AED)", color: "#fff", border: "none", cursor: "pointer", boxShadow: "0 4px 16px rgba(37,99,235,0.3)", fontSize: 18, zIndex: 200 } }, chatOpen ? "×" : "?"),
         chatOpen && (React.createElement("div", { style: { position: "fixed", bottom: 72, right: 16, width: 320, height: 420, background: "#fff", borderRadius: 14, boxShadow: "0 8px 32px rgba(0,0,0,0.12)", border: "1px solid #e5e5e5", zIndex: 200, display: "flex", flexDirection: "column", overflow: "hidden" } },
-            React.createElement("div", { style: { padding: "10px 14px", borderBottom: "1px solid #eee", display: "flex", alignItems: "center", justifyContent: "space-between" } },
-                React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } },
-                    React.createElement("div", { style: { width: 26, height: 26, borderRadius: 13, background: "linear-gradient(135deg,#2563EB,#7C3AED)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 600 } }, "AI"),
-                    React.createElement("div", null,
-                        React.createElement("div", { style: { fontWeight: 600, fontSize: 12 } }, "Cobalt AI Assistant"),
-                        React.createElement("div", { style: { fontSize: 10, color: "#059669" } }, "Online"))),
-                React.createElement("button", { onClick: () => setChatOpen(false), style: { background: "none", border: "none", fontSize: 16, cursor: "pointer", color: "#aaa" } }, "\u00D7")),
-            React.createElement("div", { style: { flex: 1, padding: "10px 14px", overflowY: "auto", display: "flex", flexDirection: "column", gap: 8 } }, msgs.map((m, i) => (React.createElement("div", { key: i, style: { maxWidth: "82%", padding: "7px 11px", borderRadius: m.f === "b" ? "10px 10px 10px 3px" : "10px 10px 3px 10px", fontSize: 12, lineHeight: 1.5, alignSelf: m.f === "b" ? "flex-start" : "flex-end", background: m.f === "b" ? "#f3f4f6" : "#2563EB", color: m.f === "b" ? "#333" : "#fff" } }, m.t)))),
-            sugg && (React.createElement("div", { style: { display: "flex", flexWrap: "wrap", gap: 4, padding: "0 14px 8px" } }, SUGGESTIONS.map((q, i) => (React.createElement("button", { key: i, onClick: () => sendMsg(q), style: { fontSize: 10, padding: "3px 9px", borderRadius: 12, border: "1px solid #e5e5e5", background: "#fff", cursor: "pointer", color: "#777" } }, q))))),
+            React.createElement("div", { style: { padding: "12px 14px", borderBottom: "1px solid #eee", display: "flex", alignItems: "center", justifyContent: "space-between" } },
+                React.createElement("div", null,
+                    React.createElement("div", { style: { fontSize: 13, fontWeight: 600 } }, "Cobalt AI Assistant"),
+                    React.createElement("div", { style: { fontSize: 11, color: "#22c55e" } }, "Online")),
+                React.createElement("button", { onClick: () => setChatOpen(false), style: { background: "none", border: "none", fontSize: 16, cursor: "pointer", color: "#999" } }, "\u00D7")),
+            React.createElement("div", { style: { flex: 1, padding: "10px 14px", overflowY: "auto", display: "flex", flexDirection: "column", gap: 8 } }, msgs.map((m, i) => (React.createElement("div", { key: i, style: { display: "flex", justifyContent: m.f === "u" ? "flex-end" : "flex-start" } },
+                React.createElement("div", { style: { maxWidth: "85%", padding: "8px 11px", borderRadius: 10, background: m.f === "u" ? "#2563EB" : "#f5f5f5", color: m.f === "u" ? "#fff" : "#1a1a1a", fontSize: 12, lineHeight: 1.5 } }, m.t))))),
+            sugg && (React.createElement("div", { style: { padding: "0 14px 8px", display: "flex", gap: 6, flexWrap: "wrap" } }, ["How do I create a segment?", "What is market share?", "How do I track competitors?"].map((s, i) => (React.createElement("button", { key: i, onClick: () => sendMsg(s), style: { fontSize: 11, padding: "4px 9px", borderRadius: 10, border: "1px solid #e5e5e5", background: "#fff", cursor: "pointer", color: "#555" } }, s))))),
             React.createElement("div", { style: { padding: "8px 10px", borderTop: "1px solid #eee", display: "flex", gap: 6 } },
                 React.createElement("input", { value: inp, onChange: e => setInp(e.target.value), onKeyDown: e => { if (e.key === "Enter")
                         sendMsg(inp); }, placeholder: "Ask a question...", style: { flex: 1, border: "1px solid #e5e5e5", borderRadius: 14, padding: "6px 12px", fontSize: 12, fontFamily: "inherit", outline: "none" } }),
