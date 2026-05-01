@@ -18,10 +18,10 @@ const TRACKS = {
         desc: "Understand your category, size your opportunity, and find white space you are missing.",
         intro: "This path helps you understand your total addressable market on Amazon, identify opportunities your competitors are missing, and validate new product or category ideas inside Cobalt.",
         topics: [
-            { title: "Size your total category on Amazon", desc: "Understand overall category revenue and drill into subcategory-level detail.", time: "15 min", goal: "By the end of this topic, you will know how to pull total category revenue, break it down by subcategory, and identify which segments are driving growth.", steps: [["Navigate to Market Overview", "Open Cobalt and click Market in the left nav. Select your primary category from the dropdown."], ["Drill into subcategories", "Scroll to the Subcategory Breakdown table. Sort by revenue to see which product types drive the most volume."], ["Set your date range", "Use the date picker in the top-right to compare periods. Try Last 3 months vs prior 3 months."], ["Export your findings", "Click Export then CSV to pull the data into a spreadsheet."]], tip: "Start broad and narrow down. Sizing the full category first gives you a baseline to measure your own market share against.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] },
-            { title: "Understand your market share", desc: "Benchmark your brand share vs the category and spot where you are falling behind.", time: "15 min", goal: "You will learn how to calculate and track your brand market share at the category and subcategory level.", steps: [["Open Market Share view", "From the Market module, click the Share tab."], ["Compare against top brands", "The brand leaderboard shows the top 10 brands by share."], ["Break down by subcategory", "Switch to Subcategory view to see where you over or under index."], ["Track share over time", "Toggle to the trend view to see month-over-month changes."]], tip: "Market share in a growing category is different from share in a declining one. Always check category growth alongside your share trend.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] },
-            { title: "Analyze market dynamics", desc: "Track pricing trends, new entrants, and shifts in category growth.", time: "15 min", goal: "You will understand where your category is heading and which subcategories are growing or declining.", steps: [["Open Category Trends", "Navigate to Market then Trends."], ["Identify growth segments", "Sort subcategories by growth rate."], ["Track new entrants", "Check the New Brands tab."], ["Spot pricing shifts", "Use the Pricing Trends chart."]], tip: "Market dynamics tell you where the opportunity is moving. Combine this with your share data to find where you are losing ground.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] },
-            { title: "Identify white space and validate new opportunities", desc: "Find gaps where demand exists but competition is low.", time: "15 min", goal: "You will use Cobalt market data to identify product niches with high demand and low competition.", steps: [["Open the Opportunity Finder", "Navigate to Market then Opportunities."], ["Filter for high demand low competition", "Set demand to High and competition to Low."], ["Evaluate opportunity size", "Click into any opportunity."], ["Validate with keyword data", "Cross-reference with Search module."]], tip: "White space does not guarantee success. Validate with search volume trends and check for barriers to entry before investing.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
+            { title: "Size your total category on Amazon", desc: "Understand overall category revenue and drill into subcategory-level detail.", time: "15 min", goal: "By the end of this topic, you will know how to pull total category revenue, break it down by subcategory, and identify which segments are driving growth.", steps: [["Navigate to Market Overview", "Open Cobalt and click Market in the left nav. Select your primary category from the dropdown."], ["Drill into subcategories", "Scroll to the Subcategory Breakdown table. Sort by revenue to see which product types drive the most volume."], ["Set your date range", "Use the date picker in the top-right to compare periods. Try Last 3 months vs prior 3 months."], ["Export your findings", "Click Export then CSV to pull the data into a spreadsheet."]], tip: "Start broad and narrow down. Sizing the full category first gives you a baseline to measure your own market share against.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Understand your market share", desc: "Benchmark your brand share vs the category and spot where you are falling behind.", time: "15 min", goal: "You will learn how to calculate and track your brand market share at the category and subcategory level.", steps: [["Open Market Share view", "From the Market module, click the Share tab."], ["Compare against top brands", "The brand leaderboard shows the top 10 brands by share."], ["Break down by subcategory", "Switch to Subcategory view to see where you over or under index."], ["Track share over time", "Toggle to the trend view to see month-over-month changes."]], tip: "Market share in a growing category is different from share in a declining one. Always check category growth alongside your share trend.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Analyze market dynamics", desc: "Track pricing trends, new entrants, and shifts in category growth.", time: "15 min", goal: "You will understand where your category is heading and which subcategories are growing or declining.", steps: [["Open Category Trends", "Navigate to Market then Trends."], ["Identify growth segments", "Sort subcategories by growth rate."], ["Track new entrants", "Check the New Brands tab."], ["Spot pricing shifts", "Use the Pricing Trends chart."]], tip: "Market dynamics tell you where the opportunity is moving. Combine this with your share data to find where you are losing ground.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Identify white space and validate new opportunities", desc: "Find gaps where demand exists but competition is low.", time: "15 min", goal: "You will use Cobalt market data to identify product niches with high demand and low competition.", steps: [["Open the Opportunity Finder", "Navigate to Market then Opportunities."], ["Filter for high demand low competition", "Set demand to High and competition to Low."], ["Evaluate opportunity size", "Click into any opportunity."], ["Validate with keyword data", "Cross-reference with Search module."]], tip: "White space does not guarantee success. Validate with search volume trends and check for barriers to entry before investing.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
     compete: {
@@ -30,9 +30,9 @@ const TRACKS = {
         desc: "Track competitors, benchmark performance, and turn competitive intel into action.",
         intro: "This is the highest-demand use case across Scale customers and the first module we are building end-to-end. This path shows you how to set up competitive tracking, benchmark performance, and spot category disruption inside Cobalt.",
         topics: [
-            { title: "Create custom market segments for your product lines", desc: "Set up segments that group your products alongside the right competitors in your space.", time: "12 min", goal: "You will have custom segments set up so you can get a detailed, custom view of the competitive landscape.", steps: [["Navigate to Market Analysis", "Click Market Trends then Market Analysis in the left nav."], ["Apply your filters", "Start with Category or Product Title. Add Price, Star Rating, and Rating Count to refine."], ["Validate on the Overview tab", "Check that the products shown match your competitive set."], ["Name and save your segment", "Click Save Segment and give it a clear name."]], tip: "Start broad, then tighten. Let the data tell you when the segment looks right.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Video Walkthrough", "Video", "https://fast.wistia.com/embed/channel/a2tgtglkx9?wchannelid=a2tgtglkx9&wmediaid=f68pehg2a9", "video"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Written%20Guide/", "fetch"], ["How to build a market segment", "Article", "https://cobaltjs.zendesk.com/hc/en-us/articles/39016391623063-Market-Analysis-How-to-Create-a-Segment", "iframe"], ["Try it in Cobalt", "Tour", "https://jsc.junglescout.com/?gs-key=nguide-kyc-topic-1-create-s", "external"]] },
-            { title: "Benchmark your performance vs. competitors", desc: "Understand market share performance in the context of revenue, unit, and ASP movements.", time: "15 min", goal: "You will be able to run head-to-head comparisons across revenue, units, and ASP and interpret what benchmarks mean for your business.", steps: [["Open your segment", "Navigate to Market Analysis and select your saved segment."], ["Review the Brands tab", "See revenue, units, and ASP side-by-side."], ["Check the Overview tab", "Review market share trends over your selected date range."], ["Identify gaps", "Look for competitors gaining share where you are flat or declining."]], tip: "Use a consistent date range when comparing across segments to keep benchmarks accurate.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/", "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] },
-            { title: "Identify category disruption", desc: "Spot new entrants and emerging brands or products capturing share in your category.", time: "15 min", goal: "You can spot competitive threats early — new entrants, emerging brands, and products gaining traction — before they become real problems.", steps: [["Review new entrants", "Find new brands and ASINs that have entered your competitive segments recently."], ["Assess early velocity", "Evaluate whether a new entrant is gaining real traction."], ["Identify who is capturing share", "Sort competitors by share change."], ["Contextualize the disruption", "For each disruptor, understand what is driving it."]], tip: "Not every new entrant is a threat. Focus on brands showing sustained velocity over 60-90 days.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
+            { title: "Create custom market segments for your product lines", desc: "Set up segments that group your products alongside the right competitors in your space.", time: "12 min", goal: "You will have custom segments set up so you can get a detailed, custom view of the competitive landscape.", steps: [["Navigate to Market Analysis", "Click Market Trends then Market Analysis in the left nav."], ["Apply your filters", "Start with Category or Product Title. Add Price, Star Rating, and Rating Count to refine."], ["Validate on the Overview tab", "Check that the products shown match your competitive set."], ["Name and save your segment", "Click Save Segment and give it a clear name."]], tip: "Start broad, then tighten. Let the data tell you when the segment looks right.", resources: [["Quick Start Guide", "Guide", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/", "fetch"], ["Video Walkthrough", "Video", "https://fast.wistia.com/embed/channel/a2tgtglkx9?wchannelid=a2tgtglkx9&wmediaid=f68pehg2a9", "video"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Written%20Guide/", "fetch"], ["How to build a market segment", "Article", "https://cobaltjs.zendesk.com/hc/en-us/articles/39016391623063-Market-Analysis-How-to-Create-a-Segment", "iframe"], ["Try it in Cobalt", "Tour", "https://jsc.junglescout.com/?gs-key=nguide-kyc-topic-1-create-s", "external"]] },
+            { title: "Benchmark your performance vs. competitors", desc: "Understand market share performance in the context of revenue, unit, and ASP movements.", time: "15 min", goal: "You will be able to run head-to-head comparisons across revenue, units, and ASP and interpret what benchmarks mean for your business.", steps: [["Open your segment", "Navigate to Market Analysis and select your saved segment."], ["Review the Brands tab", "See revenue, units, and ASP side-by-side."], ["Check the Overview tab", "Review market share trends over your selected date range."], ["Identify gaps", "Look for competitors gaining share where you are flat or declining."]], tip: "Use a consistent date range when comparing across segments to keep benchmarks accurate.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/", "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Identify category disruption", desc: "Spot new entrants and emerging brands or products capturing share in your category.", time: "15 min", goal: "You can spot competitive threats early — new entrants, emerging brands, and products gaining traction — before they become real problems.", steps: [["Review new entrants", "Find new brands and ASINs that have entered your competitive segments recently."], ["Assess early velocity", "Evaluate whether a new entrant is gaining real traction."], ["Identify who is capturing share", "Sort competitors by share change."], ["Contextualize the disruption", "For each disruptor, understand what is driving it."]], tip: "Not every new entrant is a threat. Focus on brands showing sustained velocity over 60-90 days.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
     search: {
@@ -40,8 +40,8 @@ const TRACKS = {
         desc: "Optimize keywords, monitor ads, and improve your share of voice on Amazon.",
         intro: "This path helps you understand how shoppers find products on Amazon, optimize your keyword strategy, and improve your share of voice against competitors.",
         topics: [
-            { title: "Run keyword research for your products", desc: "Discover high-value keywords and understand search demand in your category.", time: "12 min", goal: "You will build your keyword tracking list with the terms that matter most.", steps: [["Open the Keywords module", "Navigate to Search then Keywords."], ["Evaluate keyword volume", "Each keyword shows monthly search volume, trend direction, and click concentration."], ["Add to your tracking list", "Click Track on any keyword."], ["Review your keyword dashboard", "Tracked keywords appear in My Keywords with daily rank tracking."]], tip: "Track category terms and competitor brand terms too, not just your own brand terms.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] },
-            { title: "Track Share of Voice over time", desc: "Monitor your brand visibility in search results relative to competitors.", time: "15 min", goal: "You will learn what SOV means on Amazon and how to track it over time.", steps: [["Navigate to Share of Voice", "Click Share of Voice in the Search module."], ["Break down by keyword", "Click any keyword to see who owns the top positions."], ["Identify SOV gaps", "Find high-volume keywords where your SOV is low."], ["Track SOV trends", "Monitor how SOV shifts over time."]], tip: "SOV is a leading indicator of market share. Improvements today translate to revenue gains in 30-60 days.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
+            { title: "Run keyword research for your products", desc: "Discover high-value keywords and understand search demand in your category.", time: "12 min", goal: "You will build your keyword tracking list with the terms that matter most.", steps: [["Open the Keywords module", "Navigate to Search then Keywords."], ["Evaluate keyword volume", "Each keyword shows monthly search volume, trend direction, and click concentration."], ["Add to your tracking list", "Click Track on any keyword."], ["Review your keyword dashboard", "Tracked keywords appear in My Keywords with daily rank tracking."]], tip: "Track category terms and competitor brand terms too, not just your own brand terms.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Track Share of Voice over time", desc: "Monitor your brand visibility in search results relative to competitors.", time: "15 min", goal: "You will learn what SOV means on Amazon and how to track it over time.", steps: [["Navigate to Share of Voice", "Click Share of Voice in the Search module."], ["Break down by keyword", "Click any keyword to see who owns the top positions."], ["Identify SOV gaps", "Find high-volume keywords where your SOV is low."], ["Track SOV trends", "Monitor how SOV shifts over time."]], tip: "SOV is a leading indicator of market share. Improvements today translate to revenue gains in 30-60 days.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
     protect: {
@@ -49,7 +49,7 @@ const TRACKS = {
         desc: "Monitor 3P sellers, catch unauthorized resellers, and defend your Buy Box.",
         intro: "This path helps you monitor third-party sellers on your listings, identify unauthorized resellers, and protect your Buy Box.",
         topics: [
-            { title: "Review 3P activity on your ASINs", desc: "See who is selling your products, at what prices, and whether they are authorized.", time: "12 min", goal: "You will have full visibility into all third-party sellers on your listings.", steps: [["Navigate to Brand Protection", "Click Protect in the left nav."], ["Add your ASINs", "Click Add Products and paste your ASINs."], ["Review current sellers", "See all active sellers per ASIN."], ["Enable new seller alerts", "Get email notifications within 24 hours."]], tip: "Start with your top 20 ASINs by revenue.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
+            { title: "Review 3P activity on your ASINs", desc: "See who is selling your products, at what prices, and whether they are authorized.", time: "12 min", goal: "You will have full visibility into all third-party sellers on your listings.", steps: [["Navigate to Brand Protection", "Click Protect in the left nav."], ["Add your ASINs", "Click Add Products and paste your ASINs."], ["Review current sellers", "See all active sellers per ASIN."], ["Enable new seller alerts", "Get email notifications within 24 hours."]], tip: "Start with your top 20 ASINs by revenue.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
     optimize: {
@@ -57,7 +57,7 @@ const TRACKS = {
         desc: "Act on your data — analyze your catalog, pricing, and portfolio to drive growth.",
         intro: "This path turns market, competitive, and search intelligence into decisions about your own products, pricing, and catalog strategy.",
         topics: [
-            { title: "Get to know your product catalog in Cobalt", desc: "Navigate your own product-level data and understand what Cobalt shows you.", time: "15 min", goal: "You will have a clear picture of how each of your products is performing on Amazon.", steps: [["Open your Product Catalog", "Navigate to Products in the left nav."], ["Sort and filter your catalog", "Sort by revenue, units, or growth rate."], ["Review product detail pages", "Click any ASIN to see its full performance profile."], ["Identify native views vs dashboard needs", "Some data is available in standard product views."]], tip: "Spend time here first before building dashboards.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
+            { title: "Get to know your product catalog in Cobalt", desc: "Navigate your own product-level data and understand what Cobalt shows you.", time: "15 min", goal: "You will have a clear picture of how each of your products is performing on Amazon.", steps: [["Open your Product Catalog", "Navigate to Products in the left nav."], ["Sort and filter your catalog", "Sort by revenue, units, or growth rate."], ["Review product detail pages", "Click any ASIN to see its full performance profile."], ["Identify native views vs dashboard needs", "Some data is available in standard product views."]], tip: "Spend time here first before building dashboards.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
     report: {
@@ -65,7 +65,7 @@ const TRACKS = {
         desc: "Build dashboards, master visualization, and present Amazon data to any audience.",
         intro: "This cross-cutting path teaches you to navigate standard reports, build custom dashboards, and get your data in front of the people who need to see it.",
         topics: [
-            { title: "Explore Cobalt standard reports and views", desc: "Know what is available out of the box before you build anything custom.", time: "12 min", goal: "You will understand every standard view Cobalt provides and when to use each one.", steps: [["Tour the main modules", "Click through Market, Competitors, Search, and Protect in the left nav."], ["Understand view types", "Standard views show aggregated data. Product views show ASIN-level detail."], ["Check the Reports library", "Navigate to Reports to see pre-built report templates."], ["Decide when to go custom", "If a standard view answers your question, use it."]], tip: "Standard views are maintained by Cobalt and update automatically.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
+            { title: "Explore Cobalt standard reports and views", desc: "Know what is available out of the box before you build anything custom.", time: "12 min", goal: "You will understand every standard view Cobalt provides and when to use each one.", steps: [["Tour the main modules", "Click through Market, Competitors, Search, and Protect in the left nav."], ["Understand view types", "Standard views show aggregated data. Product views show ASIN-level detail."], ["Check the Reports library", "Navigate to Reports to see pre-built report templates."], ["Decide when to go custom", "If a standard view answers your question, use it."]], tip: "Standard views are maintained by Cobalt and update automatically.", resources: [["Quick Start Guide", "Guide", null, "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     }
 };
@@ -76,911 +76,6 @@ const CHAT_ANSWERS = {
     "How do I analyze my pricing?": "The Optimize and Grow path, Topic 3 walks you through running a pricing analysis."
 };
 const SUGGESTIONS = Object.keys(CHAT_ANSWERS);
-const QSG_STYLES = `
-  :root {
-    
-    --ink: #1a1a2e;
-    --slate: #3d3d5c;
-    --muted: #6b6b8a;
-    --bg: #faf9fe;
-    --light: #f0eff5;
-    --surface: #ffffff;
-    --accent: #5046e5;
-    --accent-light: #7c74f0;
-    --accent-bg: #eae8fd;
-    
-    --purple: #7c3aed;
-    --purple-bg: #f5f3ff;
-    --purple-mid: #c4b5fd;
-    --teal: #0d9488;
-    --teal-bg: #d5f5f0;
-    --teal-mid: #5eead4;
-    --amber: #d97706;
-    --amber-bg: #fef3c7;
-    --line: #e7e5e4;
-    --warm: #f5f5f4;
-    --faint: #a8a29e;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-    padding: 32px 24px 60px;
-  }
-
-  .page { max-width: 1080px; margin: 0 auto; }
-
-  
-  .masthead {
-    background: var(--ink);
-    border-radius: 12px 12px 0 0;
-    padding: 36px 40px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-  }
-  .kicker {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.38);
-    margin-bottom: 10px;
-  }
-  .masthead h1 {
-    font-family: 'Fraunces', serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    margin-bottom: 0;
-  }
-  .masthead h1 em {
-    font-style: italic;
-    font-weight: 300;
-    color: #a78bfa;
-  }
-  .masthead-meta {
-    text-align: right;
-    flex-shrink: 0;
-    max-width: 300px;
-  }
-  .masthead-sub-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 8px;
-  }
-  .masthead-sub {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: #ffffff;
-    line-height: 1.25;
-    text-align: right;
-  }
-
-  
-  .before-strip {
-    background: #21213a;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-bottom: 2px solid #6d28d9;
-  }
-  .before-item {
-    padding: 16px 22px;
-    border-right: 1px solid rgba(255,255,255,0.07);
-  }
-  .before-item:last-child { border-right: none; }
-  .before-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #a78bfa;
-    margin-bottom: 5px;
-  }
-  .before-text {
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.45;
-  }
-
-  
-  .sec-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 24px 0 16px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 20px;
-  }
-  .sec-title {
-    font-family: 'Fraunces', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--ink);
-    white-space: nowrap;
-  }
-  .sec-line { flex: 1; height: 1px; background: var(--line); }
-  .sec-tag {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--purple);
-    background: var(--purple-bg);
-    border: 1px solid var(--purple-mid);
-    border-radius: 4px;
-    padding: 4px 12px;
-  }
-
-  
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 0 0 8px 8px;
-  }
-  .card-inner { padding: 32px 40px; }
-
-  
-  .steps-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-bottom: 32px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .step-row {
-    background: var(--surface);
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    border-bottom: 1px solid var(--line);
-  }
-  .step-row:last-child { border-bottom: none; }
-  .step-left {
-    background: var(--warm);
-    border-right: 2px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 8px 20px;
-  }
-  .step-n {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #fff;
-    font-size: 20px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-bottom: 14px;
-  }
-  .step-verb {
-    font-family: 'Fraunces', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--slate);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    letter-spacing: 0.03em;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .step-right {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .step-text-block {
-    padding: 20px 24px 16px;
-  }
-  .step-action {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-  .step-body-text {
-    font-size: 14px;
-    color: var(--slate);
-    line-height: 1.6;
-  }
-  .step-body-text strong { color: var(--ink); font-weight: 600; }
-  .step-body-text code {
-    background: var(--accent-bg);
-    color: var(--accent);
-    border-radius: 3px;
-    padding: 2px 6px;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-  }
-  .step-tip {
-    margin-top: 10px;
-    background: var(--teal-bg);
-    border-left: 3px solid var(--teal);
-    border-radius: 0 5px 5px 0;
-    padding: 9px 12px;
-    font-size: 13px;
-    color: #134e4a;
-    line-height: 1.5;
-  }
-  .step-tip strong { color: #0f3d39; font-weight: 700; }
-  .step-warn {
-    margin-top: 10px;
-    background: var(--amber-bg);
-    border-left: 3px solid var(--amber);
-    border-radius: 0 5px 5px 0;
-    padding: 9px 12px;
-    font-size: 13px;
-    color: #78350f;
-    line-height: 1.5;
-  }
-  .step-warn strong { color: #451a03; font-weight: 700; }
-  
-  .step-shots {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-top: 1px solid var(--line);
-  }
-  
-  .step-shots-stack {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid var(--line);
-  }
-  .step-shot-full {
-    background: var(--warm);
-    overflow: hidden;
-  }
-  .step-shot-full img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  
-  .step-shots-1up {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 0;
-    border-top: 1px solid var(--line);
-  }
-  .step-shot-left-tall {
-    background: var(--warm);
-    border-right: 1px solid var(--line);
-    overflow: hidden;
-  }
-  .step-shot-left-tall img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .step-shots-right-stack {
-    display: flex;
-    flex-direction: column;
-  }
-  .step-shot-right {
-    background: var(--warm);
-    border-bottom: 1px solid var(--line);
-    overflow: hidden;
-  }
-  .step-shot-right:last-child { border-bottom: none; }
-  .step-shot-right img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  
-  .step-shots-eq {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-top: 1px solid var(--line);
-  }
-  .step-shots-eq .step-shot img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  
-  .step-shot {
-    background: var(--warm);
-    border-right: 1px solid var(--line);
-    overflow: hidden;
-  }
-  .step-shot:last-child { border-right: none; }
-  .step-shot img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .step-shot-banner img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  
-  .step-substep {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--line);
-  }
-  .step-substep-img {
-    border-left: 1px solid var(--line);
-    background: var(--warm);
-    overflow: hidden;
-  }
-  .step-substep-img img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .step-substep-text {
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 8px;
-  }
-  .step-substep-divider {
-    border-top: 2px solid var(--line);
-    padding: 10px 24px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: var(--warm);
-  }
-  .shot-cap {
-    font-size: 11px;
-    color: var(--ink);
-    text-align: center;
-    padding: 5px 8px 7px;
-    background: var(--warm);
-    border-top: 1px solid var(--line);
-    line-height: 1.3;
-  }
-
-  
-  .lower-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .lower-card {
-    background: var(--warm);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .lower-card-head {
-    background: var(--ink);
-    padding: 12px 22px;
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .lower-card-head .dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--teal-mid);
-    flex-shrink: 0;
-  }
-  .lower-card-body { padding: 20px 22px; }
-
-  
-  .tip-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 24px;
-  }
-  .tip-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 11px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 14px;
-  }
-  .tip-item:nth-last-child(-n+2) { border-bottom: none; }
-  .tip-arrow {
-    color: var(--purple);
-    font-weight: 700;
-    flex-shrink: 0;
-    font-size: 14px;
-    margin-top: 1px;
-  }
-  .tip-text { color: var(--slate); line-height: 1.5; }
-  .tip-text strong { color: var(--ink); font-weight: 600; }
-
-  
-  .seg-intro {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 16px;
-    line-height: 1.5;
-  }
-  .seg-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .seg-row {
-    display: grid;
-    grid-template-columns: 1fr 55%;
-    border-bottom: 1px solid var(--line);
-    background: var(--surface);
-    min-height: 160px;
-  }
-  .seg-row:first-child { border-radius: 6px 6px 0 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
-  .seg-row:last-child { border-bottom: 1px solid var(--line); border-left: 1px solid var(--line); border-right: 1px solid var(--line); border-radius: 0 0 6px 6px; }
-  .seg-row:not(:first-child):not(:last-child) { border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
-  
-  .seg-left {
-    display: none;
-  }
-  .seg-text-col {
-    padding: 24px 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 1px solid var(--line);
-  }
-  .seg-text-top { display: flex; flex-direction: column; gap: 8px; }
-  .seg-num-inline {
-    display: inline-flex;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--accent-bg);
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 700;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .seg-name {
-    font-family: 'Fraunces', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1.2;
-  }
-  .seg-desc {
-    font-size: 14px;
-    color: var(--slate);
-    line-height: 1.45;
-  }
-  .seg-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-  }
-  .seg-count {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--muted);
-  }
-  .seg-share {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--purple);
-    line-height: 1;
-  }
-  
-  .seg-img-col {
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    align-items: stretch;
-  }
-  .seg-real-img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
-  .seg-img-placeholder .ph-icon { font-size: 20px; opacity: 0.35; }
-  .seg-img-placeholder .ph-label {
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--purple);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .seg-connector {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 14px 8px 66px;
-    background: var(--teal-bg);
-    border-bottom: 1px solid var(--teal-mid);
-    border-top: 1px solid var(--teal-mid);
-    border-left: 1px solid var(--line);
-    border-right: 1px solid var(--line);
-    margin: 0;
-  }
-  .seg-connector-line { flex: 1; height: 1px; background: var(--teal-mid); }
-  .seg-connector-text {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--teal);
-    white-space: nowrap;
-  }
-
-  
-  .footer {
-    padding: 18px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid var(--line);
-  }
-  .footer-l { font-size: 13px; color: var(--muted); }
-  .cobalt-pill {
-    background: var(--accent);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-radius: 20px;
-    padding: 5px 14px;
-  }
-`;
-const QSG_BODY = `<div class="page">
-<div class="card">
-
-  
-  <div class="masthead">
-    <div>
-      <div class="kicker">Know Your Competition &nbsp;·&nbsp; Topic 1 of 3</div>
-      <h1>Market Analysis<br><em>Quick Reference</em></h1>
-    </div>
-    <div class="masthead-meta">
-      <div class="masthead-sub-label">This guide covers</div>
-      <div class="masthead-sub">Set up your competitive market view</div>
-    </div>
-  </div>
-
-  
-  <div class="before-strip">
-    <div class="before-item">
-      <div class="before-label">Customized by you</div>
-      <div class="before-text">Your filter choices define your view. Adjust any filter and results update instantly.</div>
-    </div>
-    <div class="before-item">
-      <div class="before-label">Filters, not snapshots</div>
-      <div class="before-text">Saving stores your filter config. Every open reflects the latest weekly data.</div>
-    </div>
-    <div class="before-item">
-      <div class="before-label">Weekly Saturday refresh</div>
-      <div class="before-text">Full 2-year rolling history. Updates automatically. No manual refresh needed.</div>
-    </div>
-    <div class="before-item">
-      <div class="before-label">No ASIN limits</div>
-      <div class="before-text">No cap on products per view. Filter as broad or narrow as you need.</div>
-    </div>
-  </div>
-
-  <div class="card-inner">
-
-    
-    <div class="sec-header">
-      <div class="sec-title">The process at a glance</div>
-      <div class="sec-line"></div>
-      <div class="sec-tag">4 steps</div>
-    </div>
-
-    <div class="steps-list">
-
-      
-      <div class="step-row">
-        <div class="step-left">
-          <div class="step-n">1</div>
-          <div class="step-verb">Navigate</div>
-        </div>
-        <div class="step-right">
-          <div class="step-text-block">
-            <div class="step-action">Open Market Analysis</div>
-            <div class="step-body-text">
-              Left nav &rarr; <strong>Market Trends &rarr; Market Analysis</strong>. Click <strong>Start Market Analysis</strong> — the filter panel opens.
-            </div>
-          </div>
-          <div class="step-shots-stack">
-            <div class="step-shot-full">
-              <img src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%201.2.png" alt="Market Analysis nav and Start button" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="step-row">
-        <div class="step-left">
-          <div class="step-n">2</div>
-          <div class="step-verb">Filter</div>
-        </div>
-        <div class="step-right">
-          <div class="step-substep">
-            <div class="step-substep-text">
-              <div class="step-action">Start with Marketplace</div>
-              <div class="step-body-text">
-                Every metric is scoped to the country you select and data can't be mixed across markets. Set this first before applying any other filters.
-              </div>
-            </div>
-            <div class="step-substep-img">
-              <img src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%203.png" alt="Marketplace selector" />
-            </div>
-          </div>
-          <div class="step-substep-divider">Then add your segment filters</div>
-          <div class="step-text-block">
-            <div class="step-action">Add Product Title or Category filters</div>
-            <div class="step-body-text">
-              <strong>Product Title:</strong> set operator to <code>contains any of</code>, type each keyword, press <strong>Enter</strong> to confirm as a chip. <strong>Category:</strong> expand the tree, check relevant subcategory nodes, uncheck anything that doesn't belong. Click Apply — results update in real time.
-            </div>
-            <div class="step-tip"><strong>Start broad.</strong> Your initial results will be large — that's expected. The next step cleans it up.</div>
-          </div>
-          <div class="step-shots">
-            <div class="step-shot">
-              <img src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%204.png" alt="Product title filter with keyword chips" />
-              <div class="shot-cap">Product Title — keywords as chips</div>
-            </div>
-            <div class="step-shot">
-              <img src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%205.png" alt="Category tree filter" />
-              <div class="shot-cap">Category — tree navigation</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="step-row">
-        <div class="step-left">
-          <div class="step-n">3</div>
-          <div class="step-verb">Refine</div>
-        </div>
-        <div class="step-right">
-          <div class="step-text-block">
-            <div class="step-action">Review, then adjust or add more filters</div>
-            <div class="step-body-text">
-              Start with a quick gut check on the <strong>Overview tab</strong> — the Segment Composition section shows your top 5 brands, top 5 categories, and top 10 products by revenue or units. This is the fastest way to confirm you have the right group of products in your view. Then dive deeper on the <strong>Products, Brands, and Categories tabs</strong> for more detailed views at each level. Use any filter — keywords, category tree, price range, or others — to add or remove products until the results reflect your real market.
-            </div>
-            <div class="step-tip"><strong>Ask yourself:</strong> Are the competitors I expect showing up? Is anything clearly off? Those two questions tell you when to stop.</div>
-          </div>
-          <div class="step-shots-eq">
-            <div class="step-shot">
-              <img src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%206.png" alt="Overview tab segment composition" />
-              <div class="shot-cap">Overview tab — Segment Composition gut check</div>
-            </div>
-            <div class="step-shot">
-              <img src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%207.png" alt="Products tab detailed view" />
-              <div class="shot-cap">Products, Brands, Categories tabs — deeper detail</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="step-row">
-        <div class="step-left">
-          <div class="step-n">4</div>
-          <div class="step-verb">Save &amp; Analyze</div>
-        </div>
-        <div class="step-right">
-          <div class="step-text-block">
-            <div class="step-action">Explore the data — then save to come back or build on it</div>
-            <div class="step-body-text">
-              Dig into the Overview, Brands, Products, and Categories tabs across MTD / YTD / 30D / 90D / 1Y date ranges. When you find a view worth returning to, give it a clear name and save it. To create a related but narrower view, open your saved segment, adjust the filters, rename it, and click <strong>Save as New</strong> — this preserves the original and creates a new one alongside it.
-            </div>
-            <div class="step-warn"><strong>Save overwrites. Save as New preserves the original.</strong> Always use Save as New when building a new view from an existing one.</div>
-          </div>
-          <div class="step-shots">
-            <div class="step-shot step-shot-banner">
-              <img src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%208.png" alt="Save dialog" />
-              <div class="shot-cap">Name and save — stores your filter config</div>
-            </div>
-            <div class="step-shot step-shot-banner">
-              <img src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%209.png" alt="Save as New option" />
-              <div class="shot-cap">Save as New — creates a new view, keeps the original</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-    <div class="lower-stack">
-
-      
-      <div class="lower-card">
-        <div class="lower-card-head"><div class="dot"></div>Things to know</div>
-        <div class="lower-card-body">
-          <div class="tip-list">
-
-            <div class="tip-item">
-              <div class="tip-arrow">&#8594;</div>
-              <div class="tip-text"><strong>Think like the buyer.</strong> Build your segment around products a buyer would consider as substitutes — their consideration set defines your real competitive market.</div>
-            </div>
-
-            <div class="tip-item">
-              <div class="tip-arrow">&#8594;</div>
-              <div class="tip-text"><strong>Your market share lives on the Overview tab.</strong> The chart at the top shows revenue share vs. all products in your segment, by week. Hover any point for detail.</div>
-            </div>
-
-            <div class="tip-item">
-              <div class="tip-arrow">&#8594;</div>
-              <div class="tip-text"><strong>See your share at any level.</strong> Each saved filter set gives you a separate market share view. Save as many as you need to track different niches.</div>
-            </div>
-
-            <div class="tip-item">
-              <div class="tip-arrow">&#8594;</div>
-              <div class="tip-text"><strong>Your view evolves with the market.</strong> You're saving filter logic, not a product list. New products matching your filters appear automatically on the next weekly refresh.</div>
-            </div>
-
-            <div class="tip-item">
-              <div class="tip-arrow">&#8594;</div>
-              <div class="tip-text"><strong>Not sure which subcategory?</strong> Check the Best Sellers Rank section on any competitor's Amazon listing — it shows their exact subcategory path.</div>
-            </div>
-
-            <div class="tip-item">
-              <div class="tip-arrow">&#8594;</div>
-              <div class="tip-text"><strong>There's no single right filter combo.</strong> Some niches need a keyword, others a subcategory node, others both. If the products look right to you, they're right.</div>
-            </div>
-
-            <div class="tip-item">
-              <div class="tip-arrow">&#8594;</div>
-              <div class="tip-text"><strong>Add Reviews &ge; 1</strong> (coming soon) as an early filter to remove inactive listings. Can cut 30–40% of a broad result set instantly.</div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="lower-card">
-        <div class="lower-card-head"><div class="dot"></div>Example — Four segments built level by level</div>
-        <div class="lower-card-body">
-
-          <p class="seg-intro">A razor brand built these four filter sets using Save as New. Because each segment contains a different set of products, each one gives a different view of their market share and competitive performance — broad category share at the top, niche share at the bottom. Building multiple related segments lets you see your position at whatever level of the market is most relevant for a given decision: total category, format, or gender sub-niche.</p>
-
-          <div class="seg-list">
-
-            <div class="seg-row">
-              <div class="seg-text-col">
-                <div class="seg-text-top">
-                  <div class="seg-num-inline">1</div>
-                  <div class="seg-name">Shaving Razors</div>
-                  <div class="seg-desc">All razor formats and genders. Broadest market view.</div>
-                </div>
-                <div class="seg-stats">
-                  <span class="seg-count">~5,500 products</span>
-                  <span class="seg-share">8.1% share</span>
-                </div>
-              </div>
-              <div class="seg-img-col">
-                <img class="seg-real-img" src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%2010.png" alt="Market share view — Shaving Razors" />
-              </div>
-            </div>
-
-            <div class="seg-connector">
-              <div class="seg-connector-line"></div>
-              <div class="seg-connector-text">&#8595; Narrow to disposable subcategories → Save as New</div>
-              <div class="seg-connector-line"></div>
-            </div>
-
-            <div class="seg-row">
-              <div class="seg-text-col">
-                <div class="seg-text-top">
-                  <div class="seg-num-inline">2</div>
-                  <div class="seg-name">Disposable Shaving Razors</div>
-                  <div class="seg-desc">Disposable subcategories only — strips out electric and cartridge formats.</div>
-                </div>
-                <div class="seg-stats">
-                  <span class="seg-count">~1,400 products</span>
-                  <span class="seg-share">30.7% share</span>
-                </div>
-              </div>
-              <div class="seg-img-col">
-                <img class="seg-real-img" src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%2011.png" alt="Market share view — Disposable Shaving Razors" />
-              </div>
-            </div>
-
-            <div class="seg-connector">
-              <div class="seg-connector-line"></div>
-              <div class="seg-connector-text">&#8595; Narrow to women's subcategory only → Save as New</div>
-              <div class="seg-connector-line"></div>
-            </div>
-
-            <div class="seg-row">
-              <div class="seg-text-col">
-                <div class="seg-text-top">
-                  <div class="seg-num-inline">3</div>
-                  <div class="seg-name">Women's Disposable Razors</div>
-                  <div class="seg-desc">Women's subcategory only. Much higher share in a smaller pool.</div>
-                </div>
-                <div class="seg-stats">
-                  <span class="seg-count">~543 products</span>
-                  <span class="seg-share">48.0% share</span>
-                </div>
-              </div>
-              <div class="seg-img-col">
-                <img class="seg-real-img" src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%2012.png" alt="Market share view — Women's Disposable Razors" />
-              </div>
-            </div>
-
-            <div class="seg-connector">
-              <div class="seg-connector-line"></div>
-              <div class="seg-connector-text">&#8595; Repeat for men's subcategory from segment 2</div>
-              <div class="seg-connector-line"></div>
-            </div>
-
-            <div class="seg-row">
-              <div class="seg-text-col">
-                <div class="seg-text-top">
-                  <div class="seg-num-inline">4</div>
-                  <div class="seg-name">Men's Disposable Razors</div>
-                  <div class="seg-desc">Men's subcategory only. Reveals a different competitive picture.</div>
-                </div>
-                <div class="seg-stats">
-                  <span class="seg-count">~869 products</span>
-                  <span class="seg-share">9.1% share</span>
-                </div>
-              </div>
-              <div class="seg-img-col">
-                <img class="seg-real-img" src="https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Quick%20Guide/KYC%20Visual%20Guide%20Image%2013.png" alt="Market share view — Men's Disposable Razors" />
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  
-  <div class="footer">
-    <div class="footer-l">Scale Onboarding &nbsp;·&nbsp; Know Your Competition &nbsp;·&nbsp; Topic 1 of 3 &nbsp;·&nbsp; For full guide see your Learning Path</div>
-    <div class="cobalt-pill">Cobalt</div>
-  </div>
-
-</div>
-</div>`;
 function LearningPaths() {
     const [page, setPage] = useState("home");
     const [tid, setTid] = useState(null);
@@ -1001,11 +96,6 @@ function LearningPaths() {
         if (r[3] === "external") {
             if (r[2])
                 window.open(r[2], "_blank");
-            return;
-        }
-        if (r[3] === "inline") {
-            setActiveResource(null);
-            setFetchedContent(null);
             return;
         }
         if (r[3] === "fetch" && r[2]) {
@@ -1034,8 +124,8 @@ function LearningPaths() {
             setActiveResource(r);
     };
     const isTopicActive = (r) => {
-        if (r[3] === "inline")
-            return activeResource === null;
+        if (r[3] === "fetch" && !activeResource)
+            return false;
         return activeResource && activeResource[0] === r[0];
     };
     const sendMsg = (text) => {
@@ -1123,10 +213,14 @@ function LearningPaths() {
             })))),
         page === "topic" && trk && top && (() => {
             const allResources = top.resources || [];
-            const inlineResource = allResources.find(r => r[3] === "inline");
             const videoResource = allResources.find(r => r[3] === "video");
+            const firstFetchable = allResources.find(r => r[3] === "fetch" && r[2]);
             const wistiaEmbedId = videoResource && videoResource[2] && videoResource[2].includes("wmediaid=")
                 ? videoResource[2].split("wmediaid=")[1] : null;
+            // Auto-fetch the first fetchable resource (Quick Start Guide) when landing on a topic
+            if (!activeResource && !fetchedContent && !fetchLoading && firstFetchable) {
+                setTimeout(() => handleSidebarClick(firstFetchable), 0);
+            }
             return (React.createElement("div", { style: { padding: "28px 32px 80px", display: "grid", gridTemplateColumns: "220px 1fr", gap: 32, alignItems: "start" } },
                 React.createElement("div", { style: { position: "sticky", top: 68 } },
                     React.createElement("div", { style: { borderRadius: 12, overflow: "hidden", border: "2px solid " + trk.color } },
@@ -1135,7 +229,7 @@ function LearningPaths() {
                             React.createElement("div", { style: { fontSize: 11, color: "rgba(255,255,255,0.45)", lineHeight: 1.4 } }, "Choose the format that works best for you")),
                         React.createElement("div", { style: { background: "#00022B", display: "flex", flexDirection: "column", borderTop: "1px solid rgba(255,255,255,0.08)" } }, allResources.map((r, i) => {
                             const active = isTopicActive(r);
-                            const hasAction = r[3] === "inline" || r[2];
+                            const hasAction = r[2] !== null;
                             const isGuide = r[1] === "Guide";
                             const isVideo = r[1] === "Video";
                             const isTour = r[1] === "Tour";
@@ -1171,26 +265,7 @@ function LearningPaths() {
                     wistiaEmbedId && (React.createElement("div", { style: { marginBottom: 24, maxWidth: "72%", marginLeft: "auto", marginRight: "auto" } },
                         React.createElement("div", { style: { position: "relative", paddingBottom: "56.25%", height: 0, borderRadius: 10, overflow: "hidden", border: "1px solid #e5e5e5" } },
                             React.createElement("iframe", { src: `https://fast.wistia.net/embed/iframe/${wistiaEmbedId}?seo=true&videoFoam=true`, title: "Video Walkthrough", allow: "autoplay; fullscreen", allowTransparency: true, frameBorder: "0", scrolling: "no", style: { position: "absolute", top: 0, left: 0, width: "100%", height: "100%" } })))),
-                    activeResource === null && inlineResource && tid === "compete" && topIdx === 0
-                        ? (React.createElement("div", null,
-                            React.createElement("style", { dangerouslySetInnerHTML: { __html: QSG_STYLES } }),
-                            React.createElement("div", { dangerouslySetInnerHTML: { __html: QSG_BODY } })))
-                        : activeResource === null && inlineResource && !(tid === "compete" && topIdx === 0)
-                            ? (React.createElement("div", { style: { textAlign: "center", padding: "60px 20px", color: "#999" } },
-                                React.createElement("div", { style: { fontSize: 36, marginBottom: 12 } }, "\u26A1"),
-                                React.createElement("div", { style: { fontSize: 16, fontWeight: 600, color: "#666", marginBottom: 6 } }, "Quick Start Guide coming soon"),
-                                React.createElement("div", { style: { fontSize: 13, lineHeight: 1.6, maxWidth: 400, margin: "0 auto" } }, "We\u2019re building the visual quick start for this topic. In the meantime, check out the step-by-step guide below or try another resource from the sidebar."),
-                                React.createElement("div", { style: { marginTop: 32 } },
-                                    React.createElement("h2", { style: { fontSize: 16, fontWeight: 600, marginBottom: 10, textAlign: "left" } }, "Step-by-step guide"),
-                                    React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 8, marginBottom: 20, textAlign: "left" } }, top.steps.map((st, i) => (React.createElement("div", { key: i, style: { background: "#fff", border: "1px solid #e5e5e5", borderRadius: 10, padding: "14px 16px", display: "flex", gap: 12, alignItems: "flex-start" } },
-                                        React.createElement("div", { style: { width: 22, height: 22, borderRadius: 11, background: trk.color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, flexShrink: 0 } }, i + 1),
-                                        React.createElement("div", null,
-                                            React.createElement("div", { style: { fontSize: 13, fontWeight: 600, marginBottom: 2 } }, st[0]),
-                                            React.createElement("div", { style: { fontSize: 13, color: "#777", lineHeight: 1.5 } }, st[1])))))),
-                                    React.createElement("div", { style: { borderRadius: 10, padding: "14px 16px", background: trk.bg, borderLeft: "3px solid " + trk.color, fontSize: 13, lineHeight: 1.6, margin: "16px 0", textAlign: "left" } },
-                                        React.createElement("strong", null, "Pro tip: "),
-                                        top.tip))))
-                        : activeResource && activeResource[3] === "fetch"
+                    activeResource && activeResource[3] === "fetch"
                             ? (fetchLoading
                                 ? (React.createElement("div", { style: { textAlign: "center", padding: "60px 20px", color: "#999" } },
                                     React.createElement("div", { style: { fontSize: 16, fontWeight: 500, color: "#666" } }, "Loading guide..."),
