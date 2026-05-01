@@ -30,8 +30,8 @@ const TRACKS = {
         desc: "Track competitors, benchmark performance, and turn competitive intel into action.",
         intro: "This is the highest-demand use case across Scale customers and the first module we are building end-to-end. This path shows you how to set up competitive tracking, benchmark performance, and spot category disruption inside Cobalt.",
         topics: [
-            { title: "Create custom market segments for your product lines", desc: "Set up segments that group your products alongside the right competitors in your space.", time: "12 min", goal: "You will have custom segments set up so you can get a detailed, custom view of the competitive landscape.", steps: [["Navigate to Market Analysis", "Click Market Trends then Market Analysis in the left nav."], ["Apply your filters", "Start with Category or Product Title. Add Price, Star Rating, and Rating Count to refine."], ["Validate on the Overview tab", "Check that the products shown match your competitive set."], ["Name and save your segment", "Click Save Segment and give it a clear name."]], tip: "Start broad, then tighten. Let the data tell you when the segment looks right.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Video Walkthrough", "Video", "https://fast.wistia.com/embed/channel/a2tgtglkx9?wchannelid=a2tgtglkx9&wmediaid=f68pehg2a9", "video"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Written%20Guide/", "iframe"], ["How to build a market segment", "Article", "https://cobaltjs.zendesk.com/hc/en-us/articles/39016391623063-Market-Analysis-How-to-Create-a-Segment", "iframe"], ["Try it in Cobalt", "Tour", "https://jsc.junglescout.com/?gs-key=nguide-kyc-topic-1-create-s", "external"]] },
-            { title: "Benchmark your performance vs. competitors", desc: "Understand market share performance in the context of revenue, unit, and ASP movements.", time: "15 min", goal: "You will be able to run head-to-head comparisons across revenue, units, and ASP and interpret what benchmarks mean for your business.", steps: [["Open your segment", "Navigate to Market Analysis and select your saved segment."], ["Review the Brands tab", "See revenue, units, and ASP side-by-side."], ["Check the Overview tab", "Review market share trends over your selected date range."], ["Identify gaps", "Look for competitors gaining share where you are flat or declining."]], tip: "Use a consistent date range when comparing across segments to keep benchmarks accurate.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/", "iframe"], ["Try it in Cobalt", "Tour", null, "external"]] },
+            { title: "Create custom market segments for your product lines", desc: "Set up segments that group your products alongside the right competitors in your space.", time: "12 min", goal: "You will have custom segments set up so you can get a detailed, custom view of the competitive landscape.", steps: [["Navigate to Market Analysis", "Click Market Trends then Market Analysis in the left nav."], ["Apply your filters", "Start with Category or Product Title. Add Price, Star Rating, and Rating Count to refine."], ["Validate on the Overview tab", "Check that the products shown match your competitive set."], ["Name and save your segment", "Click Save Segment and give it a clear name."]], tip: "Start broad, then tighten. Let the data tell you when the segment looks right.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Video Walkthrough", "Video", "https://fast.wistia.com/embed/channel/a2tgtglkx9?wchannelid=a2tgtglkx9&wmediaid=f68pehg2a9", "video"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%201/Written%20Guide/", "fetch"], ["How to build a market segment", "Article", "https://cobaltjs.zendesk.com/hc/en-us/articles/39016391623063-Market-Analysis-How-to-Create-a-Segment", "iframe"], ["Try it in Cobalt", "Tour", "https://jsc.junglescout.com/?gs-key=nguide-kyc-topic-1-create-s", "external"]] },
+            { title: "Benchmark your performance vs. competitors", desc: "Understand market share performance in the context of revenue, unit, and ASP movements.", time: "15 min", goal: "You will be able to run head-to-head comparisons across revenue, units, and ASP and interpret what benchmarks mean for your business.", steps: [["Open your segment", "Navigate to Market Analysis and select your saved segment."], ["Review the Brands tab", "See revenue, units, and ASP side-by-side."], ["Check the Overview tab", "Review market share trends over your selected date range."], ["Identify gaps", "Look for competitors gaining share where you are flat or declining."]], tip: "Use a consistent date range when comparing across segments to keep benchmarks accurate.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["In-Depth Guide", "Article", "https://carleepeszko.github.io/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/", "fetch"], ["Try it in Cobalt", "Tour", null, "external"]] },
             { title: "Identify category disruption", desc: "Spot new entrants and emerging brands or products capturing share in your category.", time: "15 min", goal: "You can spot competitive threats early — new entrants, emerging brands, and products gaining traction — before they become real problems.", steps: [["Review new entrants", "Find new brands and ASINs that have entered your competitive segments recently."], ["Assess early velocity", "Evaluate whether a new entrant is gaining real traction."], ["Identify who is capturing share", "Sort competitors by share change."], ["Contextualize the disruption", "For each disruptor, understand what is driving it."]], tip: "Not every new entrant is a threat. Focus on brands showing sustained velocity over 60-90 days.", resources: [["Quick Start Guide", "Guide", null, "inline"], ["Try it in Cobalt", "Tour", null, "external"]] }
         ]
     },
@@ -991,9 +991,11 @@ function LearningPaths() {
     const [inp, setInp] = useState("");
     const [sugg, setSugg] = useState(true);
     const [activeResource, setActiveResource] = useState(null);
-    const goHome = () => { setActiveResource(null); setPage("home"); setTid(null); setTopIdx(null); };
-    const goTrack = (id) => { setActiveResource(null); setPage("track"); setTid(id); setTopIdx(null); };
-    const goTopic = (id, i) => { setActiveResource(null); setPage("topic"); setTid(id); setTopIdx(i); };
+    const [fetchedContent, setFetchedContent] = useState(null);
+    const [fetchLoading, setFetchLoading] = useState(false);
+    const goHome = () => { setActiveResource(null); setFetchedContent(null); setPage("home"); setTid(null); setTopIdx(null); };
+    const goTrack = (id) => { setActiveResource(null); setFetchedContent(null); setPage("track"); setTid(id); setTopIdx(null); };
+    const goTopic = (id, i) => { setActiveResource(null); setFetchedContent(null); setPage("topic"); setTid(id); setTopIdx(i); };
     const markDone = (id, i) => { const k = id + "-" + i; setDone(p => (Object.assign(Object.assign({}, p), { [k]: !p[k] }))); };
     const handleSidebarClick = (r) => {
         if (r[3] === "external") {
@@ -1003,6 +1005,29 @@ function LearningPaths() {
         }
         if (r[3] === "inline") {
             setActiveResource(null);
+            setFetchedContent(null);
+            return;
+        }
+        if (r[3] === "fetch" && r[2]) {
+            setActiveResource(r);
+            setFetchLoading(true);
+            setFetchedContent(null);
+            fetch(r[2])
+                .then(res => res.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, "text/html");
+                    const styles = Array.from(doc.querySelectorAll("style")).map(s => s.innerHTML).join("\n");
+                    const links = Array.from(doc.querySelectorAll('link[rel="stylesheet"]')).map(l => l.outerHTML).join("\n");
+                    const body = doc.body ? doc.body.innerHTML : html;
+                    setFetchedContent({ styles, links, body, sourceUrl: r[2] });
+                    setFetchLoading(false);
+                })
+                .catch(err => {
+                    console.error("Failed to fetch guide:", err);
+                    setFetchedContent({ error: true, sourceUrl: r[2] });
+                    setFetchLoading(false);
+                });
             return;
         }
         if (r[2])
@@ -1165,12 +1190,31 @@ function LearningPaths() {
                                     React.createElement("div", { style: { borderRadius: 10, padding: "14px 16px", background: trk.bg, borderLeft: "3px solid " + trk.color, fontSize: 13, lineHeight: 1.6, margin: "16px 0", textAlign: "left" } },
                                         React.createElement("strong", null, "Pro tip: "),
                                         top.tip))))
-                        : activeResource && activeResource[3] === "iframe"
-                            ? (React.createElement("div", null,
-                                React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 } },
-                                    React.createElement("div", { style: { fontSize: 13, fontWeight: 600, color: "#333" } }, activeResource[0]),
-                                    React.createElement("a", { href: activeResource[2], target: "_blank", rel: "noopener noreferrer", style: { fontSize: 12, color: trk.color, textDecoration: "none" } }, "Open in new tab \u2197")),
-                                React.createElement("iframe", { src: activeResource[2], style: { width: "100%", height: "80vh", border: "1px solid #e5e5e5", borderRadius: 10 }, title: activeResource[0] })))
+                        : activeResource && activeResource[3] === "fetch"
+                            ? (fetchLoading
+                                ? (React.createElement("div", { style: { textAlign: "center", padding: "60px 20px", color: "#999" } },
+                                    React.createElement("div", { style: { fontSize: 16, fontWeight: 500, color: "#666" } }, "Loading guide..."),
+                                    React.createElement("div", { style: { marginTop: 12, width: 32, height: 32, border: "3px solid #e5e5e5", borderTopColor: trk.color, borderRadius: "50%", animation: "spin 0.8s linear infinite", margin: "12px auto" } }),
+                                    React.createElement("style", { dangerouslySetInnerHTML: { __html: "@keyframes spin { to { transform: rotate(360deg); } }" } })))
+                                : fetchedContent && fetchedContent.error
+                                    ? (React.createElement("div", { style: { textAlign: "center", padding: "60px 20px", color: "#999" } },
+                                        React.createElement("div", { style: { fontSize: 16, fontWeight: 500, color: "#666", marginBottom: 8 } }, "Could not load the guide"),
+                                        React.createElement("a", { href: fetchedContent.sourceUrl, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 13, color: trk.color, textDecoration: "none" } }, "Open in new tab instead \u2197")))
+                                    : fetchedContent
+                                        ? (React.createElement("div", { className: "fetched-guide-container" },
+                                            React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid #eee" } },
+                                                React.createElement("div", { style: { fontSize: 13, fontWeight: 600, color: "#333" } }, activeResource[0]),
+                                                React.createElement("a", { href: fetchedContent.sourceUrl, target: "_blank", rel: "noopener noreferrer", style: { fontSize: 12, color: trk.color, textDecoration: "none" } }, "Open in new tab \u2197")),
+                                            fetchedContent.links && React.createElement("div", { dangerouslySetInnerHTML: { __html: fetchedContent.links } }),
+                                            React.createElement("style", { dangerouslySetInnerHTML: { __html: ".fetched-guide-container { max-width: 100%; } .fetched-guide-container img { max-width: 100%; height: auto; } " + fetchedContent.styles } }),
+                                            React.createElement("div", { dangerouslySetInnerHTML: { __html: fetchedContent.body } })))
+                                        : null)
+                            : activeResource && activeResource[3] === "iframe"
+                                ? (React.createElement("div", null,
+                                    React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 } },
+                                        React.createElement("div", { style: { fontSize: 13, fontWeight: 600, color: "#333" } }, activeResource[0]),
+                                        React.createElement("a", { href: activeResource[2], target: "_blank", rel: "noopener noreferrer", style: { fontSize: 12, color: trk.color, textDecoration: "none" } }, "Open in new tab \u2197")),
+                                    React.createElement("iframe", { src: activeResource[2], style: { width: "100%", height: "80vh", border: "1px solid #e5e5e5", borderRadius: 10 }, title: activeResource[0] })))
                             : (React.createElement("div", null,
                                 React.createElement("h2", { style: { fontSize: 16, fontWeight: 600, marginBottom: 10 } }, "Step-by-step guide"),
                                 React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 } }, top.steps.map((st, i) => (React.createElement("div", { key: i, style: { background: "#fff", border: "1px solid #e5e5e5", borderRadius: 10, padding: "14px 16px", display: "flex", gap: 12, alignItems: "flex-start" } },
