@@ -115,6 +115,11 @@ function LearningPaths() {
                         if (src && !src.startsWith("http") && !src.startsWith("data:")) {
                             img.setAttribute("src", baseUrl + src.replace(/^\.\//, ""));
                         }
+                        // Re-encode spaces that DOMParser may have decoded from %20
+                        const finalSrc = img.getAttribute("src");
+                        if (finalSrc && finalSrc.includes(" ")) {
+                            img.setAttribute("src", finalSrc.replace(/ /g, "%20"));
+                        }
                     });
                     // Also fix background-image urls in inline styles
                     doc.querySelectorAll("[style]").forEach(el => {
