@@ -112,8 +112,12 @@ function LearningPaths() {
                     const baseUrl = r[2].endsWith("/") ? r[2] : r[2].substring(0, r[2].lastIndexOf("/") + 1);
                     doc.querySelectorAll("img").forEach(img => {
                         const src = img.getAttribute("src");
-                        if (src && !src.startsWith("http") && !src.startsWith("data:")) {
+                        if (src && !src.startsWith("http") && !src.startsWith("data:") && !src.startsWith("/")) {
                             img.setAttribute("src", baseUrl + src.replace(/^\.\//, ""));
+                        }
+                        // For root-relative paths, prepend the origin
+                        if (src && src.startsWith("/")) {
+                            img.setAttribute("src", "https://carleepeszko.github.io" + src);
                         }
                         // Re-encode spaces that DOMParser may have decoded from %20
                         const finalSrc = img.getAttribute("src");
@@ -124,9 +128,9 @@ function LearningPaths() {
                     // Also fix background-image urls in inline styles
                     doc.querySelectorAll("[style]").forEach(el => {
                         const style = el.getAttribute("style");
-                        if (style && style.includes("url(") && !style.includes("http")) {
+                        if (style && style.includes("url(") && !style.includes("http") && !style.includes("url(/")) {
                             el.setAttribute("style", style.replace(/url\(['"]?([^'")]+)['"]?\)/g, (match, path) => {
-                                if (path.startsWith("http") || path.startsWith("data:")) return match;
+                                if (path.startsWith("http") || path.startsWith("data:") || path.startsWith("/")) return match;
                                 return "url(" + baseUrl + path.replace(/^\.\//, "") + ")";
                             }));
                         }
@@ -136,7 +140,7 @@ function LearningPaths() {
                     const body = doc.body ? doc.body.innerHTML : html;
                     // Also fix any relative image paths in CSS (background-image etc)
                     const fixedStyles = styles.replace(/url\(['"]?([^'")]+)['"]?\)/g, (match, path) => {
-                        if (path.startsWith("http") || path.startsWith("data:") || path.startsWith("#")) return match;
+                        if (path.startsWith("http") || path.startsWith("data:") || path.startsWith("#") || path.startsWith("/")) return match;
                         return "url(" + baseUrl + path.replace(/^\.\//, "") + ")";
                     });
                     setFetchedContent({ styles: fixedStyles, links, body, sourceUrl: r[2] });
