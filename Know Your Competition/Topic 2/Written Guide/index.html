@@ -3,1769 +3,1276 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Benchmark Your Performance vs. Competitors — Quick Start Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Benchmark Your Performance vs. Competitors — Cobalt Help</title>
 <style>
   :root {
-    --ink: #1a1a2e;
-    --slate: #3d3d5c;
-    --muted: #6b6b8a;
-    --bg: #faf9fe;
+    --bg: #FAFAF8;
     --surface: #ffffff;
-    --accent: #5046e5;
-
+    --border: #e5e2dc;
+    --text: #1c1917;
+    --muted: #78716c;
+    --subtle: #a8a29e;
+    --blue: #2563EB;
+    --blue-light: #eff6ff;
+    --blue-mid: #dbeafe;
     --purple: #7c3aed;
-    --purple-bg: #f5f3ff;
-    --purple-mid: #c4b5fd;
-    --purple-deep: #6d28d9;
-
-    --ma: #7c3aed;
-    --ma-bg: #f5f3ff;
-    --ma-mid: #c4b5fd;
-    --ma-deep: #6d28d9;
-
-    --catperf: #2563EB;
-    --catperf-bg: #eff5ff;
-    --catperf-mid: #93c5fd;
-    --catperf-deep: #1d4ed8;
-
-    --ai: #0d9488;
-    --ai-bg: #d5f5f0;
-    --ai-mid: #5eead4;
-    --ai-deep: #0f766e;
-
-    --navy: #00022B;
-    --navy-bg: #f1f3f7;
-    --navy-mid: #c7cbd6;
-
-    /* Charcoal/graphite — for the market share callout */
-    --char: #374151;
-    --char-bg: #f3f4f6;
-    --char-mid: #d1d5db;
-    --char-deep: #1f2937;
-
+    --purple-light: #f5f3ff;
+    --purple-mid: #ede9fe;
     --green: #15803d;
-    --green-bg: #ecfdf5;
-    --green-mid: #86efac;
-    --amber: #d97706;
-    --amber-bg: #fef3c7;
+    --green-light: #f0fdf4;
+    --green-mid: #bbf7d0;
+    --amber: #b45309;
+    --amber-light: #fffbeb;
     --amber-mid: #fcd34d;
-    --red: #b91c1c;
-    --red-bg: #fef2f2;
-    --red-mid: #fca5a5;
-
-    --teal-mid: #5eead4;
-    --line: #e7e5e4;
-    --warm: #f5f5f4;
-    --faint: #a8a29e;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --red-mid: #fecaca;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --teal: #0d9488;
+    --teal-light: #f0fdfa;
+    --teal-mid: #99f6e4;
+    --dash: #d97706;
+    --dash-light: #fff7ed;
+    --dash-mid: #fed7aa;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     background: var(--bg);
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-    padding: 32px 24px 60px;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    padding: 48px 24px 100px;
   }
 
-  .page { max-width: 1080px; margin: 0 auto; }
+  .page-wrapper { max-width: 760px; margin: 0 auto; }
 
-  .screenshot {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  /* ── BREADCRUMB ── */
+  .breadcrumb { font-size: 12px; color: var(--subtle); margin-bottom: 24px; display: flex; align-items: center; gap: 6px; }
+  .breadcrumb a { color: var(--subtle); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--blue); text-decoration: underline; }
 
-  /* ── MASTHEAD ── */
-  .masthead {
-    background: var(--ink);
-    border-radius: 12px 12px 0 0;
-    padding: 36px 40px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-    border-bottom: 2px solid #6d28d9;
-  }
-  .kicker {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.38);
-    margin-bottom: 10px;
-  }
-  .masthead h1 {
-    font-family: 'Fraunces', serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    margin-bottom: 0;
-  }
-  .masthead h1 em {
-    font-style: italic;
-    font-weight: 300;
-    color: #a78bfa;
-  }
-  .masthead-meta {
-    text-align: right;
-    flex-shrink: 0;
-    max-width: 300px;
-  }
-  .masthead-sub-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 8px;
-  }
-  .masthead-sub {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: #ffffff;
-    line-height: 1.25;
-    text-align: right;
-  }
+  /* ── HEADER ── */
+  .article-header { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 2px solid var(--border); }
+  .tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 20px; padding: 3px 10px; border: 1px solid; }
+  .tag-purple { color: var(--purple); background: var(--purple-light); border-color: var(--purple-mid); }
+  .tag-blue   { color: var(--blue);   background: var(--blue-light);   border-color: var(--blue-mid); }
+  .tag-amber  { color: var(--amber);  background: var(--amber-light);  border-color: var(--amber-mid); }
 
-  /* ── SECTION HEADER ── */
-  .sec-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 28px 0 16px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 8px;
-  }
-  .sec-title {
-    font-family: 'Fraunces', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--ink);
-    white-space: nowrap;
-  }
-  .sec-line { flex: 1; height: 1px; background: var(--line); }
-  .sec-tag {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--slate);
-    background: var(--warm);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 4px 12px;
-  }
-  .sec-tag.purple { color: var(--ma); background: var(--ma-bg); border-color: var(--ma-mid); }
-  .sec-tag.blue { color: var(--catperf); background: var(--catperf-bg); border-color: var(--catperf-mid); }
-  .sec-tag.teal { color: var(--ai); background: var(--ai-bg); border-color: var(--ai-mid); }
+  h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 10px; line-height: 1.25; }
+  .article-intro { font-size: 15px; color: var(--muted); line-height: 1.65; max-width: 660px; margin-bottom: 14px; }
+  .meta-row { font-size: 12px; color: var(--subtle); display: flex; gap: 18px; flex-wrap: wrap; }
 
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 0 0 8px 8px;
-  }
-  .card-inner { padding: 24px 40px 32px; }
+  /* ── TOC ── */
+  .toc-box { background: var(--stone-100); border: 1px solid var(--border); border-radius: 8px; padding: 18px 22px; margin-bottom: 40px; }
+  .toc-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subtle); margin-bottom: 10px; }
+  .toc-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .toc-list li { display: flex; align-items: baseline; gap: 8px; font-size: 13.5px; }
+  .toc-list li.toc-sub { padding-left: 20px; font-size: 13px; }
+  .toc-num { font-size: 11px; font-weight: 700; color: var(--subtle); min-width: 16px; }
+  .toc-list a { color: var(--blue); text-decoration: none; }
+  .toc-list a:hover { text-decoration: underline; }
 
+  /* ── SECTION ── */
+  .section { margin-bottom: 52px; scroll-margin-top: 20px; }
+  .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); margin-bottom: 6px; }
 
-  /* ═══ SOURCE BYLINE ═══ */
-  .source-byline {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-    padding: 4px 0 16px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 14px;
-    align-items: center;
-  }
-  .source-byline-item {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 6px;
-  }
-  .source-byline-item .lab {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .source-byline-item .val {
-    font-weight: 600;
-    color: var(--ink);
-    font-size: 12.5px;
-  }
-  .source-byline-item .val.purple { color: var(--ma-deep); }
-  .source-byline-item .val.blue { color: var(--catperf-deep); }
-  .source-byline-item .val.teal { color: var(--ai-deep); }
-  .source-byline-sep {
-    color: var(--faint);
-    font-weight: 700;
-    user-select: none;
-  }
+  /* ── FEATURE EYEBROW ── */
+  .feature-eyebrow { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; }
+  .feature-rule { width: 28px; height: 3px; border-radius: 2px; }
+  .feature-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .feat-purple .feature-rule  { background: var(--purple); }
+  .feat-purple .feature-label { color: var(--purple); }
+  .feat-blue   .feature-rule  { background: var(--blue); }
+  .feat-blue   .feature-label { color: var(--blue); }
+  .feat-teal   .feature-rule  { background: var(--teal); }
+  .feat-teal   .feature-label { color: var(--teal); }
+  .feat-dash   .feature-rule  { background: var(--dash); }
+  .feat-dash   .feature-label { color: var(--dash); }
 
+  /* ── CHIP ── */
+  .chip { display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 4px; vertical-align: middle; white-space: nowrap; border: 1px solid; }
+  .chip::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; flex-shrink: 0; }
+  .chip-purple { color: var(--purple); background: var(--purple-light); border-color: var(--purple-mid); }
+  .chip-purple::before { background: var(--purple); }
+  .chip-blue   { color: var(--blue);   background: var(--blue-light);   border-color: var(--blue-mid); }
+  .chip-blue::before   { background: var(--blue); }
+  .chip-teal   { color: var(--teal);   background: var(--teal-light);   border-color: var(--teal-mid); }
+  .chip-teal::before   { background: var(--teal); }
+  .chip-dash   { color: var(--dash);   background: var(--dash-light);   border-color: var(--dash-mid); }
+  .chip-dash::before   { background: var(--dash); }
 
-  /* ═══ INTRO CALLOUT ═══ */
-  .method-intro {
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 18px;
-    border: 1px solid var(--line);
-    border-top: 4px solid var(--ma);
-  }
-  .method-intro.purple { border-top-color: var(--ma); }
-  .method-intro.blue { border-top-color: var(--catperf); }
-  .method-intro.teal { border-top-color: var(--ai); }
+  h2 { font-size: 19px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; margin-top: 22px; line-height: 1.4; }
+  h3:first-child, h3.no-top { margin-top: 0; }
+  h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; margin-top: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
+  p { color: var(--muted); margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  ul, ol { padding-left: 20px; color: var(--muted); margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+  strong { color: var(--text); }
 
-  .method-intro-head {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 22px 6px;
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .method-intro.purple .method-intro-head { color: var(--ma-deep); background: var(--ma-bg); }
-  .method-intro.blue .method-intro-head { color: var(--catperf-deep); background: var(--catperf-bg); }
-  .method-intro.teal .method-intro-head { color: var(--ai-deep); background: var(--ai-bg); }
-  .method-intro-head .dot { width: 7px; height: 7px; border-radius: 50%; }
-  .method-intro.purple .method-intro-head .dot { background: var(--ma); }
-  .method-intro.blue .method-intro-head .dot { background: var(--catperf); }
-  .method-intro.teal .method-intro-head .dot { background: var(--ai); }
+  /* ── CALLOUTS ── */
+  .callout { border-radius: 8px; padding: 14px 18px; margin: 18px 0; border-left: 3px solid; }
+  .callout p { font-size: 14px; margin-bottom: 0; }
+  .callout-title { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px; }
+  .callout-blue   { background: var(--blue-light);   border-color: var(--blue);   }
+  .callout-blue   .callout-title { color: var(--blue); }
+  .callout-blue   p { color: #1e40af; }
+  .callout-green  { background: var(--green-light);  border-color: var(--green);  }
+  .callout-green  .callout-title { color: var(--green); }
+  .callout-green  p { color: #166534; }
+  .callout-amber  { background: var(--amber-light);  border-color: var(--amber);  }
+  .callout-amber  .callout-title { color: var(--amber); }
+  .callout-amber  p { color: #92400e; }
+  .callout-purple { background: var(--purple-light); border-color: var(--purple); }
+  .callout-purple .callout-title { color: var(--purple); }
+  .callout-purple p { color: #5b21b6; }
+  .callout-teal   { background: var(--teal-light);   border-color: var(--teal);   }
+  .callout-teal   .callout-title { color: var(--teal); }
+  .callout-teal   p { color: #134e4a; }
+  .callout-dash   { background: var(--dash-light);   border-color: var(--dash);   }
+  .callout-dash   .callout-title { color: var(--dash); }
+  .callout-dash   p { color: #7c2d12; }
 
-  .method-intro-body {
-    padding: 0 22px 16px;
-    font-size: 14.5px;
-    color: var(--ink);
-    line-height: 1.55;
-    font-weight: 500;
-  }
-  .method-intro.purple .method-intro-body { background: var(--ma-bg); }
-  .method-intro.blue .method-intro-body { background: var(--catperf-bg); }
-  .method-intro.teal .method-intro-body { background: var(--ai-bg); }
-  .method-intro-body strong { font-weight: 700; }
-  .method-intro-body a { color: var(--catperf); font-weight: 600; text-decoration: none; }
-  .method-intro-body a:hover { text-decoration: underline; }
+  /* ── SCREENSHOT ── */
+  .screenshot-wrap { margin: 18px 0; }
+  .screenshot-wrap img { width: 100%; border-radius: 8px; border: 1px solid var(--border); display: block; }
+  .screenshot-caption { font-size: 12px; color: var(--subtle); margin-top: 6px; text-align: center; font-style: italic; }
+  .screenshot-placeholder { background: var(--stone-100); border: 1.5px dashed var(--stone-200); border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 13px; color: var(--subtle); }
+  .screenshot-placeholder strong { color: var(--amber); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 4px; }
 
+  /* ── TAB BLOCK ── */
+  .tab-block { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin: 20px 0; }
+  .tab-header { background: var(--stone-100); padding: 12px 18px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .tab-name { font-size: 13px; font-weight: 700; color: var(--text); }
+  .tab-weight { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px; }
+  .weight-primary { background: var(--purple-light); color: var(--purple); }
+  .weight-secondary { background: var(--blue-light); color: var(--blue); }
+  .weight-mention { background: var(--stone-200); color: var(--subtle); }
+  .tab-body { padding: 18px 18px 14px; }
+  .tab-use-when { font-size: 12px; color: var(--teal); font-weight: 600; margin-bottom: 10px; padding: 6px 10px; background: var(--teal-light); border-radius: 6px; display: inline-block; }
 
-  /* ═══ SIGNALS ═══ */
-  .signal-frame {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--surface);
-    margin-top: 12px;
-  }
+  /* ── METRIC GRID ── */
+  .metric-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 16px 0; }
+  .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 15px; }
+  .metric-name { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subtle); margin-bottom: 4px; }
+  .metric-q { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+  .metric-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 0; }
 
-  .signal-lead {
-    background: var(--warm);
-    padding: 16px 22px;
-    border-bottom: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-  }
-  .signal-lead-col {
-    padding: 0 18px;
-    border-right: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .signal-lead-col:first-child { padding-left: 0; }
-  .signal-lead-col:last-child { padding-right: 0; border-right: none; }
-  .signal-lead-q {
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--navy);
-  }
-  .signal-lead-a {
-    font-size: 13.5px;
-    color: var(--slate);
-    line-height: 1.55;
-  }
-  .signal-lead-a strong { color: var(--ink); font-weight: 600; }
+  /* ── SIGNAL TABLE (simple) ── */
+  .signal-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+  .signal-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subtle); padding: 8px 10px; border-bottom: 2px solid var(--border); background: var(--stone-100); }
+  .signal-table td { padding: 10px 10px; border-bottom: 1px solid var(--border); color: var(--muted); vertical-align: middle; }
+  .signal-table tr:last-child td { border-bottom: none; }
+  .signal-table tr.row-good { background: #f0fdf4; }
+  .signal-table tr.row-watch { background: #fffbeb; }
+  .signal-table tr.row-risk { background: #fff5f5; }
 
-  .signal-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .signal-col {
-    border-right: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-  }
-  .signal-col:last-child { border-right: none; }
+  /* ── REFERENCE TABLE ── */
+  .ref-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13px; }
+  .ref-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subtle); padding: 8px 10px; border-bottom: 2px solid var(--border); background: var(--stone-100); white-space: nowrap; }
+  .ref-table td { padding: 10px 10px; border-bottom: 1px solid; color: var(--muted); vertical-align: middle; }
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table .row-good  { background: #f0fdf4; } .ref-table .row-good  td { border-color: #d1fae5; }
+  .ref-table .row-hold  { background: #f8faff; } .ref-table .row-hold  td { border-color: var(--blue-mid); }
+  .ref-table .row-watch { background: #fffbeb; } .ref-table .row-watch td { border-color: #fde68a; }
+  .ref-table .row-risk  { background: #fff5f5; } .ref-table .row-risk  td { border-color: var(--red-mid); }
+  .arrow-up   { font-weight: 700; color: var(--green);  white-space: nowrap; }
+  .arrow-down { font-weight: 700; color: var(--red);    white-space: nowrap; }
+  .arrow-flat { font-weight: 700; color: var(--subtle); white-space: nowrap; }
 
-  .signal-chart-wrap {
-    border-bottom: 1px solid var(--line);
-    padding: 18px 22px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: stretch;
-  }
-  .signal-col.gain .signal-chart-wrap { background: var(--green-bg); }
-  .signal-col.watch .signal-chart-wrap { background: var(--amber-bg); }
-  .signal-col.loss .signal-chart-wrap { background: var(--red-bg); }
+  /* ── BADGE ── */
+  .badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; white-space: nowrap; letter-spacing: 0.04em; }
+  .badge-risk  { background: var(--red-light);   color: var(--red); }
+  .badge-watch { background: var(--amber-light);  color: var(--amber); }
+  .badge-good  { background: var(--green-light);  color: var(--green); }
+  .badge-hold  { background: var(--blue-light);   color: var(--blue); }
 
-  .signal-chart {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  /* ── METHOD TABLE ── */
+  .method-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+  .method-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subtle); padding: 8px 12px; border-bottom: 2px solid var(--border); background: var(--stone-100); }
+  .method-table td { padding: 12px 12px; border-bottom: 1px solid var(--border); color: var(--muted); vertical-align: top; }
+  .method-table tr:last-child td { border-bottom: none; }
 
-  .signal-legend {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    font-size: 10.5px;
-    color: var(--slate);
-    padding-top: 4px;
-  }
-  .signal-legend-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: 600;
-  }
-  .signal-legend-swatch {
-    width: 14px;
-    height: 2.5px;
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
-  .signal-legend-swatch.you-gain { background: var(--green); }
-  .signal-legend-swatch.you-watch { background: var(--amber); }
-  .signal-legend-swatch.you-loss { background: var(--red); }
-  .signal-legend-swatch.cat {
-    background: transparent;
-    border-top: 2px dashed var(--muted);
-    height: 0;
-    margin-top: 1px;
-  }
-  .signal-legend-item.cat-label { color: var(--muted); }
+  /* ── STEPS ── */
+  .steps { display: flex; flex-direction: column; gap: 0; margin: 14px 0; }
+  .step { display: flex; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .step h3 { font-size: 14px; margin-top: 0; margin-bottom: 3px; }
+  .step p  { font-size: 13.5px; margin-bottom: 0; }
 
-  .signal-label {
-    padding: 14px 22px 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Fraunces', serif;
-    font-size: 18px;
-    font-weight: 700;
-  }
-  .signal-col.gain .signal-label { color: var(--green); }
-  .signal-col.watch .signal-label { color: var(--amber); }
-  .signal-col.loss .signal-label { color: var(--red); }
-  .signal-dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .signal-col.gain .signal-dot { background: var(--green); }
-  .signal-col.watch .signal-dot { background: var(--amber); }
-  .signal-col.loss .signal-dot { background: var(--red); }
+  /* ── REPORT SECTIONS ── */
+  .report-sections { display: flex; flex-direction: column; gap: 0; margin: 14px 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .report-section-card { padding: 14px 16px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start; }
+  .report-section-card:last-child { border-bottom: none; }
+  .rs-label { font-size: 12px; font-weight: 700; color: var(--text); padding-top: 1px; }
+  .rs-desc { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+  .rs-screenshot { margin-top: 12px; grid-column: 1 / -1; }
+  .rs-screenshot img { width: 100%; border-radius: 6px; border: 1px solid var(--border); }
 
-  .signal-body {
-    padding: 0 22px 18px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .signal-block .lab {
-    display: block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-  .signal-block .txt {
-    font-size: 13.5px;
-    color: var(--slate);
-    line-height: 1.5;
-  }
-  .signal-block .txt strong { color: var(--ink); font-weight: 600; }
+  /* ── RAZOR EXAMPLE ── */
+  .razor-example { background: var(--stone-100); border-left: 3px solid var(--stone-200); border-radius: 0 6px 6px 0; padding: 12px 16px; margin: 16px 0; }
+  .razor-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subtle); margin-bottom: 5px; }
+  .razor-example p { font-size: 13.5px; margin-bottom: 0; }
 
+  /* ── DATE RANGE CALLOUT ── */
+  .date-note { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 10px 14px; margin: 14px 0; font-size: 13px; color: #6b21a8; }
+  .date-note strong { color: #581c87; }
 
-  /* ═══ NAV BLOCK — text left, image right ═══ */
-  .nav-block {
-    background: var(--navy-bg);
-    border: 1px solid var(--navy-mid);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-  .nav-block-head {
-    padding: 12px 20px 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--navy);
-    border-bottom: 1px solid var(--navy-mid);
-    background: var(--navy-bg);
-  }
-  .nav-block-head .dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--navy);
-  }
-  .nav-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: var(--surface);
-    border-bottom: 1px solid var(--navy-mid);
-  }
-  .nav-row:last-child { border-bottom: none; }
-  .nav-row-text {
-    padding: 18px 22px;
-    border-right: 1px solid var(--navy-mid);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    justify-content: center;
-  }
-  .nav-row-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 2px;
-  }
-  .nav-row-label .badge {
-    background: var(--navy);
-    color: #fff;
-    border-radius: 3px;
-    padding: 2px 7px;
-    font-size: 9.5px;
-  }
-  .nav-row-label .badge.alt {
-    background: var(--surface);
-    color: var(--navy);
-    border: 1px solid var(--navy-mid);
-  }
-  .nav-row-path {
-    font-size: 13.5px;
-    color: var(--ink);
-    line-height: 1.55;
-  }
-  .nav-row-path code {
-    background: var(--navy-bg);
-    color: var(--navy);
-    border: 1px solid var(--navy-mid);
-    border-radius: 3px;
-    padding: 2px 7px;
-    font-size: 12.5px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-  }
-  .nav-row-path .arrow {
-    color: var(--navy);
-    margin: 0 6px;
-    font-weight: 700;
-  }
-  .nav-row-path strong { color: var(--ink); font-weight: 600; }
-  .nav-row-img {
-    background: var(--warm);
-    padding: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .nav-row-img img {
-    width: 100%;
-    height: auto;
-    max-width: 420px;
-    display: block;
-  }
+  /* ── COMPARISON GRID ── */
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  .comparison-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+  .comparison-card h3 { font-size: 13px; margin-top: 0; margin-bottom: 8px; }
+  .comparison-card p { font-size: 13px; }
 
+  /* ── QUICK WINS ── */
+  .quick-wins { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+  .qw-item { background: var(--green-light); border: 1px solid var(--green-mid); border-radius: 8px; padding: 14px 16px; }
+  .qw-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+  .qw-item h3 { font-size: 14px; color: #166534; margin-top: 0; margin-bottom: 4px; }
+  .qw-item p  { font-size: 13.5px; color: #166534; margin-bottom: 0; }
 
-  /* ═══ MARKET ANALYSIS — 3 tab cards ═══ */
-  .ma-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-  .ma-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .ma-card-head {
-    padding: 14px 18px 12px;
-    background: var(--ma-bg);
-    border-bottom: 1px solid var(--line);
-  }
-  .ma-card-pos {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ma);
-    margin-bottom: 4px;
-  }
-  .ma-card-name {
-    font-family: 'Fraunces', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1.2;
-  }
-  .ma-card-body {
-    padding: 14px 18px 14px;
-  }
-  .ma-card-onel {
-    font-size: 13.5px;
-    color: var(--slate);
-    line-height: 1.5;
-  }
-  .ma-card-onel strong { color: var(--ink); font-weight: 600; }
-  .ma-card-img {
-    background: var(--warm);
-    border-top: 1px solid var(--line);
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ma-card-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  /* ── CADENCE ── */
+  .cadence-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 14px 0; }
+  .cadence-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; }
+  .cadence-freq   { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
+  .cadence-action { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .cadence-detail { font-size: 12px; color: var(--subtle); }
 
+  /* ── DATA SOURCE GRID ── */
+  .ds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+  .ds-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+  .ds-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .ds-used  { font-size: 11px; color: var(--subtle); margin-bottom: 8px; font-style: italic; }
+  .ds-card ul { padding-left: 16px; margin-bottom: 0; }
+  .ds-card ul li { font-size: 13px; color: var(--muted); margin-bottom: 3px; }
 
-  /* ═══ CATEGORY PERFORMANCE — narrower text column, wider image ═══ */
-  .cp-list {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--surface);
-    margin-bottom: 14px;
-  }
-  .cp-row {
-    display: grid;
-    grid-template-columns: 60px 360px 1fr;
-    border-bottom: 1px solid var(--line);
-  }
-  .cp-row:last-child { border-bottom: none; }
-  .cp-num-cell {
-    background: var(--catperf-bg);
-    border-right: 1px solid var(--catperf-mid);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 8px;
-  }
-  .cp-num {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--catperf);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .cp-text {
-    padding: 16px 22px;
-    border-right: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .cp-name {
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1.2;
-  }
-  .cp-body {
-    font-size: 13px;
-    color: var(--slate);
-    line-height: 1.5;
-  }
-  .cp-body strong { color: var(--ink); font-weight: 600; }
-  .cp-img {
-    background: var(--warm);
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .cp-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  /* ── TOPIC BRIDGE ── */
+  .topic-bridge { background: var(--purple-light); border: 1px solid var(--purple-mid); border-radius: 10px; padding: 20px 22px; margin-top: 48px; }
+  .bridge-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); margin-bottom: 6px; }
+  .topic-bridge h3 { font-size: 16px; color: #4c1d95; margin-top: 0; margin-bottom: 6px; }
+  .topic-bridge p { font-size: 14px; color: #5b21b6; }
 
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 
-  /* ═══ "WHAT YOU'LL FIND" RECAP ═══ */
-  .recap {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--surface);
-  }
-  .recap.has-image {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .recap-text {
-    padding: 22px 26px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .recap.has-image .recap-text {
-    border-right: 1px solid var(--line);
-  }
-  .recap-head {
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .recap-head .dot {
-    width: 9px; height: 9px; border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .recap.blue .recap-head .dot { background: var(--catperf); }
-  .recap.teal .recap-head .dot { background: var(--ai); }
-  .recap-body {
-    font-size: 13.5px;
-    color: var(--slate);
-    line-height: 1.6;
-  }
-  .recap-body strong { color: var(--ink); font-weight: 600; }
-  .recap-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 4px;
-  }
-  .recap-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--slate);
-    padding: 8px 0;
-    border-bottom: 1px solid var(--line);
-    line-height: 1.5;
-  }
-  .recap-item:last-child { border-bottom: none; }
-  .recap-item .num {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    font-size: 11px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .recap.blue .recap-item .num { background: var(--catperf-bg); color: var(--catperf-deep); }
-  .recap.teal .recap-item .num { background: var(--ai-bg); color: var(--ai-deep); }
-  .recap-item .name { font-weight: 600; color: var(--ink); }
-  .recap-item .first {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 2px 7px;
-    border-radius: 3px;
-    margin-left: 4px;
-    flex-shrink: 0;
-  }
-  .recap.teal .recap-item .first { color: var(--ai-deep); background: var(--ai-bg); }
-  .recap-item .desc { color: var(--muted); font-size: 12.5px; margin-left: 4px; }
-  .recap-img {
-    background: var(--warm);
-    padding: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .recap-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-
-  /* ═══ AI ANALYST STEPS ═══ */
-  .ai-steps {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 14px;
-    background: var(--surface);
-  }
-  .ai-step {
-    padding: 16px 20px;
-    border-right: 1px solid var(--line);
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-  .ai-step:last-child { border-right: none; }
-  .ai-step-n {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--ai);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .ai-step-text {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .ai-step-action {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1.3;
-  }
-  .ai-step-detail {
-    font-size: 12.5px;
-    color: var(--slate);
-    line-height: 1.5;
-  }
-  .ai-step-detail strong { color: var(--ink); font-weight: 600; }
-  .ai-step-detail code {
-    background: var(--navy-bg);
-    color: var(--navy);
-    border-radius: 3px;
-    padding: 2px 6px;
-    font-size: 11.5px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-  }
-
-
-  /* ═══ AI Analyst — config modal annotation row ═══ */
-  .ai-modal {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--surface);
-    margin-bottom: 14px;
-  }
-  .ai-modal-text {
-    padding: 22px 26px;
-    border-right: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .ai-modal-head {
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .ai-modal-head .dot {
-    width: 9px; height: 9px; border-radius: 50%;
-    background: var(--ai);
-    flex-shrink: 0;
-  }
-  .ai-modal-body {
-    font-size: 13.5px;
-    color: var(--slate);
-    line-height: 1.6;
-  }
-  .ai-modal-body strong { color: var(--ink); font-weight: 600; }
-  .ai-modal-img {
-    background: var(--warm);
-    padding: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ai-modal-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-
-  /* ═══ READING YOUR NUMBERS ═══ */
-  .metrics-bridge {
-    background: var(--warm);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 16px 22px;
-    font-size: 13.5px;
-    color: var(--slate);
-    line-height: 1.6;
-    margin-bottom: 14px;
-  }
-  .metrics-bridge .lead-q {
-    display: inline-block;
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 6px;
-  }
-  .metrics-bridge strong { color: var(--ink); font-weight: 600; }
-
-  /* Market share callout — charcoal, sits ABOVE the 3 metric cards */
-  .share-callout {
-    background: var(--char-bg);
-    border: 1px solid var(--char-mid);
-    border-left: 4px solid var(--char);
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 14px;
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 24px;
-    align-items: center;
-  }
-  .share-callout-left {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    border-right: 1px solid var(--char-mid);
-    padding-right: 24px;
-  }
-  .share-callout-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--char-deep);
-  }
-  .share-callout-value {
-    font-family: 'Fraunces', serif;
-    font-size: 30px;
-    font-weight: 700;
-    color: var(--char-deep);
-    line-height: 1;
-    letter-spacing: -0.01em;
-  }
-  .share-callout-deltas {
-    display: flex;
-    gap: 18px;
-    margin-top: 6px;
-  }
-  .share-callout-delta {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .share-callout-delta .deltabel {
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--char);
-    opacity: 0.85;
-  }
-  .share-callout-delta .deltaval {
-    font-weight: 700;
-    color: var(--red);
-    font-size: 14px;
-  }
-  .share-callout-right {
-    font-size: 13.5px;
-    color: var(--slate);
-    line-height: 1.55;
-  }
-  .share-callout-right strong { color: var(--ink); font-weight: 600; }
-  .share-callout-right .pp-tag,
-  .share-callout-right .rel-tag {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 1px 6px;
-    border-radius: 3px;
-    margin: 0 1px;
-    color: var(--char-deep);
-    background: var(--surface);
-    border: 1px solid var(--char-mid);
-  }
-
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .mcard {
-    background: var(--surface);
-    padding: 20px 22px 18px;
-    border-right: 1px solid var(--line);
-    display: grid;
-    grid-template-rows: auto auto auto 1fr;
-    gap: 10px;
-  }
-  .mcard:last-child { border-right: none; }
-  .mcard-head {
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--line);
-  }
-  .mcard-name {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--navy);
-    letter-spacing: -0.01em;
-  }
-  .mcard-q {
-    font-size: 13.5px;
-    color: var(--slate);
-    line-height: 1.4;
-    font-style: italic;
-    min-height: 38px;
-    display: flex;
-    align-items: flex-start;
-  }
-  .mcard-data {
-    background: var(--char-bg);
-    border: 1px solid var(--char-mid);
-    border-radius: 6px;
-    padding: 12px 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    min-height: 70px;
-  }
-  .mcard-value {
-    font-family: 'Fraunces', serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--char-deep);
-    line-height: 1;
-    letter-spacing: -0.01em;
-  }
-  .mcard-delta {
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--slate);
-  }
-  .mcard-delta .up { color: var(--green); }
-  .mcard-delta .down { color: var(--red); }
-  .mcard-delta .na { color: var(--muted); font-style: italic; font-weight: 500; }
-  .mcard-context {
-    font-size: 12.5px;
-    color: var(--slate);
-    line-height: 1.5;
-  }
-  .mcard-context strong { color: var(--ink); font-weight: 600; }
-  .mcard-context .lab {
-    display: block;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-
-
-  /* ═══ LOWER CARDS ═══ */
-  .lower-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 28px;
-  }
-  .lower-card {
-    background: var(--warm);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .lower-card-head {
-    background: var(--ink);
-    padding: 12px 22px;
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .lower-card-head .dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--teal-mid);
-    flex-shrink: 0;
-  }
-  .lower-card-body { padding: 20px 22px; }
-
-  .wins-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0 24px;
-  }
-  .win-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 6px 0;
-    font-size: 14px;
-    position: relative;
-  }
-  .win-item.segue {
-    background: var(--navy-bg);
-    border-radius: 6px;
-    padding: 12px 14px;
-    margin: -6px -8px;
-  }
-  .win-num-pill {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--navy-bg);
-    color: var(--navy);
-    font-size: 12px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    border: 1px solid transparent;
-  }
-  .win-item.segue .win-num-pill {
-    background: var(--navy);
-    color: #fff;
-  }
-  .win-text {
-    color: var(--slate);
-    line-height: 1.55;
-  }
-  .win-text strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 3px; }
-  .win-upnext-tag {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--navy);
-    background: var(--surface);
-    border: 1px solid var(--navy-mid);
-    border-radius: 3px;
-    padding: 2px 7px;
-    margin-bottom: 4px;
-  }
-  .win-text-list {
-    margin-top: 6px;
-    padding-left: 16px;
-    font-size: 13px;
-    color: var(--slate);
-  }
-  .win-text-list li {
-    margin-bottom: 2px;
-  }
-
-  .data-note {
-    font-size: 13.5px;
-    color: var(--slate);
-    line-height: 1.65;
-  }
-  .data-note strong { color: var(--ink); font-weight: 600; }
-  .data-note p { margin-bottom: 10px; }
-  .data-note p:last-child { margin-bottom: 0; }
-
-  .data-rows {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-    margin-top: 14px;
-    border-top: 1px solid var(--line);
-  }
-  .data-row {
-    padding: 14px 18px;
-    border-right: 1px solid var(--line);
-  }
-  .data-row:last-child { border-right: none; }
-  .data-row .feature-name {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-  .data-row.purple .feature-name { color: var(--ma); }
-  .data-row.blue .feature-name { color: var(--catperf); }
-  .data-row.teal .feature-name { color: var(--ai); }
-  .data-row .feature-name .dot { width: 7px; height: 7px; border-radius: 50%; }
-  .data-row.purple .feature-name .dot { background: var(--ma); }
-  .data-row.blue .feature-name .dot { background: var(--catperf); }
-  .data-row.teal .feature-name .dot { background: var(--ai); }
-  .data-row .src-text {
-    font-size: 13px;
-    color: var(--slate);
-    line-height: 1.5;
-  }
-  .data-row .src-text strong {
-    color: var(--ink);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 3px;
-  }
-
-  .footer {
-    padding: 18px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid var(--line);
-  }
-  .footer-l { font-size: 13px; color: var(--muted); }
-  .cobalt-pill {
-    background: var(--accent);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-radius: 20px;
-    padding: 5px 14px;
-  }
-
-  @media (max-width: 880px) {
-    .ma-cards, .metrics, .wins-list, .data-rows, .signal-grid { grid-template-columns: 1fr; }
-    .signal-lead { grid-template-columns: 1fr; gap: 10px; }
-    .signal-lead-col { border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 10px; padding-left: 0; padding-right: 0; }
-    .signal-lead-col:last-child { border-bottom: none; padding-bottom: 0; }
-    .ai-steps { grid-template-columns: 1fr; }
-    .ai-step { border-right: none; border-bottom: 1px solid var(--line); }
-    .ai-step:last-child { border-bottom: none; }
-    .ai-modal, .recap.has-image, .nav-row { grid-template-columns: 1fr; }
-    .ai-modal-text, .recap.has-image .recap-text, .nav-row-text { border-right: none; border-bottom: 1px solid var(--line); }
-    .cp-row { grid-template-columns: 50px 1fr; }
-    .cp-text { border-right: none; border-bottom: 1px solid var(--line); }
-    .cp-img { grid-column: 1 / -1; border-top: 1px solid var(--line); }
-    .signal-col, .mcard, .data-row { border-right: none; border-bottom: 1px solid var(--line); }
-    .signal-col:last-child, .mcard:last-child, .data-row:last-child { border-bottom: none; }
-    .source-byline { gap: 6px 12px; }
-    .share-callout { grid-template-columns: 1fr; }
-    .share-callout-left { border-right: none; border-bottom: 1px solid var(--char-mid); padding-right: 0; padding-bottom: 14px; }
-    .masthead { flex-direction: column; align-items: flex-start; }
-    .masthead-meta { text-align: left; }
-    .masthead-sub { text-align: left; }
+  @media (max-width: 600px) {
+    .metric-grid { grid-template-columns: 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .cadence-row { grid-template-columns: 1fr; }
+    .ds-grid { grid-template-columns: 1fr; }
+    .report-section-card { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-<div class="page">
-<div class="card">
+<div class="page-wrapper">
 
-  <!-- MASTHEAD -->
-  <div class="masthead">
-    <div>
-      <div class="kicker">Know Your Competition &nbsp;·&nbsp; Topic 2 of 3</div>
-      <h1>Benchmark Performance<br><em>Quick Start Guide</em></h1>
+  <nav class="breadcrumb">
+    <a href="#">Learning Paths</a> ›
+    <a href="#">Know Your Competition</a> ›
+    Topic 2
+  </nav>
+
+  <div class="article-header">
+    <div class="tag-row">
+      <span class="tag tag-purple">Know Your Competition</span>
+      <span class="tag tag-blue">Topic 2 of 3</span>
+      <span class="tag tag-amber">In-Depth Guide</span>
     </div>
-    <div class="masthead-meta">
-      <div class="masthead-sub-label">This guide covers</div>
-      <div class="masthead-sub">Where you stand and which way you're moving</div>
+    <h1>Benchmark Your Performance vs. Competitors</h1>
+    <p class="article-intro">Your segment is built. Now put it to work. This guide covers every place in Cobalt where you can benchmark your brand — what each one shows you, when to use it, and how to turn the data into something actionable. The focus throughout: understanding market share in the context of revenue, units, and ASP movements.</p>
+    <div class="meta-row">
+      <span>⏱ 20–25 min</span>
+      <span>📍 Market Analysis · Category Performance · AI Analyst · Custom Dashboards</span>
     </div>
   </div>
 
-  <div class="card-inner">
-
-    <!-- ═══ SECTION 1 — SIGNALS ═══ -->
-    <div class="sec-header">
-      <div class="sec-title">The three signals to watch for</div>
-      <div class="sec-line"></div>
-      <div class="sec-tag">Today's number + the trend</div>
-    </div>
-
-    <div class="signal-frame">
-      <div class="signal-lead">
-        <div class="signal-lead-col">
-          <div class="signal-lead-q">Question 1 — Where you stand today</div>
-          <div class="signal-lead-a">Your <strong>share, revenue, units, and ASP</strong> right now answer where you are positioned relative to competitors and the market.</div>
-        </div>
-        <div class="signal-lead-col">
-          <div class="signal-lead-q">Question 2 — Where you're going</div>
-          <div class="signal-lead-a">The <strong>direction your numbers are moving relative to the category</strong> tells you whether you're gaining or losing share — and lands you in one of these three patterns.</div>
-        </div>
-      </div>
-
-      <div class="signal-grid">
-        <div class="signal-col gain">
-          <div class="signal-chart-wrap">
-            <svg class="signal-chart" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-label="Gaining share illustration">
-              <line x1="14" y1="92" x2="206" y2="92" stroke="#cbd5e1" stroke-width="0.6" />
-              <polyline points="14,76 50,72 86,68 122,64 158,60 194,56" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3" stroke-linecap="round" stroke-linejoin="round" />
-              <polyline points="14,78 50,68 86,56 122,42 158,28 194,16" fill="none" stroke="#15803d" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
-              <circle cx="194" cy="16" r="3.5" fill="#15803d" />
-              <circle cx="194" cy="56" r="2.5" fill="#94a3b8" />
-              <text x="200" y="14" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#15803d">↑</text>
-            </svg>
-            <div class="signal-legend">
-              <span class="signal-legend-item"><span class="signal-legend-swatch you-gain"></span>You</span>
-              <span class="signal-legend-item cat-label"><span class="signal-legend-swatch cat"></span>Category</span>
-            </div>
-          </div>
-          <div class="signal-label"><span class="signal-dot"></span> Gaining share</div>
-          <div class="signal-body">
-            <div class="signal-block">
-              <span class="lab">What you're seeing</span>
-              <div class="txt">Your revenue and/or units growing <strong>faster than the category</strong>.</div>
-            </div>
-            <div class="signal-block">
-              <span class="lab">What it means</span>
-              <div class="txt">You're outpacing the market — competitors are losing ground to you.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="signal-col watch">
-          <div class="signal-chart-wrap">
-            <svg class="signal-chart" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-label="Watch illustration">
-              <line x1="14" y1="92" x2="206" y2="92" stroke="#cbd5e1" stroke-width="0.6" />
-              <polyline points="14,76 50,68 86,58 122,48 158,38 194,30" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3" stroke-linecap="round" stroke-linejoin="round" />
-              <polyline points="14,72 50,70 86,68 122,67 158,66 194,64" fill="none" stroke="#d97706" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
-              <circle cx="194" cy="64" r="3.5" fill="#d97706" />
-              <circle cx="194" cy="30" r="2.5" fill="#94a3b8" />
-              <text x="200" y="62" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#d97706">→</text>
-            </svg>
-            <div class="signal-legend">
-              <span class="signal-legend-item"><span class="signal-legend-swatch you-watch"></span>You</span>
-              <span class="signal-legend-item cat-label"><span class="signal-legend-swatch cat"></span>Category</span>
-            </div>
-          </div>
-          <div class="signal-label"><span class="signal-dot"></span> Watch</div>
-          <div class="signal-body">
-            <div class="signal-block">
-              <span class="lab">What you're seeing</span>
-              <div class="txt">Revenue looks okay but <strong>units are declining</strong>, or you're growing slower than the category.</div>
-            </div>
-            <div class="signal-block">
-              <span class="lab">What it means</span>
-              <div class="txt">Surface numbers can hide a share loss. Dig into unit trends and compare to category growth rate.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="signal-col loss">
-          <div class="signal-chart-wrap">
-            <svg class="signal-chart" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-label="Losing share illustration">
-              <line x1="14" y1="92" x2="206" y2="92" stroke="#cbd5e1" stroke-width="0.6" />
-              <polyline points="14,76 50,68 86,58 122,48 158,38 194,30" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3" stroke-linecap="round" stroke-linejoin="round" />
-              <polyline points="14,42 50,52 86,62 122,72 158,80 194,86" fill="none" stroke="#b91c1c" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
-              <circle cx="194" cy="86" r="3.5" fill="#b91c1c" />
-              <circle cx="194" cy="30" r="2.5" fill="#94a3b8" />
-              <text x="200" y="92" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">↓</text>
-            </svg>
-            <div class="signal-legend">
-              <span class="signal-legend-item"><span class="signal-legend-swatch you-loss"></span>You</span>
-              <span class="signal-legend-item cat-label"><span class="signal-legend-swatch cat"></span>Category</span>
-            </div>
-          </div>
-          <div class="signal-label"><span class="signal-dot"></span> Losing share</div>
-          <div class="signal-body">
-            <div class="signal-block">
-              <span class="lab">What you're seeing</span>
-              <div class="txt">Revenue or units declining while the category grows, or <strong>share % falling over time</strong>.</div>
-            </div>
-            <div class="signal-block">
-              <span class="lab">What it means</span>
-              <div class="txt">Competitors are capturing growth you're not. The pattern worth investigating in Topic 3.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- ═══ SECTION 2 — MARKET ANALYSIS ═══ -->
-    <div class="sec-header">
-      <div class="sec-title">Market Analysis</div>
-      <div class="sec-line"></div>
-      <div class="sec-tag purple">Deep competitive analysis</div>
-    </div>
-
-    <div class="source-byline">
-      <div class="source-byline-item"><span class="lab">Data source</span><span class="val purple">Segment data</span></div>
-      <span class="source-byline-sep">·</span>
-      <div class="source-byline-item"><span class="lab">Lag</span><span class="val">~1 week</span></div>
-      <span class="source-byline-sep">·</span>
-      <div class="source-byline-item"><span class="lab">Date range</span><span class="val">Standard presets</span></div>
-    </div>
-
-    <div class="method-intro purple">
-      <div class="method-intro-head"><span class="dot"></span> Use this when</div>
-      <div class="method-intro-body">
-        You need to know exactly how you compare to <strong>specific named competitors</strong>. Three tabs answer the core questions. <strong>Products, Categories, and Attributes</strong> tabs go deeper — see the <a href="../Written%20Guide/">In-Depth Guide</a>.
-      </div>
-    </div>
-
-    <div class="nav-block">
-      <div class="nav-block-head"><span class="dot"></span> How to find it</div>
-      <div class="nav-row">
-        <div class="nav-row-text">
-          <div class="nav-row-path">
-            Left-hand navigation <span class="arrow">→</span> <code>Market Analysis</code> <span class="arrow">→</span> open your <strong>Men's Disposable Shaving Razors</strong> segment
-          </div>
-        </div>
-        <div class="nav-row-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%201.png" alt="Left-hand navigation with Market Analysis highlighted and the Men's Disposable Shaving Razors segment selected">
-        </div>
-      </div>
-    </div>
-
-    <div class="ma-cards">
-      <div class="ma-card">
-        <div class="ma-card-head">
-          <div class="ma-card-pos">Tab 1 · Primary</div>
-          <div class="ma-card-name">Overview</div>
-        </div>
-        <div class="ma-card-body">
-          <div class="ma-card-onel"><strong>Your top-line share</strong> and a snapshot of how all brands in your segment compare on revenue, market share, units, and ASP.</div>
-        </div>
-        <div class="ma-card-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%202.png" alt="Men's Disposable Shaving Razor Segment Overview tab over the last year — segment revenue up 12.9%, BIC market share down 1.4%">
-        </div>
-      </div>
-
-      <div class="ma-card">
-        <div class="ma-card-head">
-          <div class="ma-card-pos">Tab 2 · Primary</div>
-          <div class="ma-card-name">Brands</div>
-        </div>
-        <div class="ma-card-body">
-          <div class="ma-card-onel"><strong>Trend over time</strong> — which brands are gaining or losing share, and exactly when those shifts started.</div>
-        </div>
-        <div class="ma-card-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%203.png" alt="Brands tab stacked area chart showing market share over the last year for the Men's Disposable Shaving Razor segment">
-        </div>
-      </div>
-
-      <div class="ma-card">
-        <div class="ma-card-head">
-          <div class="ma-card-pos">Tab 6 · Primary</div>
-          <div class="ma-card-name">Pricing</div>
-        </div>
-        <div class="ma-card-body">
-          <div class="ma-card-onel"><strong>ASP and price band</strong> — where your revenue sits in the price stack and how your ASP compares to the segment average over time.</div>
-        </div>
-        <div class="ma-card-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%204.png" alt="Pricing tab — ASP trend over the last year showing your ASP, the market average ASP, and trend with one week hovered">
-        </div>
-      </div>
-    </div>
-
-
-    <!-- ═══ SECTION 3 — CATEGORY PERFORMANCE ═══ -->
-    <div class="sec-header">
-      <div class="sec-title">Category Performance</div>
-      <div class="sec-line"></div>
-      <div class="sec-tag blue">Quick pulse check</div>
-    </div>
-
-    <div class="source-byline">
-      <div class="source-byline-item"><span class="lab">Data source</span><span class="val blue">Category Performance</span></div>
-      <span class="source-byline-sep">·</span>
-      <div class="source-byline-item"><span class="lab">Lag</span><span class="val">~3 weeks</span></div>
-      <span class="source-byline-sep">·</span>
-      <div class="source-byline-item"><span class="lab">Date range</span><span class="val">Custom or presets</span></div>
-    </div>
-
-    <div class="method-intro blue">
-      <div class="method-intro-head"><span class="dot"></span> Use this when</div>
-      <div class="method-intro-body">
-        You want a fast read on share against the <strong>full subcategory</strong> — every ASIN, broader denominator than your segment. The Home page has a Market Share card for top categories at a glance, but Category Performance is where the useful work happens.
-      </div>
-    </div>
-
-    <div class="nav-block">
-      <div class="nav-block-head"><span class="dot"></span> How to find it</div>
-      <div class="nav-row">
-        <div class="nav-row-text">
-          <div class="nav-row-label"><span class="badge">Primary</span></div>
-          <div class="nav-row-path">
-            Left-hand navigation <span class="arrow">→</span> <code>Category Performance</code> <span class="arrow">→</span> select your subcategory
-          </div>
-        </div>
-        <div class="nav-row-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%205.png" alt="Left-hand navigation with Category Performance selected and the tree expanded with Men's Disposable Shaving Razors highlighted">
-        </div>
-      </div>
-      <div class="nav-row">
-        <div class="nav-row-text">
-          <div class="nav-row-label"><span class="badge alt">If you don't know your subcategory</span></div>
-          <div class="nav-row-path">
-            From the <strong>Home page</strong>, open the <code>Sales Breakdown</code> table and click any row — Category Performance opens pre-filtered to that subcategory.
-          </div>
-        </div>
-        <div class="nav-row-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%2010.png" alt="Home page Sales Breakdown table with subcategory rows that can be clicked to open Category Performance pre-filtered">
-        </div>
-      </div>
-    </div>
-
-    <div class="cp-list">
-      <div class="cp-row">
-        <div class="cp-num-cell"><div class="cp-num">1</div></div>
-        <div class="cp-text">
-          <div class="cp-name">Switch to Benchmark Mode &amp; filter to your brand</div>
-          <div class="cp-body">
-            Toggle <strong>Benchmark Mode</strong>, then filter to your brand. You'll see your <strong>revenue, units, and ASP vs. the subcategory average</strong> side by side — not against named competitors, but against the aggregate.
-          </div>
-        </div>
-        <div class="cp-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%206.png" alt="Category Performance Benchmark Mode with BIC selected showing main category performance metrics">
-        </div>
-      </div>
-
-      <div class="cp-row">
-        <div class="cp-num-cell"><div class="cp-num">2</div></div>
-        <div class="cp-text">
-          <div class="cp-name">Navigate the category tree</div>
-          <div class="cp-body">
-            Move up and down the hierarchy to see your share at <strong>different scopes</strong> — your subcategory vs. parent vs. broader family. Watch whether share is growing or declining at each level.
-          </div>
-        </div>
-        <div class="cp-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%207.png" alt="Category Performance breadcrumbs at the top of the page showing the category tree path">
-        </div>
-      </div>
-    </div>
-
-    <div class="recap blue">
-      <div class="recap-text">
-        <div class="recap-head"><span class="dot"></span> What you'll find</div>
-        <div class="recap-body">
-          Three things to read in Benchmark Mode, in order:
-        </div>
-        <div class="recap-list">
-          <div class="recap-item">
-            <span class="num">1</span>
-            <span><span class="name">Your three metrics vs. subcategory average</span><span class="desc">— revenue, units, ASP side by side</span></span>
-          </div>
-          <div class="recap-item">
-            <span class="num">2</span>
-            <span><span class="name">Trend over time</span><span class="desc">— whether you're keeping pace with category growth</span></span>
-          </div>
-          <div class="recap-item">
-            <span class="num">3</span>
-            <span><span class="name">Share at parent &amp; broader levels</span><span class="desc">— signals adjacent opportunity or shrinking relevance</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- ═══ SECTION 4 — AI ANALYST ═══ -->
-    <div class="sec-header">
-      <div class="sec-title">AI Analyst Benchmark Brand</div>
-      <div class="sec-line"></div>
-      <div class="sec-tag teal">Automated report</div>
-    </div>
-
-    <div class="source-byline">
-      <div class="source-byline-item"><span class="lab">Data source</span><span class="val teal">Category Performance + your integrated Seller / Vendor Central data</span></div>
-      <span class="source-byline-sep">·</span>
-      <div class="source-byline-item"><span class="lab">Lag</span><span class="val">~3 weeks</span></div>
-      <span class="source-byline-sep">·</span>
-      <div class="source-byline-item"><span class="lab">Date range</span><span class="val">Last 365 days · fixed</span></div>
-    </div>
-
-    <div class="method-intro teal">
-      <div class="method-intro-head"><span class="dot"></span> Use this when</div>
-      <div class="method-intro-body">
-        You want a <strong>structured starting point</strong> that surfaces the questions worth investigating — or when you want an automated, well-formatted report with just a few clicks. Configure once, run, and read.
-      </div>
-    </div>
-
-    <div class="nav-block">
-      <div class="nav-block-head"><span class="dot"></span> How to find it</div>
-      <div class="nav-row">
-        <div class="nav-row-text">
-          <div class="nav-row-path">
-            Left-hand navigation <span class="arrow">→</span> <code>AI Analyst</code> <span class="arrow">→</span> click <strong>Benchmark Brand</strong>
-          </div>
-        </div>
-        <div class="nav-row-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%208.png" alt="Left-hand navigation with AI Analyst selected and Benchmark Brand highlighted on the page">
-        </div>
-      </div>
-    </div>
-
-    <div class="ai-steps">
-      <div class="ai-step">
-        <div class="ai-step-n">1</div>
-        <div class="ai-step-text">
-          <div class="ai-step-action">Choose Benchmark Brand</div>
-          <div class="ai-step-detail">Click <strong>Benchmark Brand</strong> from AI Analyst to start a new report.</div>
-        </div>
-      </div>
-      <div class="ai-step">
-        <div class="ai-step-n">2</div>
-        <div class="ai-step-text">
-          <div class="ai-step-action">Configure your report</div>
-          <div class="ai-step-detail">Pick <strong>Marketplace</strong>, <strong>Brand</strong>, and a <strong>leaf-node Subcategory</strong>. Selectable subcategories show a circle; expand arrows to reach deeper levels.</div>
-        </div>
-      </div>
-      <div class="ai-step">
-        <div class="ai-step-n">3</div>
-        <div class="ai-step-text">
-          <div class="ai-step-action">Run Analysis</div>
-          <div class="ai-step-detail">Reports generate in <strong>under a minute</strong>. If you navigate away, return to AI Analyst and refresh to find it under My Reports.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ai-modal">
-      <div class="ai-modal-text">
-        <div class="ai-modal-head"><span class="dot"></span> Inside the configuration modal</div>
-        <div class="ai-modal-body">
-          The <strong>Marketplace dropdown</strong> sits at the top, followed by the <strong>Brand selector</strong> and <strong>subcategory tree</strong>. Subcategories with a circle are selectable; arrow icons expand the tree to deeper levels. Pick one leaf-node subcategory per report.
-        </div>
-      </div>
-      <div class="ai-modal-img">
-        <img src="KYC%20Topic%202%20Quick%20Guide%2011.png" alt="AI Analyst Benchmark Brand configuration modal — Marketplace, Brand, and Subcategory selectors">
-      </div>
-    </div>
-
-    <div class="recap teal has-image">
-      <div class="recap-text">
-        <div class="recap-head"><span class="dot"></span> What you'll find</div>
-        <div class="recap-body">
-          The report has <strong>five sections</strong>. <strong>Skim the Executive Summary first</strong> for the headline read. Then jump to the section that matches your question.
-        </div>
-        <div class="recap-list">
-          <div class="recap-item">
-            <span class="num">1</span>
-            <span><span class="name">Executive Summary</span><span class="first">Start here</span></span>
-          </div>
-          <div class="recap-item">
-            <span class="num">2</span>
-            <span><span class="name">Brand Performance</span><span class="desc">— you vs. subcategory</span></span>
-          </div>
-          <div class="recap-item">
-            <span class="num">3</span>
-            <span><span class="name">Competitive Landscape</span><span class="desc">— who's taking share</span></span>
-          </div>
-          <div class="recap-item">
-            <span class="num">4</span>
-            <span><span class="name">Price Positioning</span><span class="desc">— Opportunity / Risk by band</span></span>
-          </div>
-          <div class="recap-item">
-            <span class="num">5</span>
-            <span><span class="name">Search Insights</span><span class="desc">— SOV &amp; keyword gaps</span></span>
-          </div>
-        </div>
-      </div>
-      <div class="recap-img">
-        <img src="KYC%20Topic%202%20Quick%20Guide%209.png" alt="Executive Summary section of the AI Analyst Benchmark Brand report">
-      </div>
-    </div>
-
-
-    <!-- ═══ SECTION 5 — READING YOUR NUMBERS ═══ -->
-    <div class="sec-header">
-      <div class="sec-title">Reading your numbers</div>
-      <div class="sec-line"></div>
-      <div class="sec-tag">Read together, not in isolation</div>
-    </div>
-
-    <div class="metrics-bridge">
-      <span class="lead-q">A reading lens for any of the methods above</span>
-      <div>Whichever method you used, you'll see these metrics. <strong>Market share</strong> is the headline — it tells you where you stand. <strong>Revenue, units, and ASP</strong> are the inputs that explain why share moved. Below is BIC's actual position in Men's Disposable Shaving Razors over the last 365 days.</div>
-    </div>
-
-    <!-- Market Share callout — sits ABOVE the 3 input metric cards -->
-    <div class="share-callout">
-      <div class="share-callout-left">
-        <div class="share-callout-label">BIC Market Share</div>
-        <div class="share-callout-value">8.1%</div>
-        <div class="share-callout-deltas">
-          <div class="share-callout-delta">
-            <span class="deltabel">Absolute</span>
-            <span class="deltaval">-1.4 pp</span>
-          </div>
-          <div class="share-callout-delta">
-            <span class="deltabel">Relative</span>
-            <span class="deltaval">-14.4%</span>
-          </div>
-        </div>
-      </div>
-      <div class="share-callout-right">
-        Two ways to describe the same drop. <span class="pp-tag">-1.4 pp</span> is the <strong>absolute change</strong> — the gap between this period's share and last period's. <span class="rel-tag">-14.4%</span> is the <strong>relative change</strong> — how much BIC's share shrank as a fraction of its former size. Both are correct. Cobalt shows the absolute change in the Brands table; the relative change appears in the brand slide-out view.
-      </div>
-    </div>
-
-    <div class="metrics">
-      <div class="mcard">
-        <div class="mcard-head"><div class="mcard-name">Revenue</div></div>
-        <div class="mcard-q">How much is BIC generating?</div>
-        <div class="mcard-data">
-          <div class="mcard-value">$3.75M</div>
-          <div class="mcard-delta"><span class="down">-3.3%</span> YoY (-$128.9K)</div>
-        </div>
-        <div class="mcard-context">
-          <span class="lab">Read together with the segment</span>
-          BIC revenue declined <strong>3.3%</strong> while the segment grew <strong>+12.9%</strong>. BIC is losing ground in a growing market — the <strong>Losing share</strong> pattern.
-        </div>
-      </div>
-      <div class="mcard">
-        <div class="mcard-head"><div class="mcard-name">Units Sold</div></div>
-        <div class="mcard-q">How much demand is BIC capturing?</div>
-        <div class="mcard-data">
-          <div class="mcard-value">311,438</div>
-          <div class="mcard-delta"><span class="na">YoY change not shown by default</span></div>
-        </div>
-        <div class="mcard-context">
-          <span class="lab">Read together with revenue and ASP</span>
-          Units tell you the <strong>volume side</strong> of the story. To see YoY unit change, set the date range to the prior period and compare manually.
-        </div>
-      </div>
-      <div class="mcard">
-        <div class="mcard-head"><div class="mcard-name">ASP</div></div>
-        <div class="mcard-q">How is BIC competing on price?</div>
-        <div class="mcard-data">
-          <div class="mcard-value">$12.04</div>
-          <div class="mcard-delta">vs. <strong>$11.60</strong> market average</div>
-        </div>
-        <div class="mcard-context">
-          <span class="lab">Read together with units</span>
-          BIC's ASP is <strong>$0.44 above</strong> the market — a <strong>premium position</strong>. With share declining, is the premium protecting margin or pricing BIC out?
-        </div>
-      </div>
-    </div>
-
-
-    <!-- ═══ LOWER STACK ═══ -->
-    <div class="lower-stack">
-      <div class="lower-card">
-        <div class="lower-card-head"><div class="dot"></div>Quick wins</div>
-        <div class="lower-card-body">
-          <div class="wins-list">
-            <div class="win-item">
-              <div class="win-num-pill">1</div>
-              <div class="win-text">
-                <strong>Know your share from all three sources.</strong>
-                Pull the same date range across Market Analysis, Category Performance, and AI Analyst Search Insights. They'll be different — and that's expected.
-              </div>
-            </div>
-            <div class="win-item">
-              <div class="win-num-pill">2</div>
-              <div class="win-text">
-                <strong>Apply the metric combination signals.</strong>
-                Match your revenue / units / ASP pattern against the gain / watch / loss signals above. If you're in a Watch or Risk pattern, surface it to your team.
-              </div>
-            </div>
-            <div class="win-item segue">
-              <div class="win-num-pill">3</div>
-              <div class="win-text">
-                <span class="win-upnext-tag">Up next</span>
-                <strong>You're now analyzing your market and identifying who's growing or shrinking.</strong>
-                In <strong>Topic 3</strong>, we go deeper on the brands disrupting your market by:
-                <ul class="win-text-list">
-                  <li>Gaining share</li>
-                  <li>Changing their pricing strategy</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lower-card">
-        <div class="lower-card-head"><div class="dot"></div>Why numbers differ across features</div>
-        <div class="lower-card-body">
-          <div class="data-note">
-            <p>Same subcategory, different numbers. Each view answers a different question about a different version of the market — none of them are wrong.</p>
-            <div class="data-rows">
-              <div class="data-row purple">
-                <div class="feature-name"><span class="dot"></span> Market Analysis</div>
-                <div class="src-text">
-                  <strong>Segment data</strong>
-                  Your filtered ASIN pool, ~1 week lag, adjustable date range presets.
-                </div>
-              </div>
-              <div class="data-row blue">
-                <div class="feature-name"><span class="dot"></span> Home &amp; Category Performance</div>
-                <div class="src-text">
-                  <strong>Category Performance data</strong>
-                  Every ASIN in the subcategory, ~3 week lag, custom date ranges available.
-                </div>
-              </div>
-              <div class="data-row teal">
-                <div class="feature-name"><span class="dot"></span> AI Analyst</div>
-                <div class="src-text">
-                  <strong>Category Performance + your integrated data</strong>
-                  Fixed at last 365 days. Your brand metrics use your integrated Seller or Vendor Central data; competitor data uses Jungle Scout estimates.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  <!-- BIZ QUESTIONS -->
+  <div class="callout callout-blue" style="margin-bottom: 28px;">
+    <div class="callout-title">What you're here to answer</div>
+    <p><strong>1. Where do I stand today?</strong> — What's my revenue, unit, and ASP position relative to my competitors and the broader market right now?<br><br><strong>2. Am I moving in the right direction?</strong> — Am I gaining or losing share, and by how much?</p>
   </div>
 
-  <div class="footer">
-    <div class="footer-l">Scale Onboarding &nbsp;·&nbsp; Know Your Competition &nbsp;·&nbsp; Topic 2 of 3 &nbsp;·&nbsp; For full guide see your Learning Path</div>
-    <div class="cobalt-pill">Cobalt</div>
+  <!-- TOC -->
+  <div class="toc-box">
+    <div class="toc-label">In this guide</div>
+    <ul class="toc-list">
+      <li><span class="toc-num">1</span><a href="#metrics">How to read the data: revenue, units, and ASP</a></li>
+      <li><span class="toc-num">2</span><a href="#overview">Where to benchmark in Cobalt — an overview</a></li>
+      <li><span class="toc-num">3</span><a href="#market-analysis">Market Analysis: your segment view</a></li>
+      <li class="toc-sub"><span class="toc-num">↳</span><a href="#ma-overview">Overview tab</a></li>
+      <li class="toc-sub"><span class="toc-num">↳</span><a href="#ma-brands">Brands tab</a></li>
+      <li class="toc-sub"><span class="toc-num">↳</span><a href="#ma-products">Products tab</a></li>
+      <li class="toc-sub"><span class="toc-num">↳</span><a href="#ma-categories">Categories tab</a></li>
+      <li class="toc-sub"><span class="toc-num">↳</span><a href="#ma-attributes">Attributes tab</a></li>
+      <li class="toc-sub"><span class="toc-num">↳</span><a href="#ma-pricing">Pricing tab</a></li>
+      <li><span class="toc-num">4</span><a href="#cat-perf">Home page and Category Performance</a></li>
+      <li><span class="toc-num">5</span><a href="#ai-analyst">AI Analyst: Benchmark Brand report</a></li>
+      <li><span class="toc-num">6</span><a href="#comparison">Side-by-side: razor example across methods</a></li>
+      <li class="toc-sub"><span class="toc-num">↳</span><a href="#ref-table">Metric combination reference table</a></li>
+      <li><span class="toc-num">7</span><a href="#where-to-find">Where to find the data that answers your questions</a></li>
+      <li><span class="toc-num">8</span><a href="#quick-wins">Quick wins</a></li>
+      <li><span class="toc-num">9</span><a href="#cadence">How often to benchmark</a></li>
+      <li><span class="toc-num">—</span><a href="#appendix">Appendix: Why numbers differ across features</a></li>
+    </ul>
   </div>
 
-</div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 — METRICS
+  ══════════════════════════════════════════ -->
+  <div class="section" id="metrics">
+    <div class="section-eyebrow">Section 1</div>
+    <h2>How to read the data: revenue, units, and ASP</h2>
+
+    <p>Cobalt surfaces three core metrics for benchmarking. Each answers a different question — and the real insight comes from reading them together, not in isolation.</p>
+
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-name">Revenue</div>
+        <div class="metric-q">How much is this brand generating?</div>
+        <p class="metric-desc">Total sales dollars. Tells you scale and overall position, but not efficiency or demand. Revenue can grow while share shrinks if the market grows faster.</p>
+      </div>
+      <div class="metric-card">
+        <div class="metric-name">Units Sold</div>
+        <div class="metric-q">How much demand is this brand capturing?</div>
+        <p class="metric-desc">Volume of products sold — the demand signal, independent of price. A brand losing units while holding revenue is raising prices to compensate.</p>
+      </div>
+      <div class="metric-card">
+        <div class="metric-name">ASP</div>
+        <div class="metric-q">How is this brand competing on price?</div>
+        <p class="metric-desc">Average selling price. Reveals pricing strategy and market position. A rising ASP with declining units suggests trading volume for margin.</p>
+      </div>
+    </div>
+
+    <h3>Three signals to watch for</h3>
+    <p>As you look at these metrics across Cobalt features, you're watching for one of three situations. A detailed reference table with all metric combinations is in <a href="#ref-table">Section 6</a> — once you've seen your own numbers, that table will make more sense.</p>
+
+    <table class="signal-table">
+      <thead>
+        <tr>
+          <th style="width:120px;">Signal</th>
+          <th>What you're seeing</th>
+          <th>What it means</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-good">
+          <td><span class="badge badge-good">Gaining share</span></td>
+          <td>Your revenue and/or units growing faster than the category</td>
+          <td>You're outpacing the market — competitors are losing ground to you</td>
+        </tr>
+        <tr class="row-watch">
+          <td><span class="badge badge-watch">Watch</span></td>
+          <td>Revenue looks okay but units are declining, or you're growing slower than the category</td>
+          <td>Surface-level numbers can hide a share loss — dig into unit trends and compare to category growth rate</td>
+        </tr>
+        <tr class="row-risk">
+          <td><span class="badge badge-risk">Losing share</span></td>
+          <td>Revenue or units declining while the category grows, or share % falling over time</td>
+          <td>Competitors are capturing growth you're not — this is the pattern worth investigating in Topic 3</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-blue">
+      <div class="callout-title">Trend matters more than a single number</div>
+      <p>Look at 3–6 months before drawing conclusions. Growing revenue in a fast-growing market can still mean losing share. One slow month is noise; six consecutive months of declining unit share is a signal.</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 — OVERVIEW TABLE
+  ══════════════════════════════════════════ -->
+  <div class="section" id="overview">
+    <div class="section-eyebrow">Section 2</div>
+    <h2>Where to benchmark in Cobalt — an overview</h2>
+
+    <p>There are three main places in Cobalt to access benchmark data, plus Custom Dashboards for building a combined view. Each serves a different purpose. Use the table to orient yourself, then follow the sections for the approach you need.</p>
+
+    <table class="method-table">
+      <thead>
+        <tr>
+          <th>Where</th>
+          <th>What it gives you</th>
+          <th>Best for</th>
+          <th>Data source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="chip chip-purple">Market Analysis</span></td>
+          <td>Revenue, units, ASP for your specific competitive set — filtered to the brands and products you actually compete with</td>
+          <td>Deep competitive analysis; named competitor comparison; your most precise market share view</td>
+          <td>Segment data (your filtered ASIN pool)</td>
+        </tr>
+        <tr>
+          <td><span class="chip chip-blue">Home page &amp; Category Performance</span></td>
+          <td>Your brand's share of a subcategory vs. the full subcategory average</td>
+          <td>Quick pulse check on share; broader category context</td>
+          <td>Category Performance (all ASINs in subcategory)</td>
+        </tr>
+        <tr>
+          <td><span class="chip chip-teal">AI Analyst — Benchmark Brand</span></td>
+          <td>AI-generated report: market share trend, competitive landscape, price band positioning — in plain language</td>
+          <td>Fast orientation; price band analysis; shareable report format</td>
+          <td>Category Performance (all ASINs in subcategory)</td>
+        </tr>
+        <tr>
+          <td><span class="chip chip-dash">Custom Dashboards</span></td>
+          <td>Any combination of the above in a layout you design and return to on your schedule</td>
+          <td>Recurring check-ins; combining segment and category views</td>
+          <td>Mixed — depends on widgets you add</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-amber">
+      <div class="callout-title">Why numbers differ across features</div>
+      <p><span class="chip chip-purple">Market Analysis</span> uses segment data — a filtered, tighter ASIN pool with its own sales estimation model. <span class="chip chip-blue">Home page</span>, <span class="chip chip-blue">Category Performance</span>, and <span class="chip chip-teal">AI Analyst</span> all use Category Performance data — every ASIN in the subcategory, including inactive or miscategorized products. Same subcategory, different scope, different numbers. See the <a href="#appendix">Appendix</a> for a full explanation.</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 — MARKET ANALYSIS
+  ══════════════════════════════════════════ -->
+  <div class="section" id="market-analysis">
+    <div class="section-eyebrow">Section 3</div>
+    <div class="feature-eyebrow feat-purple">
+      <div class="feature-rule"></div>
+      <div class="feature-label">Market Analysis</div>
+    </div>
+    <h2>Your segment view</h2>
+
+    <p>Market Analysis is where your segments live — and where you'll do your deepest benchmarking work. Because your segment was built with specific filters (brands, keywords, minimum review counts), the data here reflects your actual competitive set, not every product Amazon has in that subcategory.</p>
+
+    <p>This precision matters. The Men's Disposable Razors subcategory includes hundreds of ASINs at wildly different price points, review counts, and quality levels — many of which are not competing for the same shopper you are. Your segment, filtered to the brands and product types you actually compete with, gives you a benchmark that means something.</p>
+
+    <p>The six tabs in Market Analysis follow a natural analysis progression that moves from market-level to root cause: start with the <strong>Overview</strong> to understand where you stand and what the market looks like. Move to <strong>Brands</strong> to see which specific brands are causing the share shifts you observed. Go to <strong>Products</strong> to see which products from those brands are doing the work. Use <strong>Categories</strong> if your segment spans multiple subcategories. Then <strong>Attributes</strong> and <strong>Pricing</strong> start revealing what those products have in common — the features, configurations, and price points that are connecting with buyers. You don't need all six every time, but this is the logical path from "what's happening?" to "why is it happening?"</p>
+
+    <p>In Topic 1, we built four segments at different levels of specificity: Shaving Razors (broadest) → Disposable Razors → and then two at the same level: Women's Disposable and Men's Disposable. For benchmarking your competitive position in Men's Disposable Razors specifically, you'd use the Men's Disposable segment. The broader parent segments are useful for category context but show a larger pool than your true competitive set for that specific subcategory.</p>
+
+    <h3>Find your segment</h3>
+    <p>In the left nav, click <strong>Market Analysis</strong>. The segment list has two tabs: <strong>Saved market segments</strong> (all segments in your organization that you have access to) and <strong>Created by me</strong> (only segments you created). If your organization has many segments, the easiest approach is to go to the <strong>Created by me</strong> tab and use the search field to find the segment you want, or use the search bar directly from the main list. For this guide, open your Men's Disposable Shaving Razors segment.</p>
+
+    <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%201.png" alt="Market Analysis segment list showing Saved market segments and Created by me tabs with search" width="100%" style="height:auto;">
+    </div>
+
+    <div class="date-note">
+      <strong>Date range note:</strong> Market Analysis only offers preset date ranges — no custom date entry. "Last 90 days" in Market Analysis resolves to the last 90 days of available segment data, on roughly a 1-week lag. This will not match "Last 90 days" in Category Performance or AI Analyst exactly, since each feature's date presets anchor to different data update schedules. For the closest comparison, use the same preset across features and note that the actual windows may differ by a few weeks. See the <a href="#appendix">Appendix</a> for more on data lag by feature.
+    </div>
+
+    <p>Once you're in your segment, Market Analysis organizes data across six tabs. Here's what each one is for and when to use it.</p>
+
+    <!-- ── OVERVIEW TAB ── -->
+    <div class="tab-block" id="ma-overview">
+      <div class="tab-header">
+        <div class="tab-name">Overview tab</div>
+        <span class="tab-weight weight-primary">Primary</span>
+      </div>
+      <div class="tab-body">
+        <div class="tab-use-when">Use this when: you want your top-line market share and a quick read on how all brands in your segment compare</div>
+
+        <p>The Overview tab is your starting point. It shows your brand's share of the total segment — not the full subcategory, but the competitive set you defined. This is the number that answers "where do I stand among my actual competitors?"</p>
+
+        <p>At the top of the page, your market share percentage is displayed prominently alongside total segment revenue for the period. This share is calculated only across the ASINs in your segment — the brands and products that met your filter criteria when you built it. This is your share of your actual competitive set, not the full subcategory.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.png" alt="Market Analysis Overview tab showing BIC market share % and total segment revenue" width="100%" style="height:auto;">
+    </div>
+
+        <p>Below the headline share number, the <strong>Segment Composition</strong> brand comparison table lets you switch between three views using the metric selector:</p>
+
+        <h4>Revenue view</h4>
+        <p>Shows total revenue for each brand in the segment for the selected period. Use this to understand the revenue gap between you and your competitors — who's generating more, who's generating less, and by how much.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.2.1.png" alt="Market Analysis Overview — brand comparison table with Revenue selected" width="100%" style="height:auto;">
+    </div>
+
+        <h4>Market Share view</h4>
+        <p>Shows each brand's share of the segment as a percentage. This is the most direct competitive comparison — you can see at a glance who owns the most share and how yours compares. Track this number over time; consistent share gain or loss is your most important competitive signal.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.2.2.png" alt="Market Analysis Overview — brand comparison table with Market Share selected" width="100%" style="height:auto;">
+    </div>
+
+        <h4>Units view</h4>
+        <p>Shows total units sold per brand. Compare units alongside revenue to understand whether competitors are growing through volume or pricing. A brand growing revenue without growing units is raising prices; a brand growing units without growing revenue is likely discounting.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.2.3.png" alt="Market Analysis Overview — brand comparison table with Units selected" width="100%" style="height:auto;">
+    </div>
+
+        <h4>Average Selling Price (ASP)</h4>
+        <p>The ASP view shows each brand's average selling price for the period. Use this to understand where you sit in the price stack relative to your competitors. A significant gap between your ASP and a growing competitor's ASP tells you something about how they're competing — volume at lower prices, or premium positioning at higher prices.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.3.png" alt="Market Analysis Overview — Average Selling Price chart showing your brand ASP vs. segment ASP" width="100%" style="height:auto;">
+    </div>
+
+        <div class="razor-example">
+          <div class="razor-label">🪒 Razor example — Overview tab</div>
+          <p>In the Men's Disposable Razors segment (YTD, April 30, 2026), BIC's share of the segment is <strong>8.1%</strong> with total segment revenue of <strong>$15.5M</strong>. The segment includes all brands that met your filter criteria — you'll see the top brands most prominently in charts and tables, with others appearing further down or grouped in an "other" category for visualization purposes. This 8.1% is meaningfully different from BIC's share of the full Men's Disposable Shaving Razors subcategory — because the denominator here is your filtered competitive set, not every ASIN Amazon has categorized in that subcategory including inactive listings and low-quality products. In the revenue view, you can see the relative scale of each brand; in the units view, you can start to see whether any brand's growth is volume-driven or price-driven.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BRANDS TAB ── -->
+    <div class="tab-block" id="ma-brands">
+      <div class="tab-header">
+        <div class="tab-name">Brands tab</div>
+        <span class="tab-weight weight-primary">Primary</span>
+      </div>
+      <div class="tab-body">
+        <div class="tab-use-when">Use this when: you want to see which brands are gaining or losing share over time and when those shifts happened</div>
+
+        <p>The Brands tab gives you the time-series view of your competitive set. While the Overview tab shows a snapshot for the selected period, the Brands tab lets you scroll through a stacked area chart to see how each brand's share has moved month by month. As one brand's band grows, another shrinks — making it easy to see which specific brands are responsible for share movement in the market.</p>
+
+        <p>Set the chart to <strong>Market Share</strong> using the metric selector in the top right. The stacked area chart shows each brand as a colored band. You can also switch to <strong>Revenue</strong> or <strong>Units</strong> to see those trend lines. Hover over any point to see exact figures for that month.</p>
+
+        <p>This tab is where you start connecting market-level trends to brand-level causes. If the Overview shows the market grew 15% but your share dropped, the Brands tab tells you which brand captured that growth and approximately when it started happening.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.4.png" alt="Market Analysis Brands tab — stacked area chart showing market share by brand with hover detail" width="100%" style="height:auto;">
+    </div>
+
+        <div class="razor-example">
+          <div class="razor-label">🪒 Razor example — Brands tab</div>
+          <p>In the Men's Disposable Razors segment YTD, the Brands tab shows BIC's share growing slightly at the start of the year before leveling off — not a dramatic decline, but also not sustained growth. This tells a more nuanced story than a single snapshot: BIC had some early momentum but has not continued to build on it. Meanwhile, hovering over any point on the chart shows the exact share for each brand at that moment in time, making it easy to pinpoint when specific shifts happened. The trend view here is more valuable than any single data point — a short-term gain that flattens is a different signal than consistent growth, and the Brands tab makes that distinction visible.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PRODUCTS TAB ── -->
+    <div class="tab-block" id="ma-products">
+      <div class="tab-header">
+        <div class="tab-name">Products tab</div>
+        <span class="tab-weight weight-secondary">Secondary</span>
+      </div>
+      <div class="tab-body">
+        <div class="tab-use-when">Use this when: you want to see which specific products are driving the brand-level trends you spotted in the Brands tab</div>
+
+        <p>Once you've identified which brands are gaining or losing share, the Products tab lets you go one level deeper — which products from those brands are actually making the moves. The stacked area chart shows the top 5, 10, or 55 products by revenue, each as a colored band. Switch between Revenue, Units, and Market Share to understand whether a brand's growth is coming from one breakout product or distributed across their catalog.</p>
+
+        <p>This is where you start answering the "how are they doing it?" question — before you can understand strategy (pricing, keywords, assortment), you need to know which products are responsible.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.5.png" alt="Market Analysis Products tab — stacked area chart with Revenue selected, top 10 products" width="100%" style="height:auto;">
+    </div>
+
+        <div class="razor-example">
+          <div class="razor-label">🪒 Razor example — Products tab</div>
+          <p>If the Brands tab showed Kitsch gaining share from BIC, the Products tab tells you whether that's coming from a single Kitsch product that's breaking out or from broad growth across their catalog. If it's one product — a specific pack size or style — that's a very different signal than if Kitsch is growing evenly across everything they sell. That distinction shapes what you look at next.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CATEGORIES TAB ── -->
+    <div class="tab-block" id="ma-categories">
+      <div class="tab-header">
+        <div class="tab-name">Categories tab</div>
+        <span class="tab-weight weight-mention">Reference</span>
+      </div>
+      <div class="tab-body">
+        <div class="tab-use-when">Use this when: your segment spans multiple subcategories and you want to see how revenue breaks down across them</div>
+
+        <p>The Categories tab shows revenue broken down by category node for the products in your segment. It's most useful when you're working with a broader parent segment that spans multiple subcategories — for example, the Shaving Razors segment that includes disposable, cartridge, and other subcategory types. You can see which subcategory is driving the most revenue and how that has shifted over time.</p>
+
+        <p>Note: the Men's Disposable Razors segment is limited to one subcategory, so the Categories tab doesn't show a meaningful breakdown there. The screenshot below uses the broader Shaving Razors segment to illustrate what this tab looks like when your segment spans multiple subcategories. If your segment covers multiple subcategories, this tab is a useful way to see how revenue is distributed across them.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.6.png" alt="Market Analysis Categories tab — subcategory revenue breakdown bar chart" width="100%" style="height:auto;">
+    </div>
+      </div>
+    </div>
+
+    <!-- ── ATTRIBUTES TAB ── -->
+    <div class="tab-block" id="ma-attributes">
+      <div class="tab-header">
+        <div class="tab-name">Attributes tab</div>
+        <span class="tab-weight weight-mention">Reference</span>
+      </div>
+      <div class="tab-body">
+        <div class="tab-use-when">Use this when: you want to understand what product characteristics are driving revenue within your segment — color, size, material, and more</div>
+
+        <p>The Attributes tab shows how different product attributes map to revenue within your segment. Available attributes depend on what data Cobalt has for the products in your segment — currently this includes attributes like color, size, and material. Each attribute type shows a bar chart breaking down revenue and units by that attribute value.</p>
+
+        <p>The specific attributes available will vary by segment and category. For some segments, attributes like color or material are very revealing — for others, the breakdown may be less directly actionable. The value of this tab is highly dependent on your product category and what attributes your customers use to choose between products.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.7.png" alt="Market Analysis Attributes tab — color attribute breakdown showing revenue by product color" width="100%" style="height:auto;">
+    </div>
+      </div>
+    </div>
+
+    <!-- ── PRICING TAB ── -->
+    <div class="tab-block" id="ma-pricing">
+      <div class="tab-header">
+        <div class="tab-name">Pricing tab</div>
+        <span class="tab-weight weight-primary">Primary</span>
+      </div>
+      <div class="tab-body">
+        <div class="tab-use-when">Use this when: you want to understand where your revenue sits in the price stack and how your ASP compares to competitors over time</div>
+
+        <p>The Pricing tab surfaces several views for understanding how pricing maps to performance within your segment. ASP movements explain a lot of what you see in revenue and unit numbers — a brand losing units but growing revenue is almost always raising price, and the Pricing tab confirms it with the data.</p>
+
+        <h4>Revenue and products by price band</h4>
+        <p>The first view on the Pricing tab shows how revenue and products are distributed across price bands within your segment. Use this to understand where the segment's revenue is concentrated by price tier and how product count maps to revenue in each band.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.8.1.png" alt="Market Analysis Pricing — revenue and products by price band chart" width="100%" style="height:auto;">
+    </div>
+
+        <h4>Average selling price trend and revenue migration</h4>
+        <p>These two charts show together: the ASP trend over time for your brand vs. the segment average, and how revenue has migrated between price bands over the period. The ASP trend tells you whether the gap between your price and the segment average is widening or narrowing. Revenue migration shows whether your customers — and the segment overall — are moving up-market or down-market.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.8.2.png" alt="Market Analysis Pricing — ASP trend over time and revenue migration graph" width="100%" style="height:auto;">
+    </div>
+
+        <h4>Your Brand Revenue by Price Band</h4>
+        <p>This view breaks your revenue into price tiers and shows how much of your revenue comes from each band, alongside your share within that band. It reveals whether your revenue is concentrated in growing or declining price tiers and how your distribution compares to the broader segment.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.8.3.png" alt="Market Analysis Pricing — Your Brand Revenue by Price Band" width="100%" style="height:auto;">
+    </div>
+
+        <h4>Price Band Analysis table</h4>
+        <p>The table view gives you the full breakdown by price band in a structured format — your revenue, units, ASP, and share within each band, alongside segment totals. Use this for a precise read on where you're over- or under-indexed vs. the market.</p>
+
+        <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%202.8.4.png" alt="Market Analysis Pricing — Price Band Analysis table" width="100%" style="height:auto;">
+    </div>
+
+        <div class="razor-example">
+          <div class="razor-label">🪒 Razor example — Pricing tab</div>
+          <p>In the Men's Disposable Razors segment YTD, the Pricing tab would show BIC's revenue concentration by price tier and whether BIC's ASP trend is moving above or below the segment average. If BIC's ASP is rising while the segment average holds flat, that confirms BIC is moving up-market — which explains the unit share story visible in the Overview and Brands tabs. The Price Band Analysis table makes it precise: which specific price tier is BIC's revenue concentrated in, and is that tier growing or contracting in the segment overall?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MARKET ANALYSIS WRAP-UP ── -->
+    <div class="callout callout-purple" style="margin-top: 24px;">
+      <div class="callout-title">Putting Market Analysis together</div>
+      <p>The six tabs follow a natural analysis progression: <strong>Overview</strong> tells you where the market stands and where you sit within it. <strong>Brands</strong> shows which brands are causing the share shifts you saw in Overview. <strong>Products</strong> reveals which specific products from those brands are doing the work. <strong>Categories</strong> helps if your segment spans multiple subcategories. <strong>Attributes</strong> starts to show the product-level patterns — what configurations are winning. <strong>Pricing</strong> connects it back to the revenue and ASP story. You don't need to work through all six every time — start with Overview and Brands to answer the core benchmarking questions, then go deeper in Products and Pricing when you've identified something worth investigating. Topic 3 is where you take that investigation further: who's disrupting the category, how, and what it means for you.</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 4 — HOME / CAT PERF
+  ══════════════════════════════════════════ -->
+  <div class="section" id="cat-perf">
+    <div class="section-eyebrow">Section 4</div>
+    <div class="feature-eyebrow feat-blue">
+      <div class="feature-rule"></div>
+      <div class="feature-label">Home page &amp; Category Performance</div>
+    </div>
+    <h2>Your category-level view</h2>
+
+    <p>The Home page and Category Performance use Category Performance data — every ASIN in the subcategory — so numbers will differ from your segment. These views give you a fast read on your position against the full market and are useful for a quick share check or understanding your brand in the context of the broader category landscape.</p>
+
+    <h3 class="no-top">Home page — Market Share card and Sales Breakdown table</h3>
+    <p>The <strong>Market Share</strong> card at the top of the Home page shows your share across your top 5 categories, using your brand filter and date range selection. Use the filters at the top of the page (Country, Category, Brand) to focus the data — especially if you have multiple brands integrated.</p>
+
+    <p>Important: the Market Share card uses the date range selected at the top of the page, which is on a 72-hour lag from Seller/Vendor Central. The numbers here are a quick read, but for a more accurate market share comparison, go to the <strong>Sales Breakdown by Category</strong> table below it.</p>
+
+    <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%203.1.png" alt="Home page Market Share card with filter selectors" width="100%" style="height:auto;">
+    </div>
+
+    <p>The <strong>Sales Breakdown by Category</strong> table normalizes the date range to account for the Category Performance data source being on a 3-week lag — so the date range shown at the bottom right of the table will be different from the rest of the page. This is intentional: it means you're comparing your sales data and category performance data for the same actual window, giving you a more accurate share figure. Note the date range label in the bottom right of the table.</p>
+
+    <p>Expand any category row to see your share broken down by subcategory. For the razor example, you can drill into Women's Disposable and Men's Disposable separately to see your share at each level.</p>
+
+    <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%203.2.png" alt="Home page Sales Breakdown by Category table with Your Share of Category column and date range note" width="100%" style="height:auto;">
+    </div>
+
+    <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%203.3.png" alt="Home page Sales Breakdown table expanded showing all razor subcategories highlighted" width="100%" style="height:auto;">
+    </div>
+
+    <h3>Category Performance — Benchmark Mode</h3>
+    <p>Navigate to <strong>Category Performance</strong> in the left nav and select your subcategory. You can also get there directly by clicking on any subcategory from the Home page Sales Breakdown table — it will open Category Performance pre-filtered to that subcategory.</p>
+
+    <p>In <strong>Benchmark Mode</strong>, filter to your brand using the brand selector at the top. You'll see your brand's revenue, units, and ASP compared to the subcategory average side by side — not against individual named competitors, but against the aggregate. Benchmark Mode is useful for understanding whether you're above or below the category's growth rate on each metric. Date ranges can be changed to standard presets or custom ranges.</p>
+
+    <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%204.1.png" alt="Category Performance Benchmark Mode filtered to BIC at Men's Disposable Shaving Razors level" width="100%" style="height:auto;">
+    </div>
+
+    <h3>Navigating the category tree</h3>
+    <p>You can move up and down the category tree to see your share at different levels of the Amazon category hierarchy. This is a useful way to understand your brand's position at different scopes — not just within the specific subcategory you sell in, but within the broader category family.</p>
+
+    <p>Pay attention to how your share and trend numbers change as you navigate. Going up several levels — for example from Men's Disposable Shaving Razors up to Shaving & Hair Removal Products — will dramatically change your share percentage, because the denominator now includes a much wider range of products, including product types where you may have no presence at all. A lower share at the parent category level isn't necessarily bad; it reflects how concentrated your brand is in specific subcategories. The more useful signal is whether your share at each level is growing or declining over time.</p>
+
+    <p><strong>How to use this:</strong> If you see your share at the parent category level growing faster than at the subcategory level, it may indicate your brand is expanding into adjacent areas. If share is declining at the parent level while holding at the subcategory, you're likely holding your ground in your core subcategory but losing relevance in adjacent spaces. Use this to identify where to focus — and where there may be untapped adjacent opportunity.</p>
+
+    <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%204.2.png" alt="Category Performance navigated to Shaving & Hair Removal Products parent category with BIC filter" width="100%" style="height:auto;">
+    </div>
+
+    <div class="date-note">
+      <strong>Date range note:</strong> Category Performance data is on a 3-week lag. The date ranges can be set to standard presets or custom ranges, but the data available will reflect that lag. For cross-feature comparison with Market Analysis (1-week lag) or AI Analyst (fixed last 365 days), note that the same date range selected across features will not reflect the exact same data window.
+    </div>
+
+    <div class="razor-example">
+      <div class="razor-label">🪒 Razor example — Home page and Category Performance</div>
+      <p>In Category Performance Benchmark Mode filtered to BIC at the Men's Disposable Shaving Razors subcategory level, you'd see BIC's revenue, units, and ASP compared to the subcategory average — a different view than the segment, because this includes all ASINs, not just the ones in your segment. Navigating up to Shaving & Hair Removal Products would show BIC's share of the entire shaving category, which will be dramatically lower — BIC's Men's Disposable Razor products now represent a small slice of the full shaving market. This isn't concerning in isolation, but tracking whether that broader share is growing or declining over time tells you if BIC is gaining or losing relevance in the category family overall.</p>
+    </div>
+
+    <div class="callout callout-blue">
+      <div class="callout-title">When to use this vs. Market Analysis</div>
+      <p>Use the <span class="chip chip-blue">Home page</span> for a weekly pulse check — your share at a glance. Use <span class="chip chip-blue">Category Performance</span> Benchmark Mode when you want to compare your metrics to the full category average or navigate the category tree. Use <span class="chip chip-purple">Market Analysis</span> when you need to understand exactly how you compare to the specific brands you compete with.</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 5 — AI ANALYST
+  ══════════════════════════════════════════ -->
+  <div class="section" id="ai-analyst">
+    <div class="section-eyebrow">Section 5</div>
+    <div class="feature-eyebrow feat-teal">
+      <div class="feature-rule"></div>
+      <div class="feature-label">AI Analyst</div>
+    </div>
+    <h2>Your automated benchmark report</h2>
+
+    <p>AI Analyst generates structured, presentation-ready reports from Cobalt data. Select your brand and a subcategory, and AI Analyst pulls from multiple data sources, runs the analysis, and delivers a complete report with written insights, data visualizations, and strategic takeaways — ready to share with your team. No manual data pulling, no spreadsheet assembly.</p>
+
+    <div class="callout callout-teal">
+      <div class="callout-title">Keep your brand context in mind</div>
+      <p>AI Analyst surfaces data-driven takeaways based on performance metrics, but it doesn't know your brand's strategy, positioning, or internal goals. A report might flag declining share in a price band, but if your brand intentionally focuses on premium positioning or margin optimization, that context changes how you'd interpret the finding. Use the report as a starting point and layer in your own knowledge of your business.</p>
+    </div>
+
+    <h3>How to run a Benchmark Brand report</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Navigate to AI Analyst</h3>
+          <p>In the left nav, click <strong>AI Analyst</strong> (near the top of the menu). Click the <strong>Benchmark Brand</strong> button to start a new report.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Configure your report</h3>
+          <p>Select your <strong>Marketplace</strong> (US and Germany available now), your <strong>Brand</strong> from the dropdown (only your integrated brands appear), and browse or search the category tree to select your <strong>Subcategory</strong>. Reports can only be run on the lowest-level subcategories — you'll see a circle next to selectable subcategories. If you see an arrow, expand it to find deeper levels.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Run Analysis</h3>
+          <p>Click <strong>Run Analysis</strong>. Reports generate quickly, often in under a minute. If you navigate away while it's generating, return to the AI Analyst main page and refresh to see your completed report.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%205.1.png" alt="AI Analyst main page showing Category Analysis and Benchmark Brand report buttons with My Reports tab" width="100%" style="height:auto;">
+    </div>
+
+    <div class="screenshot-wrap">
+      <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%205.2.png" alt="AI Analyst Benchmark Brand configuration modal — Marketplace, Brand, and Category selectors" width="100%" style="height:auto;">
+    </div>
+
+    <h3>What the Benchmark Brand report covers</h3>
+
+    <p>All Benchmark Brand reports cover the <strong>last 365 days of data</strong>. There is currently no way to change the date range — all reports use this fixed window. Your brand's metrics use first-party account data from your Amazon integrations; competitor and category data uses Jungle Scout estimates.</p>
+
+    <div class="report-sections">
+      <div class="report-section-card">
+        <div class="rs-label">Executive Summary</div>
+        <p class="rs-desc">Your brand's revenue with a trend sparkline, current market share with share point change, and three strategic takeaways. Start here for a quick read on your brand's overall position before reading the detailed sections.</p>
+        <div class="rs-screenshot">
+          <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%206.1.png" alt="AI Analyst Executive Summary — BIC revenue sparkline, market share, and three strategic takeaways" width="100%" style="height:auto;">
+        </div>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">Brand Performance</div>
+        <p class="rs-desc">Your revenue, units, and ASP compared to the subcategory. A dual-axis chart shows your market share trend alongside subcategory revenue over time. Use this to see whether you're keeping pace with, outperforming, or falling behind the subcategory overall.</p>
+        <div class="rs-screenshot">
+          <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%206.2.png" alt="AI Analyst Brand Performance — BIC market share trend vs. subcategory revenue, with revenue/units/ASP metrics" width="100%" style="height:auto;">
+        </div>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">Competitive Landscape</div>
+        <p class="rs-desc">Top competing brands ranked by market share with share movement, plus a revenue-vs-ASP bubble chart. Shows who's gaining ground and how their pricing compares to yours. Use this to identify which brands are taking share and how their price positioning differs from your own.</p>
+        <div class="rs-screenshot">
+          <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%206.3.png" alt="AI Analyst Competitive Landscape — top brands by market share with share movement and revenue vs ASP bubble chart" width="100%" style="height:auto;">
+        </div>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">Price Positioning</div>
+        <p class="rs-desc">Revenue distribution across price bands comparing your brand to the subcategory. Key findings scored as <strong>Opportunity</strong> (bands where you're underrepresented but the subcategory is growing) or <strong>Risk</strong> (where you're concentrated but losing share). Share-per-band donut charts show your position in each tier. Use this to evaluate whether your pricing aligns with where demand is heading.</p>
+        <div class="rs-screenshot">
+          <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%206.4.1.png" alt="AI Analyst Price Positioning — revenue by price band with Opportunity and Risk labels" width="100%" style="height:auto;">
+        </div>
+        <div class="rs-screenshot" style="margin-top: 10px;">
+          <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%206.4.2.png" alt="AI Analyst Price Positioning — share per price band donut charts" width="100%" style="height:auto;">
+        </div>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">Search Insights</div>
+        <p class="rs-desc">Your brand's search visibility across the subcategory, measured by Share of Voice (SOV), Keyword Coverage, and Top Competitor SOV. This is one of the most important benchmarking signals available — most Amazon purchases start with a search, and everyone is competing for their share of the digital shelf. You don't need to be tracking keywords elsewhere in Cobalt to see this data; keywords are identified automatically based on the top-selling products in the subcategory.</p>
+        <div class="rs-screenshot">
+          <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%206.5.png" alt="AI Analyst Search Insights — SOV, Keyword Coverage, and Top Competitor SOV metrics with keyword tier breakdown" width="100%" style="height:auto;">
+        </div>
+        <div class="rs-screenshot" style="margin-top: 10px;">
+          <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%206.5.2.png" alt="AI Analyst Search Insights — share of head keywords by brand" width="100%" style="height:auto;">
+        </div>
+        <div class="rs-screenshot" style="margin-top: 10px;">
+          <img src="/cobalt-learning-paths/Know%20Your%20Competition/Topic%202/Written%20Guide/KYC%20Topic%202%20Image%206.5.3.png" alt="AI Analyst Search Insights — keyword opportunities broken into Attack, Expand, Defend, and No Presence tabs" width="100%" style="height:auto;">
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-teal">
+      <div class="callout-title">Search Insights: what the metrics mean</div>
+      <p><strong>Share of Voice (SOV)</strong> — how visible your brand is across the subcategory's most important keywords, weighted by search volume. A higher SOV means your products appear more prominently for the keywords shoppers use most.<br><br><strong>Keyword Coverage</strong> — the percentage of the top 1,000 keywords where at least one of your products appears in the first 3 pages of results. High coverage with low SOV means you show up broadly but aren't ranking near the top.<br><br><strong>Top Competitor SOV</strong> — the highest SOV held by any single brand. The gap between yours and theirs tells you how much visibility you'd need to gain to lead in search.<br><br>Keywords are grouped into four action categories: <strong>Attack</strong> (competitors lead, you have a small presence — strong opportunities to grow), <strong>Expand</strong> (you're present but underweight), <strong>Defend</strong> (you lead but could lose ground), and <strong>No Presence</strong> (keywords you don't appear on at all).</p>
+    </div>
+
+    <h3>Limitations to know</h3>
+    <ul>
+      <li><strong>Last 365 days, fixed</strong> — the date range cannot be changed. Every Benchmark Brand report covers the same window. To compare to Market Analysis or Category Performance data, set those features to a 365-day range for the closest match.</li>
+      <li><strong>One subcategory at a time</strong> — reports are scoped to a single leaf-node subcategory. For analysis across multiple subcategories, Market Analysis segments may be a better fit.</li>
+      <li><strong>Category Performance data for competitors</strong> — your own brand metrics use first-party integration data; competitor and category data uses Jungle Scout estimates. Numbers will differ from Market Analysis.</li>
+      <li><strong>No ASIN-level detail</strong> — brand-level only. You can see that a competitor grew share but not which of their products drove it.</li>
+      <li><strong>No export yet</strong> — reports are view-only in-app. Use screenshots for sharing. Export and PDF options are in development.</li>
+      <li><strong>Beta access</strong> — during beta, your organization has access to one L2 subcategory and all lower-level subcategories beneath it. Reach out to your CSM to change your assigned L2.</li>
+    </ul>
+
+    <div class="razor-example">
+      <div class="razor-label">🪒 Razor example — AI Analyst Benchmark Brand</div>
+      <p>The BIC Men's Disposable Shaving Razors Benchmark Report (covering the last 365 days) surfaces this picture: <strong>BIC revenue $2.85M</strong> (down 4.72%), <strong>market share 6.1%</strong> (down 1.35pp). The Executive Summary flags three key issues — severe volume loss despite pricing power (28.2% unit decline vs. 14.3% category unit growth), share erosion across all active price tiers, and a wide search presence with a persistent SOV gap. In Price Positioning, BIC is over-concentrated in the $10–$16 tier (37% of revenue) while the $7.50–$10 tier is growing 141.6% and BIC holds only 10.4% revenue share there — flagged as an Opportunity. Search Insights shows BIC ranks #3 in SOV at 8.1%, with 75.6% keyword coverage, but trails category leader Gillette's 22.9% SOV by 14.9pp. Together, these sections give you the orientation — share loss driven by volume decline, price band misalignment, and a search visibility gap that's widening vs. the category leader. The next step is Market Analysis to understand which specific competitors are taking which share, and Topic 3 to understand how.</p>
+    </div>
+
+    <div class="callout callout-teal">
+      <div class="callout-title">How to get the most out of it</div>
+      <p>Use <span class="chip chip-teal">AI Analyst</span> Benchmark Brand to get oriented and identify the questions worth investigating. Then bring those questions into <span class="chip chip-purple">Market Analysis</span>. The report tells you something is happening; your segment helps you understand why and against whom.</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 6 — COMPARISON + REFERENCE TABLE
+  ══════════════════════════════════════════ -->
+  <div class="section" id="comparison">
+    <div class="section-eyebrow">Section 6</div>
+    <h2>Side-by-side: the razor example across methods</h2>
+
+    <p>The same question — how is BIC performing in Men's Disposable Razors? — produces different answers depending on where you look, because the data sources and time windows are different. Here's what each method tells you at a glance.</p>
+
+    <div class="date-note">
+      <strong>A note on date ranges in this example:</strong> The AI Analyst Benchmark Brand report always covers the last 365 days and cannot be changed. The Market Analysis and Category Performance examples in this guide use a YTD view (through April 30, 2026). For a true apples-to-apples comparison across all three methods, set Market Analysis and Category Performance to a 365-day range. The numbers below will differ partly because the time windows don't match — that's expected, not an error. The interpretation framework is the same regardless of which window you use.
+    </div>
+
+    <div class="comparison-grid">
+      <div class="comparison-card">
+        <h3><span class="chip chip-blue" style="margin-bottom:6px;display:inline-flex;">Category Performance / AI Analyst</span></h3>
+        <p style="font-size:12px; color: var(--subtle); margin-bottom:8px;">Full subcategory · All ASINs · AI Analyst: last 365 days</p>
+        <p>✅ <strong>Tells you:</strong> BIC's position and trend vs. the entire subcategory — share %, revenue, units, ASP, price band concentration, and search visibility.</p>
+        <p style="margin-top: 6px;">❌ <strong>Doesn't tell you:</strong> How BIC performs against specific competitors vying for the same buyer. No filtering to a true competitive set.</p>
+        <p style="margin-top: 6px;">➡️ <strong>Next action:</strong> Use price band and search SOV findings to identify where to investigate further — then go to Market Analysis.</p>
+      </div>
+      <div class="comparison-card">
+        <h3><span class="chip chip-purple" style="margin-bottom:6px;display:inline-flex;">Market Analysis (Segment)</span></h3>
+        <p style="font-size:12px; color: var(--subtle); margin-bottom:8px;">Custom competitive set · Filtered ASINs · YTD in this example</p>
+        <p>✅ <strong>Tells you:</strong> BIC's share within the brands you're actually competing with for a sale — a more precise benchmark. Trend view shows when brand-level shifts started.</p>
+        <p style="margin-top: 6px;">❌ <strong>Doesn't tell you:</strong> BIC's position in the full subcategory picture — for that, Category Performance and AI Analyst give the broader context.</p>
+        <p style="margin-top: 6px;">➡️ <strong>Next action:</strong> Identify which brand is gaining share fastest and how — adding SKUs, expanding price points, growing a breakout product, accumulating reviews? That sets up Topic 3.</p>
+      </div>
+    </div>
+
+    <h3 id="ref-table">Metric combination reference table</h3>
+    <p>Use this table once you're looking at actual numbers. Each row shows a pattern across <strong>your brand's own trend vs. prior period</strong> and <strong>how that compares to the category direction</strong>. Both axes matter.</p>
+
+    <p style="font-size:13px; color: var(--subtle); margin-bottom: 16px;">↑ ↓ → reflect your brand's own trend. The "vs. Category" column reflects how your trajectory compares to where the market is heading.</p>
+
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>Your Revenue</th>
+          <th>Your Units</th>
+          <th>Your ASP</th>
+          <th>vs. Category</th>
+          <th>What it likely means</th>
+          <th>Signal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-good">
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-up">↑ Up</td>
+          <td>Outpacing market</td>
+          <td>Gaining share — selling more at higher prices, faster than the market</td>
+          <td><span class="badge badge-good">Gaining share</span></td>
+        </tr>
+        <tr class="row-good">
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-flat">→ Flat</td>
+          <td>Outpacing market</td>
+          <td>Volume growth driving revenue while price holds — healthy demand-led expansion</td>
+          <td><span class="badge badge-good">Gaining share</span></td>
+        </tr>
+        <tr class="row-hold">
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-up">↑ Up</td>
+          <td>Keeping pace</td>
+          <td>Growing with the market — holding share, not gaining or losing</td>
+          <td><span class="badge badge-hold">Holding</span></td>
+        </tr>
+        <tr class="row-watch">
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-down">↓ Down</td>
+          <td class="arrow-up">↑ Up</td>
+          <td>Category units ↑</td>
+          <td>Revenue held by price increases while demand declines — category growing but you're losing unit share. Pricing is masking a volume problem.</td>
+          <td><span class="badge badge-watch">Watch</span></td>
+        </tr>
+        <tr class="row-watch">
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-down">↓ Down</td>
+          <td>Category ASP ↑</td>
+          <td>Gaining units through lower pricing while market moves up — volume play that may cede premium positioning</td>
+          <td><span class="badge badge-watch">Watch</span></td>
+        </tr>
+        <tr class="row-watch">
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-flat">→ Flat</td>
+          <td class="arrow-up">↑ Up</td>
+          <td>Category rev ↑↑</td>
+          <td>Revenue growing but slower than the market — share is eroding even though the absolute number looks fine</td>
+          <td><span class="badge badge-watch">Watch</span></td>
+        </tr>
+        <tr class="row-risk">
+          <td class="arrow-down">↓ Down</td>
+          <td class="arrow-down">↓ Down</td>
+          <td class="arrow-up">↑ Up</td>
+          <td>Category rev ↑</td>
+          <td>Losing volume and raising price while the category grows — common precursor to larger share loss. <strong>This is BIC's pattern.</strong></td>
+          <td><span class="badge badge-risk">Losing share</span></td>
+        </tr>
+        <tr class="row-risk">
+          <td class="arrow-down">↓ Down</td>
+          <td class="arrow-down">↓ Down</td>
+          <td class="arrow-down">↓ Down</td>
+          <td>Category stable</td>
+          <td>Declining across all dimensions while the market holds — share erosion on price, volume, and revenue simultaneously</td>
+          <td><span class="badge badge-risk">Losing share</span></td>
+        </tr>
+        <tr class="row-risk">
+          <td class="arrow-down">↓ Down</td>
+          <td class="arrow-up">↑ Up</td>
+          <td class="arrow-down">↓ Down</td>
+          <td>Category ASP ↑</td>
+          <td>Heavy discounting to defend volume while revenue and margins fall — market is moving up-market, you're moving down</td>
+          <td><span class="badge badge-risk">Losing share</span></td>
+        </tr>
+        <tr class="row-risk">
+          <td class="arrow-flat">→ Flat</td>
+          <td class="arrow-down">↓ Down</td>
+          <td class="arrow-up">↑ Up</td>
+          <td>Category units ↑</td>
+          <td>Revenue flat only because price increases offset unit declines — demand is weakening while the category captures more volume</td>
+          <td><span class="badge badge-risk">Losing share</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 13px; color: var(--subtle); margin-top: 10px;">These patterns apply whether you're reading Market Analysis, the AI Analyst report, or Category Performance Benchmark Mode. The interpretation framework is the same across data sources — the numbers will differ, but the logic holds.</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 7 — WHERE TO FIND THE DATA
+  ══════════════════════════════════════════ -->
+  <div class="section" id="where-to-find">
+    <div class="section-eyebrow">Section 7</div>
+    <h2>Where to find the data that answers your questions</h2>
+
+    <p>Each benchmarking question maps to specific features and views in Cobalt. Use this as a quick reference for where to go when you're trying to answer a specific question.</p>
+
+    <h3 style="margin-top: 20px;">Where does the market stand?</h3>
+    <p style="font-size: 13px; color: var(--subtle); margin-bottom: 14px;"><em>How big is the market I'm competing in, and is it growing?</em></p>
+
+    <div class="report-sections">
+      <div class="report-section-card">
+        <div class="rs-label">Total segment revenue over time</div>
+        <p class="rs-desc"><span class="chip chip-purple">Market Analysis</span> Overview tab<br>Total revenue across all brands in your segment for the selected period. Shows whether your competitive market is expanding or contracting.</p>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">Full category revenue and growth</div>
+        <p class="rs-desc"><span class="chip chip-blue">Category Performance</span> or <span class="chip chip-teal">AI Analyst</span> Brand Performance / Executive Summary<br>Total subcategory size and YoY growth. Category Performance lets you choose your date range; AI Analyst covers the last 365 days.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 20px;">Where do I stand in that market?</h3>
+    <p style="font-size: 13px; color: var(--subtle); margin-bottom: 14px;"><em>What's my share right now, and is it moving?</em></p>
+
+    <div class="report-sections">
+      <div class="report-section-card">
+        <div class="rs-label">My market share % within my competitive set</div>
+        <p class="rs-desc"><span class="chip chip-purple">Market Analysis</span> Overview tab (Market Share view)<br>Your share of your filtered segment — the most precise benchmarking view.</p>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">My share of the full subcategory</div>
+        <p class="rs-desc"><span class="chip chip-blue">Home page</span> Sales Breakdown table or <span class="chip chip-blue">Category Performance</span> Benchmark Mode<br>Your share of all ASINs in the subcategory. Fast and easy; broader denominator than segment share.</p>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">My revenue, units, and ASP vs. category</div>
+        <p class="rs-desc"><span class="chip chip-teal">AI Analyst</span> Brand Performance or <span class="chip chip-blue">Category Performance</span> Benchmark Mode<br>Your three core metrics side by side with category figures and YoY deltas.</p>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">My share trend over time</div>
+        <p class="rs-desc"><span class="chip chip-purple">Market Analysis</span> Brands tab (select your brand) or <span class="chip chip-teal">AI Analyst</span> Brand Performance chart<br>Whether your share is growing, declining, or holding — and when it started moving.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 20px;">Which brands are causing the shift?</h3>
+    <p style="font-size: 13px; color: var(--subtle); margin-bottom: 14px;"><em>Who's gaining or losing share, and by how much?</em></p>
+
+    <div class="report-sections">
+      <div class="report-section-card">
+        <div class="rs-label">Brand share shifts over time</div>
+        <p class="rs-desc"><span class="chip chip-purple">Market Analysis</span> Brands tab (stacked area, Market Share selected)<br>Sees which brands' bands are expanding and contracting, and when shifts started happening.</p>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">Brand comparison table (revenue, units, ASP)</div>
+        <p class="rs-desc"><span class="chip chip-purple">Market Analysis</span> Overview tab or <span class="chip chip-teal">AI Analyst</span> Competitive Landscape<br>Snapshot of each brand's core metrics for the period. Market Analysis uses your segment; AI Analyst uses the full subcategory.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 20px;">Where is revenue concentrated, and am I in the right price tiers?</h3>
+    <p style="font-size: 13px; color: var(--subtle); margin-bottom: 14px;"><em>Is my revenue in the price bands where the market is growing?</em></p>
+
+    <div class="report-sections">
+      <div class="report-section-card">
+        <div class="rs-label">Revenue by price band (my brand vs. category)</div>
+        <p class="rs-desc"><span class="chip chip-purple">Market Analysis</span> Pricing tab or <span class="chip chip-teal">AI Analyst</span> Price Positioning<br>Where your revenue sits in the price stack vs. where the category is concentrated. AI Analyst adds Opportunity/Risk scoring.</p>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">My ASP vs. segment ASP over time</div>
+        <p class="rs-desc"><span class="chip chip-purple">Market Analysis</span> Pricing tab (ASP Trend chart)<br>Whether the gap between your price and the segment average is widening or narrowing — and what that means for unit share.</p>
+      </div>
+      <div class="report-section-card">
+        <div class="rs-label">Search visibility vs. competitors</div>
+        <p class="rs-desc"><span class="chip chip-teal">AI Analyst</span> Search Insights<br>Your Share of Voice, Keyword Coverage, and keyword-level opportunities vs. the category leader. One of the most important benchmarks since most Amazon purchases start with a search.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 8 — QUICK WINS
+  ══════════════════════════════════════════ -->
+  <div class="section" id="quick-wins">
+    <div class="section-eyebrow">Section 8</div>
+    <h2>Quick wins</h2>
+
+    <p>After working through this topic, aim to leave with a baseline number, a signal worth acting on, and a clear sense of where to go next.</p>
+
+    <div class="callout callout-blue">
+      <div class="callout-title">Note on date ranges and AI Analyst</div>
+      <p>AI Analyst Benchmark Brand always covers the last 365 days — you can't change the time window. Market Analysis and Category Performance let you choose your own date range. If you want to compare numbers directly across all three features, set Market Analysis and Category Performance to a 365-day range. If you're only using one or two features, use whatever date range makes sense for your analysis — there's no need to normalize unless you're doing a cross-feature comparison.</p>
+    </div>
+
+    <h3 class="no-top" style="color: var(--blue); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 20px;">1. Your baseline number</h3>
+
+    <div class="quick-wins">
+      <div class="qw-item">
+        <div class="qw-label">Do this now</div>
+        <h3>Know your share from all three sources</h3>
+        <p>Pull the same date range across all three features and note your share from each. They will be different — and that's expected:</p>
+        <ul style="margin: 8px 0 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px;">
+          <li><strong>Market Analysis</strong> — your share within your filtered competitive set (most precise)</li>
+          <li><strong>Category Performance</strong> — your share of the full subcategory (all ASINs)</li>
+          <li><strong>AI Analyst Search Insights</strong> — your share of voice in search (most important long-term signal)</li>
+        </ul>
+        <p style="margin-top: 8px;">Each one answers a different question. Track all three over time to get the full picture.</p>
+      </div>
+    </div>
+
+    <h3 style="color: var(--blue); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 20px;">2. A signal worth acting on</h3>
+
+    <div class="quick-wins">
+      <div class="qw-item">
+        <div class="qw-label">Do this now</div>
+        <h3>Apply the metric combination table to your brand</h3>
+        <p>Find the row in Section 6 that matches your current revenue / units / ASP pattern. If you're in a Watch or Risk pattern, surface it to your team. If you're holding or growing, note which metric is driving it. Either way, you're no longer looking at a revenue number in isolation.</p>
+      </div>
+      <div class="qw-item">
+        <div class="qw-label">Go deeper</div>
+        <h3>Name the brand gaining share and note their direction</h3>
+        <p>From your segment's Brands tab or AI Analyst Competitive Landscape, identify one brand that's gaining share while you're flat or declining. Note their revenue direction, ASP trend, and whether they're gaining or losing units. That's the brand worth investigating in Topic 3.</p>
+      </div>
+      <div class="qw-item">
+        <div class="qw-label">Go deeper</div>
+        <h3>Check your price band and search positioning</h3>
+        <p>In AI Analyst Price Positioning, look at which bands are flagged as Opportunity or Risk. In Search Insights, check your SOV rank and which keyword categories you're underweight in. A mismatch between where your revenue lives and where the category is growing — or a large SOV gap to the category leader — are the two most actionable signals this topic surfaces.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-amber" style="margin-top: 16px;">
+      <div class="callout-title">What comes next</div>
+      <p>This topic is about getting oriented — knowing where you stand and which direction you're moving. Topic 3 is about understanding the why: which competitors are gaining share fastest, how they're doing it (pricing, reviews, keyword strategy, product differentiation), and what it means for you.</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 9 — CADENCE
+  ══════════════════════════════════════════ -->
+  <div class="section" id="cadence">
+    <div class="section-eyebrow">Section 9</div>
+    <h2>How often to benchmark</h2>
+
+    <p>A single benchmark tells you where you are. A consistent cadence tells you whether you're improving. Here's a simple framework:</p>
+
+    <div class="cadence-row">
+      <div class="cadence-card">
+        <div class="cadence-freq">Weekly</div>
+        <div class="cadence-action">Home page pulse check</div>
+        <div class="cadence-detail">2–3 min. Your Share of Category on the Home page. Anything visibly off from last week?</div>
+      </div>
+      <div class="cadence-card">
+        <div class="cadence-freq">Monthly</div>
+        <div class="cadence-action">Segment deep dive</div>
+        <div class="cadence-detail">20–30 min. Market Analysis Overview + Brands tab. Review revenue, units, ASP per competitor. Apply the metric combination framework.</div>
+      </div>
+      <div class="cadence-card">
+        <div class="cadence-freq">Quarterly</div>
+        <div class="cadence-action">Full benchmark report</div>
+        <div class="cadence-detail">Run AI Analyst Benchmark Brand. Review price positioning and competitive landscape. Share with leadership.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <hr>
+
+
+  <!-- ══════════════════════════════════════════
+       APPENDIX — DATA SOURCES
+  ══════════════════════════════════════════ -->
+  <div class="section" id="appendix">
+    <div class="section-eyebrow">Appendix</div>
+    <h2>Why numbers differ across features</h2>
+
+    <p>If the same subcategory shows different numbers in different Cobalt features, that's expected. The features use different data sources, different ASIN pools, and different date windows — each designed for a different level of precision and purpose.</p>
+
+    <div class="ds-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+      <div class="ds-card">
+        <div class="ds-title">Category Performance data</div>
+        <div class="ds-used">Used by: Home page, Category Performance, AI Analyst (category/competitor data)</div>
+        <ul>
+          <li>Every ASIN in the subcategory</li>
+          <li>Includes inactive, low-volume, and miscategorized products</li>
+          <li>Broad view of the full subcategory</li>
+          <li>~3-week data lag</li>
+          <li>Date range: adjustable in Category Performance (standard presets or custom); fixed at last 365 days in AI Analyst</li>
+        </ul>
+      </div>
+      <div class="ds-card">
+        <div class="ds-title">Segment data</div>
+        <div class="ds-used">Used by: Market Analysis</div>
+        <ul>
+          <li>Your filtered ASIN pool — not a raw category pull</li>
+          <li>Excludes products that don't meet your filter criteria</li>
+          <li>Uses a different sales estimation model than Category Performance</li>
+          <li>~1-week data lag</li>
+          <li>Date range: adjustable via standard presets</li>
+          <li>More precise; customizable to variant and attribute level</li>
+        </ul>
+      </div>
+      <div class="ds-card">
+        <div class="ds-title">First-party account data</div>
+        <div class="ds-used">Used by: AI Analyst (your brand metrics only)</div>
+        <ul>
+          <li>Your own Seller Central or Vendor Central data via Amazon integration</li>
+          <li>Only your integrated brands appear in the brand dropdown</li>
+          <li>Used for your brand's revenue, units, and ASP in Benchmark Brand</li>
+          <li>Competitor and category data still uses Category Performance estimates</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Numbers will always differ between these sources for the same subcategory. Neither is "wrong" — they're answering different questions about different versions of the market. The gap is larger when your segment has tight filters; smaller when it's broad.</p>
+
+    <h3>Date lag and date range by feature</h3>
+    <table class="signal-table" style="font-size:13px;">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Data source</th>
+          <th>Approximate lag</th>
+          <th>Date range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Market Analysis</td>
+          <td>Segment data</td>
+          <td>~1 week</td>
+          <td>Standard presets (e.g. Last 30/90/365 days, YTD)</td>
+        </tr>
+        <tr>
+          <td>Home page (cards)</td>
+          <td>SC/VC data</td>
+          <td>48–72 hours</td>
+          <td>Uses page-level date range selector</td>
+        </tr>
+        <tr>
+          <td>Home page (Sales Breakdown table)</td>
+          <td>Category Performance</td>
+          <td>~3 weeks</td>
+          <td>Normalized to Cat Perf window; shown separately in table</td>
+        </tr>
+        <tr>
+          <td>Category Performance</td>
+          <td>Category Performance</td>
+          <td>~3 weeks</td>
+          <td>Standard presets or custom date range</td>
+        </tr>
+        <tr>
+          <td>AI Analyst — Benchmark Brand</td>
+          <td>Category Performance + first-party</td>
+          <td>~3 weeks</td>
+          <td>Fixed: last 365 days. Cannot be changed.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 13px; color: var(--subtle); margin-top: 10px;">For a detailed technical explanation of how Cobalt calculates each data set, see the Market Analysis Data Reference article. <span style="color: var(--subtle);">[Link — article to be created]</span></p>
+  </div>
+
+
+  <!-- TOPIC BRIDGE -->
+  <div class="topic-bridge">
+    <div class="bridge-label">Up next — Topic 3 of 3</div>
+    <h3>Identify Category Disruption</h3>
+    <p>Topic 2 gives you the score and the trend. Topic 3 is the film review. You now know who's gaining share and by how much. Next: understand how they're doing it — pricing moves, review momentum, keyword strategy, product differentiation — and what it means for you.</p>
+  </div>
+
 </div>
 </body>
 </html>
