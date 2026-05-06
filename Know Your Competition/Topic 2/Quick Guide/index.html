@@ -12,30 +12,39 @@
     --slate: #3d3d5c;
     --muted: #6b6b8a;
     --bg: #faf9fe;
-    --light: #f0eff5;
     --surface: #ffffff;
     --accent: #5046e5;
-    --accent-light: #7c74f0;
-    --accent-bg: #eae8fd;
-    --accent-mid: #c7c2f5;
-    --accent-deep: #3730a3;
-    /* KYC module color */
+
+    /* KYC module color — purple, matches Topic 1 module color */
     --purple: #7c3aed;
     --purple-bg: #f5f3ff;
     --purple-mid: #c4b5fd;
-    /* Feature color coding */
+    --purple-deep: #6d28d9;
+
+    /* Feature: Market Analysis — purple (same as KYC module since MA is the primary feature) */
     --ma: #7c3aed;
     --ma-bg: #f5f3ff;
     --ma-mid: #c4b5fd;
     --ma-deep: #6d28d9;
+
+    /* Feature: Category Performance — blue */
     --catperf: #2563EB;
     --catperf-bg: #eff5ff;
     --catperf-mid: #93c5fd;
     --catperf-deep: #1d4ed8;
+
+    /* Feature: AI Analyst — teal */
     --ai: #0d9488;
     --ai-bg: #d5f5f0;
     --ai-mid: #5eead4;
     --ai-deep: #0f766e;
+
+    /* Navy — system/framework color from Cobalt Help Center style guide */
+    --navy: #00022B;
+    --navy-bg: #f1f3f7;
+    --navy-mid: #c7cbd6;
+    --navy-deep: #00022B;
+
     /* Signals */
     --green: #15803d;
     --green-bg: #ecfdf5;
@@ -46,9 +55,8 @@
     --red: #b91c1c;
     --red-bg: #fef2f2;
     --red-mid: #fca5a5;
+
     /* Neutrals */
-    --teal: #0d9488;
-    --teal-bg: #d5f5f0;
     --teal-mid: #5eead4;
     --line: #e7e5e4;
     --warm: #f5f5f4;
@@ -67,14 +75,13 @@
 
   .page { max-width: 1080px; margin: 0 auto; }
 
-  /* Generic full-width screenshot styling — width 100% never crop */
   .screenshot {
     width: 100%;
     height: auto;
     display: block;
   }
 
-  /* ── MASTHEAD ── */
+  /* ── MASTHEAD (matches Topic 1) ── */
   .masthead {
     background: var(--ink);
     border-radius: 12px 12px 0 0;
@@ -83,6 +90,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 32px;
+    border-bottom: 2px solid #6d28d9;
   }
   .kicker {
     font-size: 11px;
@@ -109,7 +117,7 @@
   .masthead-meta {
     text-align: right;
     flex-shrink: 0;
-    max-width: 320px;
+    max-width: 300px;
   }
   .masthead-sub-label {
     font-size: 10px;
@@ -128,33 +136,6 @@
     text-align: right;
   }
 
-  /* ── BEFORE STRIP ── */
-  .before-strip {
-    background: #21213a;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 2px solid #6d28d9;
-  }
-  .before-item {
-    padding: 18px 26px;
-    border-right: 1px solid rgba(255,255,255,0.07);
-  }
-  .before-item:last-child { border-right: none; }
-  .before-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #a78bfa;
-    margin-bottom: 6px;
-  }
-  .before-text {
-    font-size: 14px;
-    color: rgba(255,255,255,0.78);
-    line-height: 1.5;
-  }
-  .before-text strong { color: #ffffff; font-weight: 600; }
-
   /* ── SECTION HEADER ── */
   .sec-header {
     display: flex;
@@ -172,20 +153,21 @@
     white-space: nowrap;
   }
   .sec-line { flex: 1; height: 1px; background: var(--line); }
+  /* Section tags — neutral grey by default, feature-colored when section is feature-tied */
   .sec-tag {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--purple);
-    background: var(--purple-bg);
-    border: 1px solid var(--purple-mid);
+    color: var(--slate);
+    background: var(--warm);
+    border: 1px solid var(--line);
     border-radius: 4px;
     padding: 4px 12px;
   }
+  .sec-tag.purple { color: var(--ma); background: var(--ma-bg); border-color: var(--ma-mid); }
   .sec-tag.blue { color: var(--catperf); background: var(--catperf-bg); border-color: var(--catperf-mid); }
   .sec-tag.teal { color: var(--ai); background: var(--ai-bg); border-color: var(--ai-mid); }
-  .sec-tag.neutral { color: var(--slate); background: var(--warm); border-color: var(--line); }
 
   /* ── MAIN CONTENT CARD ── */
   .card {
@@ -240,7 +222,7 @@
     overflow: hidden;
     margin-bottom: 18px;
     border: 1px solid var(--line);
-    border-top: 4px solid var(--purple);
+    border-top: 4px solid var(--ma);
   }
   .method-intro.purple { border-top-color: var(--ma); }
   .method-intro.blue { border-top-color: var(--catperf); }
@@ -288,6 +270,7 @@
     margin-top: 12px;
   }
 
+  /* Two-question lead — uses navy for system framing */
   .signal-lead {
     background: var(--warm);
     padding: 16px 22px;
@@ -310,7 +293,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--purple);
+    color: var(--navy);
   }
   .signal-lead-a {
     font-size: 13.5px;
@@ -330,7 +313,6 @@
   }
   .signal-col:last-child { border-right: none; }
 
-  /* Dummy signal chart — small inline SVG */
   .signal-chart-wrap {
     border-bottom: 1px solid var(--line);
     padding: 18px 22px 10px;
@@ -425,10 +407,10 @@
   .signal-block .txt strong { color: var(--ink); font-weight: 600; }
 
 
-  /* ═══ HOW TO FIND IT NAV BLOCK ═══ */
+  /* ═══ HOW TO FIND IT NAV BLOCK — NAVY ═══ */
   .nav-block {
-    background: var(--accent-bg);
-    border: 1px solid var(--accent-mid);
+    background: var(--navy-bg);
+    border: 1px solid var(--navy-mid);
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 16px;
@@ -442,18 +424,18 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent-deep);
-    border-bottom: 1px solid var(--accent-mid);
-    background: var(--accent-bg);
+    color: var(--navy);
+    border-bottom: 1px solid var(--navy-mid);
+    background: var(--navy-bg);
   }
   .nav-block-head .dot {
     width: 7px; height: 7px; border-radius: 50%;
-    background: var(--accent);
+    background: var(--navy);
   }
   .nav-paths {
     padding: 14px 20px;
-    background: var(--accent-bg);
-    border-bottom: 1px solid var(--accent-mid);
+    background: var(--navy-bg);
+    border-bottom: 1px solid var(--navy-mid);
   }
   .nav-path {
     font-size: 13.5px;
@@ -462,8 +444,8 @@
   }
   .nav-path code {
     background: var(--surface);
-    color: var(--accent);
-    border: 1px solid var(--accent-mid);
+    color: var(--navy);
+    border: 1px solid var(--navy-mid);
     border-radius: 3px;
     padding: 2px 7px;
     font-size: 12.5px;
@@ -471,7 +453,7 @@
     font-weight: 600;
   }
   .nav-path .arrow {
-    color: var(--accent);
+    color: var(--navy);
     margin: 0 6px;
     font-weight: 700;
   }
@@ -479,7 +461,7 @@
   .nav-path-secondary {
     margin-top: 10px;
     padding-top: 10px;
-    border-top: 1px dashed var(--accent-mid);
+    border-top: 1px dashed var(--navy-mid);
     font-size: 12.5px;
     color: var(--slate);
     line-height: 1.55;
@@ -490,14 +472,14 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent-deep);
+    color: var(--navy);
     margin-bottom: 4px;
     opacity: 0.85;
   }
   .nav-path-secondary code {
     background: var(--surface);
-    color: var(--accent);
-    border: 1px solid var(--accent-mid);
+    color: var(--navy);
+    border: 1px solid var(--navy-mid);
     border-radius: 3px;
     padding: 1px 6px;
     font-size: 11.5px;
@@ -505,12 +487,18 @@
     font-weight: 600;
   }
 
-  /* Single full-width screenshot for "How to find it" */
+  /* Single screenshot for "How to find it" — capped width, centered */
   .nav-image {
     background: var(--surface);
-    padding: 14px;
+    padding: 16px;
     display: flex;
     justify-content: center;
+  }
+  .nav-image img {
+    max-width: 360px;
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
 
@@ -557,17 +545,23 @@
     line-height: 1.5;
   }
   .ma-card-onel strong { color: var(--ink); font-weight: 600; }
+  /* Bigger image area for MA tab cards */
   .ma-card-img {
     background: var(--warm);
     border-top: 1px solid var(--line);
-    padding: 10px;
+    padding: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+  .ma-card-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
 
-  /* ═══ CATEGORY PERFORMANCE ═══ */
+  /* ═══ CATEGORY PERFORMANCE — narrower text column, wider image ═══ */
   .cp-list {
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -577,7 +571,7 @@
   }
   .cp-row {
     display: grid;
-    grid-template-columns: 70px 1fr 1fr;
+    grid-template-columns: 60px 360px 1fr;
     border-bottom: 1px solid var(--line);
   }
   .cp-row:last-child { border-bottom: none; }
@@ -590,12 +584,12 @@
     padding: 14px 8px;
   }
   .cp-num {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: var(--catperf);
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -617,27 +611,22 @@
     line-height: 1.2;
   }
   .cp-body {
-    font-size: 13.5px;
+    font-size: 13px;
     color: var(--slate);
-    line-height: 1.55;
+    line-height: 1.5;
   }
   .cp-body strong { color: var(--ink); font-weight: 600; }
-  .cp-body code {
-    background: var(--accent-bg);
-    color: var(--accent);
-    border-radius: 3px;
-    padding: 2px 6px;
-    font-size: 12.5px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-  }
   .cp-img {
     background: var(--warm);
-    border-left: 1px solid var(--line);
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .cp-img img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
 
@@ -732,6 +721,11 @@
     align-items: center;
     justify-content: center;
   }
+  .recap-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
 
   /* ═══ AI ANALYST STEPS ═══ */
@@ -784,8 +778,8 @@
   }
   .ai-step-detail strong { color: var(--ink); font-weight: 600; }
   .ai-step-detail code {
-    background: var(--accent-bg);
-    color: var(--accent);
+    background: var(--navy-bg);
+    color: var(--navy);
     border-radius: 3px;
     padding: 2px 6px;
     font-size: 11.5px;
@@ -794,7 +788,7 @@
   }
 
 
-  /* ═══ READING YOUR NUMBERS ═══ */
+  /* ═══ READING YOUR NUMBERS — navy framing ═══ */
   .metrics-bridge {
     background: var(--warm);
     border: 1px solid var(--line);
@@ -811,7 +805,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--purple);
+    color: var(--navy);
     margin-bottom: 6px;
   }
   .metrics-bridge strong { color: var(--ink); font-weight: 600; }
@@ -841,11 +835,12 @@
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
   }
+  /* Metric names in navy (was bright purple) */
   .mcard-name {
     font-family: 'Fraunces', serif;
     font-size: 22px;
     font-weight: 700;
-    color: var(--purple);
+    color: var(--navy);
     letter-spacing: -0.01em;
   }
   .mcard-q {
@@ -917,17 +912,18 @@
     position: relative;
   }
   .win-item.segue {
-    background: var(--purple-bg);
+    background: var(--navy-bg);
     border-radius: 6px;
     padding: 12px 14px;
     margin: -6px -8px;
   }
+  /* Win number badges in navy (was purple) */
   .win-num-pill {
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: var(--purple-bg);
-    color: var(--purple);
+    background: var(--navy-bg);
+    color: var(--navy);
     font-size: 12px;
     font-weight: 700;
     display: flex;
@@ -937,7 +933,7 @@
     border: 1px solid transparent;
   }
   .win-item.segue .win-num-pill {
-    background: var(--purple);
+    background: var(--navy);
     color: #fff;
   }
   .win-text {
@@ -951,9 +947,9 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--purple);
+    color: var(--navy);
     background: var(--surface);
-    border: 1px solid var(--purple-mid);
+    border: 1px solid var(--navy-mid);
     border-radius: 3px;
     padding: 2px 7px;
     margin-bottom: 4px;
@@ -989,25 +985,33 @@
     border-right: 1px solid var(--line);
   }
   .data-row:last-child { border-right: none; }
-  .data-row .src-label {
+  /* Feature name in colored text, source descriptor below in bold ink — flipped from prior */
+  .data-row .feature-name {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-size: 10.5px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     margin-bottom: 6px;
   }
-  .data-row.purple .src-label { color: var(--ma); }
-  .data-row.blue .src-label { color: var(--catperf); }
-  .data-row.teal .src-label { color: var(--ai); }
-  .data-row .src-label .dot { width: 7px; height: 7px; border-radius: 50%; }
-  .data-row.purple .src-label .dot { background: var(--ma); }
-  .data-row.blue .src-label .dot { background: var(--catperf); }
-  .data-row.teal .src-label .dot { background: var(--ai); }
-  .data-row .src-text { font-size: 13px; color: var(--slate); line-height: 1.5; }
-  .data-row .src-text strong { color: var(--ink); font-weight: 600; }
+  .data-row.purple .feature-name { color: var(--ma); }
+  .data-row.blue .feature-name { color: var(--catperf); }
+  .data-row.teal .feature-name { color: var(--ai); }
+  .data-row .feature-name .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .data-row.purple .feature-name .dot { background: var(--ma); }
+  .data-row.blue .feature-name .dot { background: var(--catperf); }
+  .data-row.teal .feature-name .dot { background: var(--ai); }
+  .data-row .src-text {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+  .data-row .src-text strong {
+    color: var(--ink);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 3px;
+  }
 
   .footer {
     padding: 18px 40px;
@@ -1038,12 +1042,11 @@
     .ai-step:last-child { border-bottom: none; }
     .recap.has-image { grid-template-columns: 1fr; }
     .recap.has-image .recap-text { border-right: none; border-bottom: 1px solid var(--line); }
-    .cp-row { grid-template-columns: 60px 1fr; }
-    .cp-img { grid-column: 1 / -1; border-left: none; border-top: 1px solid var(--line); }
+    .cp-row { grid-template-columns: 50px 1fr; }
+    .cp-text { border-right: none; border-bottom: 1px solid var(--line); }
+    .cp-img { grid-column: 1 / -1; border-top: 1px solid var(--line); }
     .signal-col, .mcard, .data-row { border-right: none; border-bottom: 1px solid var(--line); }
     .signal-col:last-child, .mcard:last-child, .data-row:last-child { border-bottom: none; }
-    .before-strip { grid-template-columns: 1fr; }
-    .before-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .source-byline { gap: 6px 12px; }
     .masthead { flex-direction: column; align-items: flex-start; }
     .masthead-meta { text-align: left; }
@@ -1055,7 +1058,7 @@
 <div class="page">
 <div class="card">
 
-  <!-- MASTHEAD -->
+  <!-- MASTHEAD — single line summary, no duplicated questions -->
   <div class="masthead">
     <div>
       <div class="kicker">Know Your Competition &nbsp;·&nbsp; Topic 2 of 3</div>
@@ -1067,68 +1070,45 @@
     </div>
   </div>
 
-  <!-- BEFORE STRIP -->
-  <div class="before-strip">
-    <div class="before-item">
-      <div class="before-label">Question 1 — Where do I stand today?</div>
-      <div class="before-text">Your <strong>revenue, units, and ASP</strong> position relative to competitors and the broader market.</div>
-    </div>
-    <div class="before-item">
-      <div class="before-label">Question 2 — Am I moving in the right direction?</div>
-      <div class="before-text">Whether you're <strong>gaining or losing share</strong>, and by how much over time.</div>
-    </div>
-  </div>
-
   <div class="card-inner">
 
     <!-- ═══ SECTION 1 — THREE SIGNALS ═══ -->
+    <!-- Two business questions live HERE only, not duplicated above -->
     <div class="sec-header">
       <div class="sec-title">The three signals to watch for</div>
       <div class="sec-line"></div>
-      <div class="sec-tag neutral">Today's number + the trend</div>
+      <div class="sec-tag">Today's number + the trend</div>
     </div>
 
     <div class="signal-frame">
       <div class="signal-lead">
         <div class="signal-lead-col">
-          <div class="signal-lead-q">Where you stand today</div>
-          <div class="signal-lead-a">Your <strong>share, revenue, units, and ASP</strong> right now answers Question 1 — your position relative to competitors and the market.</div>
+          <div class="signal-lead-q">Question 1 — Where you stand today</div>
+          <div class="signal-lead-a">Your <strong>share, revenue, units, and ASP</strong> right now answer where you are positioned relative to competitors and the market.</div>
         </div>
         <div class="signal-lead-col">
-          <div class="signal-lead-q">Where you're going</div>
-          <div class="signal-lead-a">The <strong>direction your numbers are moving relative to the category</strong> answers Question 2 — and lands you in one of these three patterns.</div>
+          <div class="signal-lead-q">Question 2 — Where you're going</div>
+          <div class="signal-lead-a">The <strong>direction your numbers are moving relative to the category</strong> tells you whether you're gaining or losing share — and lands you in one of these three patterns.</div>
         </div>
       </div>
 
       <div class="signal-grid">
 
-        <!-- GAINING SHARE — your line climbs above category line -->
+        <!-- GAINING SHARE -->
         <div class="signal-col gain">
           <div class="signal-chart-wrap">
             <svg class="signal-chart" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-label="Gaining share illustration">
-              <!-- Subtle grid baseline -->
               <line x1="14" y1="92" x2="206" y2="92" stroke="#cbd5e1" stroke-width="0.6" />
-              <!-- Category line: slow steady climb -->
               <polyline
                 points="14,76 50,72 86,68 122,64 158,60 194,56"
-                fill="none"
-                stroke="#94a3b8"
-                stroke-width="2"
-                stroke-dasharray="4,3"
-                stroke-linecap="round"
-                stroke-linejoin="round" />
-              <!-- Your line: starts level with cat, climbs steeper -->
+                fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"
+                stroke-linecap="round" stroke-linejoin="round" />
               <polyline
                 points="14,78 50,68 86,56 122,42 158,28 194,16"
-                fill="none"
-                stroke="#15803d"
-                stroke-width="2.8"
-                stroke-linecap="round"
-                stroke-linejoin="round" />
-              <!-- Endpoint dots -->
+                fill="none" stroke="#15803d" stroke-width="2.8"
+                stroke-linecap="round" stroke-linejoin="round" />
               <circle cx="194" cy="16" r="3.5" fill="#15803d" />
               <circle cx="194" cy="56" r="2.5" fill="#94a3b8" />
-              <!-- Up arrow next to your endpoint -->
               <text x="200" y="14" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#15803d">↑</text>
             </svg>
             <div class="signal-legend">
@@ -1149,31 +1129,21 @@
           </div>
         </div>
 
-        <!-- WATCH — your line nearly flat while category climbs -->
+        <!-- WATCH -->
         <div class="signal-col watch">
           <div class="signal-chart-wrap">
             <svg class="signal-chart" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-label="Watch illustration">
               <line x1="14" y1="92" x2="206" y2="92" stroke="#cbd5e1" stroke-width="0.6" />
-              <!-- Category line: climbing -->
               <polyline
                 points="14,76 50,68 86,58 122,48 158,38 194,30"
-                fill="none"
-                stroke="#94a3b8"
-                stroke-width="2"
-                stroke-dasharray="4,3"
-                stroke-linecap="round"
-                stroke-linejoin="round" />
-              <!-- Your line: nearly flat with slight rise -->
+                fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"
+                stroke-linecap="round" stroke-linejoin="round" />
               <polyline
                 points="14,72 50,70 86,68 122,67 158,66 194,64"
-                fill="none"
-                stroke="#d97706"
-                stroke-width="2.8"
-                stroke-linecap="round"
-                stroke-linejoin="round" />
+                fill="none" stroke="#d97706" stroke-width="2.8"
+                stroke-linecap="round" stroke-linejoin="round" />
               <circle cx="194" cy="64" r="3.5" fill="#d97706" />
               <circle cx="194" cy="30" r="2.5" fill="#94a3b8" />
-              <!-- Sideways arrow -->
               <text x="200" y="62" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#d97706">→</text>
             </svg>
             <div class="signal-legend">
@@ -1194,31 +1164,21 @@
           </div>
         </div>
 
-        <!-- LOSING SHARE — your line declines while category climbs -->
+        <!-- LOSING SHARE -->
         <div class="signal-col loss">
           <div class="signal-chart-wrap">
             <svg class="signal-chart" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-label="Losing share illustration">
               <line x1="14" y1="92" x2="206" y2="92" stroke="#cbd5e1" stroke-width="0.6" />
-              <!-- Category line: climbing -->
               <polyline
                 points="14,76 50,68 86,58 122,48 158,38 194,30"
-                fill="none"
-                stroke="#94a3b8"
-                stroke-width="2"
-                stroke-dasharray="4,3"
-                stroke-linecap="round"
-                stroke-linejoin="round" />
-              <!-- Your line: declining -->
+                fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"
+                stroke-linecap="round" stroke-linejoin="round" />
               <polyline
                 points="14,42 50,52 86,62 122,72 158,80 194,86"
-                fill="none"
-                stroke="#b91c1c"
-                stroke-width="2.8"
-                stroke-linecap="round"
-                stroke-linejoin="round" />
+                fill="none" stroke="#b91c1c" stroke-width="2.8"
+                stroke-linecap="round" stroke-linejoin="round" />
               <circle cx="194" cy="86" r="3.5" fill="#b91c1c" />
               <circle cx="194" cy="30" r="2.5" fill="#94a3b8" />
-              <!-- Down arrow -->
               <text x="200" y="92" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">↓</text>
             </svg>
             <div class="signal-legend">
@@ -1247,7 +1207,7 @@
     <div class="sec-header">
       <div class="sec-title">Market Analysis</div>
       <div class="sec-line"></div>
-      <div class="sec-tag">Deep competitive analysis</div>
+      <div class="sec-tag purple">Deep competitive analysis</div>
     </div>
 
     <div class="source-byline">
@@ -1269,11 +1229,11 @@
       <div class="nav-block-head"><span class="dot"></span> How to find it</div>
       <div class="nav-paths">
         <div class="nav-path">
-          Left nav <span class="arrow">→</span> <code>Market Analysis</code> <span class="arrow">→</span> open your <strong>Men's Disposable Shaving Razors</strong> segment
+          Left-hand navigation <span class="arrow">→</span> <code>Market Analysis</code> <span class="arrow">→</span> open your <strong>Men's Disposable Shaving Razors</strong> segment
         </div>
       </div>
       <div class="nav-image">
-        <img src="KYC%20Topic%202%20Quick%20Guide%201.png" alt="Left nav with Market Analysis highlighted and the Men's Disposable Shaving Razors segment selected" class="screenshot">
+        <img src="KYC%20Topic%202%20Quick%20Guide%201.png" alt="Left-hand navigation with Market Analysis highlighted and the Men's Disposable Shaving Razors segment selected">
       </div>
     </div>
 
@@ -1288,7 +1248,7 @@
           <div class="ma-card-onel"><strong>Your top-line share</strong> and a snapshot of how all brands in your segment compare on revenue, market share, units, and ASP.</div>
         </div>
         <div class="ma-card-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%202.png" alt="Men's Disposable Shaving Razor Segment Overview tab — segment revenue up 12.9% over last year, BIC market share down 1.4%" class="screenshot">
+          <img src="KYC%20Topic%202%20Quick%20Guide%202.png" alt="Men's Disposable Shaving Razor Segment Overview tab — segment revenue up 12.9% over last year, BIC market share down 1.4%">
         </div>
       </div>
 
@@ -1301,7 +1261,7 @@
           <div class="ma-card-onel"><strong>Trend over time</strong> — which brands are gaining or losing share, and exactly when those shifts started.</div>
         </div>
         <div class="ma-card-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%203.png" alt="Brands tab stacked area chart showing market share over the last year for the Men's Disposable Shaving Razor segment" class="screenshot">
+          <img src="KYC%20Topic%202%20Quick%20Guide%203.png" alt="Brands tab stacked area chart showing market share over the last year for the Men's Disposable Shaving Razor segment">
         </div>
       </div>
 
@@ -1314,7 +1274,7 @@
           <div class="ma-card-onel"><strong>ASP and price band</strong> — where your revenue sits in the price stack and how your ASP compares to the segment average over time.</div>
         </div>
         <div class="ma-card-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%204.png" alt="Pricing tab — ASP trend over time showing your ASP, the market average ASP, and trend with one week hovered" class="screenshot">
+          <img src="KYC%20Topic%202%20Quick%20Guide%204.png" alt="Pricing tab — ASP trend over time showing your ASP, the market average ASP, and trend with one week hovered">
         </div>
       </div>
 
@@ -1347,7 +1307,7 @@
       <div class="nav-block-head"><span class="dot"></span> How to find it</div>
       <div class="nav-paths">
         <div class="nav-path">
-          Left nav <span class="arrow">→</span> <code>Category Performance</code> <span class="arrow">→</span> select your subcategory
+          Left-hand navigation <span class="arrow">→</span> <code>Category Performance</code> <span class="arrow">→</span> select your subcategory
         </div>
         <div class="nav-path-secondary">
           <span class="secondary-lab">Don't know your subcategory?</span>
@@ -1355,7 +1315,7 @@
         </div>
       </div>
       <div class="nav-image">
-        <img src="KYC%20Topic%202%20Quick%20Guide%205.png" alt="Left nav with Category Performance selected and the tree expanded with Men's Disposable Shaving Razors highlighted" class="screenshot">
+        <img src="KYC%20Topic%202%20Quick%20Guide%205.png" alt="Left-hand navigation with Category Performance selected and the tree expanded with Men's Disposable Shaving Razors highlighted">
       </div>
     </div>
 
@@ -1370,7 +1330,7 @@
           </div>
         </div>
         <div class="cp-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%206.png" alt="Category Performance Benchmark Mode with BIC selected showing main category performance metrics" class="screenshot">
+          <img src="KYC%20Topic%202%20Quick%20Guide%206.png" alt="Category Performance Benchmark Mode with BIC selected showing main category performance metrics">
         </div>
       </div>
 
@@ -1379,11 +1339,11 @@
         <div class="cp-text">
           <div class="cp-name">Navigate the category tree</div>
           <div class="cp-body">
-            Move up and down the hierarchy to see your share at <strong>different scopes</strong> — your subcategory vs. parent vs. broader family. Watch whether share is growing or declining at each level — that signals whether you're expanding into adjacent areas or losing relevance.
+            Move up and down the hierarchy to see your share at <strong>different scopes</strong> — your subcategory vs. parent vs. broader family. Watch whether share is growing or declining at each level.
           </div>
         </div>
         <div class="cp-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%207.png" alt="Category Performance breadcrumbs at the top of the page showing the category tree path" class="screenshot">
+          <img src="KYC%20Topic%202%20Quick%20Guide%207.png" alt="Category Performance breadcrumbs at the top of the page showing the category tree path">
         </div>
       </div>
 
@@ -1439,11 +1399,11 @@
       <div class="nav-block-head"><span class="dot"></span> How to find it</div>
       <div class="nav-paths">
         <div class="nav-path">
-          Left nav <span class="arrow">→</span> <code>AI Analyst</code> <span class="arrow">→</span> click <strong>Benchmark Brand</strong>
+          Left-hand navigation <span class="arrow">→</span> <code>AI Analyst</code> <span class="arrow">→</span> click <strong>Benchmark Brand</strong>
         </div>
       </div>
       <div class="nav-image">
-        <img src="KYC%20Topic%202%20Quick%20Guide%208.png" alt="Left nav with AI Analyst selected and Benchmark Brand highlighted on the page" class="screenshot">
+        <img src="KYC%20Topic%202%20Quick%20Guide%208.png" alt="Left-hand navigation with AI Analyst selected and Benchmark Brand highlighted on the page">
       </div>
     </div>
 
@@ -1501,7 +1461,7 @@
         </div>
       </div>
       <div class="recap-img">
-        <img src="KYC%20Topic%202%20Quick%20Guide%209.png" alt="Executive Summary section of the AI Analyst Benchmark Brand report" class="screenshot">
+        <img src="KYC%20Topic%202%20Quick%20Guide%209.png" alt="Executive Summary section of the AI Analyst Benchmark Brand report">
       </div>
     </div>
 
@@ -1596,16 +1556,25 @@
             <p>Same subcategory, different numbers. Each view answers a different question about a different version of the market — none of them are wrong.</p>
             <div class="data-rows">
               <div class="data-row purple">
-                <div class="src-label"><span class="dot"></span> Segment data</div>
-                <div class="src-text"><strong>Market Analysis</strong> — your filtered ASIN pool, ~1 week lag, adjustable date range presets.</div>
+                <div class="feature-name"><span class="dot"></span> Market Analysis</div>
+                <div class="src-text">
+                  <strong>Segment data</strong>
+                  Your filtered ASIN pool, ~1 week lag, adjustable date range presets.
+                </div>
               </div>
               <div class="data-row blue">
-                <div class="src-label"><span class="dot"></span> Category Performance data</div>
-                <div class="src-text"><strong>Home &amp; Category Performance</strong> — every ASIN in the subcategory, ~3 week lag, custom date ranges available.</div>
+                <div class="feature-name"><span class="dot"></span> Home &amp; Category Performance</div>
+                <div class="src-text">
+                  <strong>Category Performance data</strong>
+                  Every ASIN in the subcategory, ~3 week lag, custom date ranges available.
+                </div>
               </div>
               <div class="data-row teal">
-                <div class="src-label"><span class="dot"></span> Cat Perf + your data</div>
-                <div class="src-text"><strong>AI Analyst</strong> — fixed at last 365 days. Your brand metrics use your integrated Seller or Vendor Central data; competitor data uses Jungle Scout estimates.</div>
+                <div class="feature-name"><span class="dot"></span> AI Analyst</div>
+                <div class="src-text">
+                  <strong>Category Performance + your integrated data</strong>
+                  Fixed at last 365 days. Your brand metrics use your integrated Seller or Vendor Central data; competitor data uses Jungle Scout estimates.
+                </div>
               </div>
             </div>
           </div>
