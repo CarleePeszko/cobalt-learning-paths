@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Brand palette */
     --ink: #1a1a2e;
     --slate: #3d3d5c;
     --muted: #6b6b8a;
@@ -15,37 +14,36 @@
     --surface: #ffffff;
     --accent: #5046e5;
 
-    /* KYC module color — purple, matches Topic 1 module color */
     --purple: #7c3aed;
     --purple-bg: #f5f3ff;
     --purple-mid: #c4b5fd;
     --purple-deep: #6d28d9;
 
-    /* Feature: Market Analysis — purple (same as KYC module since MA is the primary feature) */
     --ma: #7c3aed;
     --ma-bg: #f5f3ff;
     --ma-mid: #c4b5fd;
     --ma-deep: #6d28d9;
 
-    /* Feature: Category Performance — blue */
     --catperf: #2563EB;
     --catperf-bg: #eff5ff;
     --catperf-mid: #93c5fd;
     --catperf-deep: #1d4ed8;
 
-    /* Feature: AI Analyst — teal */
     --ai: #0d9488;
     --ai-bg: #d5f5f0;
     --ai-mid: #5eead4;
     --ai-deep: #0f766e;
 
-    /* Navy — system/framework color from Cobalt Help Center style guide */
     --navy: #00022B;
     --navy-bg: #f1f3f7;
     --navy-mid: #c7cbd6;
-    --navy-deep: #00022B;
 
-    /* Signals */
+    /* Charcoal/graphite — for the market share callout */
+    --char: #374151;
+    --char-bg: #f3f4f6;
+    --char-mid: #d1d5db;
+    --char-deep: #1f2937;
+
     --green: #15803d;
     --green-bg: #ecfdf5;
     --green-mid: #86efac;
@@ -56,7 +54,6 @@
     --red-bg: #fef2f2;
     --red-mid: #fca5a5;
 
-    /* Neutrals */
     --teal-mid: #5eead4;
     --line: #e7e5e4;
     --warm: #f5f5f4;
@@ -81,7 +78,7 @@
     display: block;
   }
 
-  /* ── MASTHEAD (matches Topic 1) ── */
+  /* ── MASTHEAD ── */
   .masthead {
     background: var(--ink);
     border-radius: 12px 12px 0 0;
@@ -153,7 +150,6 @@
     white-space: nowrap;
   }
   .sec-line { flex: 1; height: 1px; background: var(--line); }
-  /* Section tags — neutral grey by default, feature-colored when section is feature-tied */
   .sec-tag {
     font-size: 11px;
     font-weight: 700;
@@ -169,7 +165,6 @@
   .sec-tag.blue { color: var(--catperf); background: var(--catperf-bg); border-color: var(--catperf-mid); }
   .sec-tag.teal { color: var(--ai); background: var(--ai-bg); border-color: var(--ai-mid); }
 
-  /* ── MAIN CONTENT CARD ── */
   .card {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -261,7 +256,7 @@
   .method-intro-body a:hover { text-decoration: underline; }
 
 
-  /* ═══ SECTION 1 — SIGNALS ═══ */
+  /* ═══ SIGNALS ═══ */
   .signal-frame {
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -270,7 +265,6 @@
     margin-top: 12px;
   }
 
-  /* Two-question lead — uses navy for system framing */
   .signal-lead {
     background: var(--warm);
     padding: 16px 22px;
@@ -407,7 +401,7 @@
   .signal-block .txt strong { color: var(--ink); font-weight: 600; }
 
 
-  /* ═══ HOW TO FIND IT NAV BLOCK — NAVY ═══ */
+  /* ═══ NAV BLOCK — text left, image right ═══ */
   .nav-block {
     background: var(--navy-bg);
     border: 1px solid var(--navy-mid);
@@ -432,18 +426,51 @@
     width: 7px; height: 7px; border-radius: 50%;
     background: var(--navy);
   }
-  .nav-paths {
-    padding: 14px 20px;
-    background: var(--navy-bg);
+  .nav-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--surface);
     border-bottom: 1px solid var(--navy-mid);
   }
-  .nav-path {
+  .nav-row:last-child { border-bottom: none; }
+  .nav-row-text {
+    padding: 18px 22px;
+    border-right: 1px solid var(--navy-mid);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+  }
+  .nav-row-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .nav-row-label .badge {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 3px;
+    padding: 2px 7px;
+    font-size: 9.5px;
+  }
+  .nav-row-label .badge.alt {
+    background: var(--surface);
+    color: var(--navy);
+    border: 1px solid var(--navy-mid);
+  }
+  .nav-row-path {
     font-size: 13.5px;
     color: var(--ink);
     line-height: 1.55;
   }
-  .nav-path code {
-    background: var(--surface);
+  .nav-row-path code {
+    background: var(--navy-bg);
     color: var(--navy);
     border: 1px solid var(--navy-mid);
     border-radius: 3px;
@@ -452,52 +479,23 @@
     font-family: 'DM Sans', sans-serif;
     font-weight: 600;
   }
-  .nav-path .arrow {
+  .nav-row-path .arrow {
     color: var(--navy);
     margin: 0 6px;
     font-weight: 700;
   }
-  .nav-path strong { color: var(--ink); font-weight: 600; }
-  .nav-path-secondary {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dashed var(--navy-mid);
-    font-size: 12.5px;
-    color: var(--slate);
-    line-height: 1.55;
-  }
-  .nav-path-secondary .secondary-lab {
-    display: block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 4px;
-    opacity: 0.85;
-  }
-  .nav-path-secondary code {
-    background: var(--surface);
-    color: var(--navy);
-    border: 1px solid var(--navy-mid);
-    border-radius: 3px;
-    padding: 1px 6px;
-    font-size: 11.5px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-  }
-
-  /* Single screenshot for "How to find it" — capped width, centered */
-  .nav-image {
-    background: var(--surface);
-    padding: 16px;
+  .nav-row-path strong { color: var(--ink); font-weight: 600; }
+  .nav-row-img {
+    background: var(--warm);
+    padding: 14px;
     display: flex;
+    align-items: center;
     justify-content: center;
   }
-  .nav-image img {
-    max-width: 360px;
+  .nav-row-img img {
     width: 100%;
     height: auto;
+    max-width: 420px;
     display: block;
   }
 
@@ -545,7 +543,6 @@
     line-height: 1.5;
   }
   .ma-card-onel strong { color: var(--ink); font-weight: 600; }
-  /* Bigger image area for MA tab cards */
   .ma-card-img {
     background: var(--warm);
     border-top: 1px solid var(--line);
@@ -788,16 +785,67 @@
   }
 
 
-  /* ═══ READING YOUR NUMBERS — navy framing ═══ */
+  /* ═══ AI Analyst — config modal annotation row ═══ */
+  .ai-modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+    margin-bottom: 14px;
+  }
+  .ai-modal-text {
+    padding: 22px 26px;
+    border-right: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ai-modal-head {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ai-modal-head .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--ai);
+    flex-shrink: 0;
+  }
+  .ai-modal-body {
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+  .ai-modal-body strong { color: var(--ink); font-weight: 600; }
+  .ai-modal-img {
+    background: var(--warm);
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ai-modal-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+
+  /* ═══ READING YOUR NUMBERS ═══ */
   .metrics-bridge {
     background: var(--warm);
     border: 1px solid var(--line);
-    border-bottom: none;
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px;
     padding: 16px 22px;
     font-size: 13.5px;
     color: var(--slate);
     line-height: 1.6;
+    margin-bottom: 14px;
   }
   .metrics-bridge .lead-q {
     display: inline-block;
@@ -810,32 +858,105 @@
   }
   .metrics-bridge strong { color: var(--ink); font-weight: 600; }
 
+  /* Market share callout — charcoal, sits ABOVE the 3 metric cards */
+  .share-callout {
+    background: var(--char-bg);
+    border: 1px solid var(--char-mid);
+    border-left: 4px solid var(--char);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .share-callout-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-right: 1px solid var(--char-mid);
+    padding-right: 24px;
+  }
+  .share-callout-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--char-deep);
+  }
+  .share-callout-value {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--char-deep);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .share-callout-deltas {
+    display: flex;
+    gap: 18px;
+    margin-top: 6px;
+  }
+  .share-callout-delta {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .share-callout-delta .deltabel {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--char);
+    opacity: 0.85;
+  }
+  .share-callout-delta .deltaval {
+    font-weight: 700;
+    color: var(--red);
+    font-size: 14px;
+  }
+  .share-callout-right {
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.55;
+  }
+  .share-callout-right strong { color: var(--ink); font-weight: 600; }
+  .share-callout-right .pp-tag,
+  .share-callout-right .rel-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin: 0 1px;
+    color: var(--char-deep);
+    background: var(--surface);
+    border: 1px solid var(--char-mid);
+  }
+
   .metrics {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
     border: 1px solid var(--line);
-    border-top: none;
-    border-radius: 0 0 8px 8px;
+    border-radius: 8px;
     overflow: hidden;
   }
   .mcard {
     background: var(--surface);
-    padding: 22px 24px 20px;
+    padding: 20px 22px 18px;
     border-right: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
     gap: 10px;
   }
   .mcard:last-child { border-right: none; }
   .mcard-head {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     border-bottom: 1px solid var(--line);
   }
-  /* Metric names in navy (was bright purple) */
   .mcard-name {
     font-family: 'Fraunces', serif;
     font-size: 22px;
@@ -844,19 +965,50 @@
     letter-spacing: -0.01em;
   }
   .mcard-q {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.4;
-  }
-  .mcard-watch {
-    font-size: 13px;
+    font-size: 13.5px;
     color: var(--slate);
-    line-height: 1.55;
+    line-height: 1.4;
+    font-style: italic;
+    min-height: 38px;
+    display: flex;
+    align-items: flex-start;
   }
-  .mcard-watch .lab {
+  .mcard-data {
+    background: var(--char-bg);
+    border: 1px solid var(--char-mid);
+    border-radius: 6px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    min-height: 70px;
+  }
+  .mcard-value {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--char-deep);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .mcard-delta {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--slate);
+  }
+  .mcard-delta .up { color: var(--green); }
+  .mcard-delta .down { color: var(--red); }
+  .mcard-delta .na { color: var(--muted); font-style: italic; font-weight: 500; }
+  .mcard-context {
+    font-size: 12.5px;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+  .mcard-context strong { color: var(--ink); font-weight: 600; }
+  .mcard-context .lab {
     display: block;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -917,7 +1069,6 @@
     padding: 12px 14px;
     margin: -6px -8px;
   }
-  /* Win number badges in navy (was purple) */
   .win-num-pill {
     width: 26px;
     height: 26px;
@@ -985,7 +1136,6 @@
     border-right: 1px solid var(--line);
   }
   .data-row:last-child { border-right: none; }
-  /* Feature name in colored text, source descriptor below in bold ink — flipped from prior */
   .data-row .feature-name {
     display: inline-flex;
     align-items: center;
@@ -1040,14 +1190,16 @@
     .ai-steps { grid-template-columns: 1fr; }
     .ai-step { border-right: none; border-bottom: 1px solid var(--line); }
     .ai-step:last-child { border-bottom: none; }
-    .recap.has-image { grid-template-columns: 1fr; }
-    .recap.has-image .recap-text { border-right: none; border-bottom: 1px solid var(--line); }
+    .ai-modal, .recap.has-image, .nav-row { grid-template-columns: 1fr; }
+    .ai-modal-text, .recap.has-image .recap-text, .nav-row-text { border-right: none; border-bottom: 1px solid var(--line); }
     .cp-row { grid-template-columns: 50px 1fr; }
     .cp-text { border-right: none; border-bottom: 1px solid var(--line); }
     .cp-img { grid-column: 1 / -1; border-top: 1px solid var(--line); }
     .signal-col, .mcard, .data-row { border-right: none; border-bottom: 1px solid var(--line); }
     .signal-col:last-child, .mcard:last-child, .data-row:last-child { border-bottom: none; }
     .source-byline { gap: 6px 12px; }
+    .share-callout { grid-template-columns: 1fr; }
+    .share-callout-left { border-right: none; border-bottom: 1px solid var(--char-mid); padding-right: 0; padding-bottom: 14px; }
     .masthead { flex-direction: column; align-items: flex-start; }
     .masthead-meta { text-align: left; }
     .masthead-sub { text-align: left; }
@@ -1058,7 +1210,7 @@
 <div class="page">
 <div class="card">
 
-  <!-- MASTHEAD — single line summary, no duplicated questions -->
+  <!-- MASTHEAD -->
   <div class="masthead">
     <div>
       <div class="kicker">Know Your Competition &nbsp;·&nbsp; Topic 2 of 3</div>
@@ -1072,8 +1224,7 @@
 
   <div class="card-inner">
 
-    <!-- ═══ SECTION 1 — THREE SIGNALS ═══ -->
-    <!-- Two business questions live HERE only, not duplicated above -->
+    <!-- ═══ SECTION 1 — SIGNALS ═══ -->
     <div class="sec-header">
       <div class="sec-title">The three signals to watch for</div>
       <div class="sec-line"></div>
@@ -1093,20 +1244,12 @@
       </div>
 
       <div class="signal-grid">
-
-        <!-- GAINING SHARE -->
         <div class="signal-col gain">
           <div class="signal-chart-wrap">
             <svg class="signal-chart" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-label="Gaining share illustration">
               <line x1="14" y1="92" x2="206" y2="92" stroke="#cbd5e1" stroke-width="0.6" />
-              <polyline
-                points="14,76 50,72 86,68 122,64 158,60 194,56"
-                fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"
-                stroke-linecap="round" stroke-linejoin="round" />
-              <polyline
-                points="14,78 50,68 86,56 122,42 158,28 194,16"
-                fill="none" stroke="#15803d" stroke-width="2.8"
-                stroke-linecap="round" stroke-linejoin="round" />
+              <polyline points="14,76 50,72 86,68 122,64 158,60 194,56" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3" stroke-linecap="round" stroke-linejoin="round" />
+              <polyline points="14,78 50,68 86,56 122,42 158,28 194,16" fill="none" stroke="#15803d" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
               <circle cx="194" cy="16" r="3.5" fill="#15803d" />
               <circle cx="194" cy="56" r="2.5" fill="#94a3b8" />
               <text x="200" y="14" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#15803d">↑</text>
@@ -1129,19 +1272,12 @@
           </div>
         </div>
 
-        <!-- WATCH -->
         <div class="signal-col watch">
           <div class="signal-chart-wrap">
             <svg class="signal-chart" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-label="Watch illustration">
               <line x1="14" y1="92" x2="206" y2="92" stroke="#cbd5e1" stroke-width="0.6" />
-              <polyline
-                points="14,76 50,68 86,58 122,48 158,38 194,30"
-                fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"
-                stroke-linecap="round" stroke-linejoin="round" />
-              <polyline
-                points="14,72 50,70 86,68 122,67 158,66 194,64"
-                fill="none" stroke="#d97706" stroke-width="2.8"
-                stroke-linecap="round" stroke-linejoin="round" />
+              <polyline points="14,76 50,68 86,58 122,48 158,38 194,30" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3" stroke-linecap="round" stroke-linejoin="round" />
+              <polyline points="14,72 50,70 86,68 122,67 158,66 194,64" fill="none" stroke="#d97706" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
               <circle cx="194" cy="64" r="3.5" fill="#d97706" />
               <circle cx="194" cy="30" r="2.5" fill="#94a3b8" />
               <text x="200" y="62" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#d97706">→</text>
@@ -1164,19 +1300,12 @@
           </div>
         </div>
 
-        <!-- LOSING SHARE -->
         <div class="signal-col loss">
           <div class="signal-chart-wrap">
             <svg class="signal-chart" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-label="Losing share illustration">
               <line x1="14" y1="92" x2="206" y2="92" stroke="#cbd5e1" stroke-width="0.6" />
-              <polyline
-                points="14,76 50,68 86,58 122,48 158,38 194,30"
-                fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"
-                stroke-linecap="round" stroke-linejoin="round" />
-              <polyline
-                points="14,42 50,52 86,62 122,72 158,80 194,86"
-                fill="none" stroke="#b91c1c" stroke-width="2.8"
-                stroke-linecap="round" stroke-linejoin="round" />
+              <polyline points="14,76 50,68 86,58 122,48 158,38 194,30" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3" stroke-linecap="round" stroke-linejoin="round" />
+              <polyline points="14,42 50,52 86,62 122,72 158,80 194,86" fill="none" stroke="#b91c1c" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
               <circle cx="194" cy="86" r="3.5" fill="#b91c1c" />
               <circle cx="194" cy="30" r="2.5" fill="#94a3b8" />
               <text x="200" y="92" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">↓</text>
@@ -1198,7 +1327,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -1227,18 +1355,19 @@
 
     <div class="nav-block">
       <div class="nav-block-head"><span class="dot"></span> How to find it</div>
-      <div class="nav-paths">
-        <div class="nav-path">
-          Left-hand navigation <span class="arrow">→</span> <code>Market Analysis</code> <span class="arrow">→</span> open your <strong>Men's Disposable Shaving Razors</strong> segment
+      <div class="nav-row">
+        <div class="nav-row-text">
+          <div class="nav-row-path">
+            Left-hand navigation <span class="arrow">→</span> <code>Market Analysis</code> <span class="arrow">→</span> open your <strong>Men's Disposable Shaving Razors</strong> segment
+          </div>
         </div>
-      </div>
-      <div class="nav-image">
-        <img src="KYC%20Topic%202%20Quick%20Guide%201.png" alt="Left-hand navigation with Market Analysis highlighted and the Men's Disposable Shaving Razors segment selected">
+        <div class="nav-row-img">
+          <img src="KYC%20Topic%202%20Quick%20Guide%201.png" alt="Left-hand navigation with Market Analysis highlighted and the Men's Disposable Shaving Razors segment selected">
+        </div>
       </div>
     </div>
 
     <div class="ma-cards">
-
       <div class="ma-card">
         <div class="ma-card-head">
           <div class="ma-card-pos">Tab 1 · Primary</div>
@@ -1248,7 +1377,7 @@
           <div class="ma-card-onel"><strong>Your top-line share</strong> and a snapshot of how all brands in your segment compare on revenue, market share, units, and ASP.</div>
         </div>
         <div class="ma-card-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%202.png" alt="Men's Disposable Shaving Razor Segment Overview tab — segment revenue up 12.9% over last year, BIC market share down 1.4%">
+          <img src="KYC%20Topic%202%20Quick%20Guide%202.png" alt="Men's Disposable Shaving Razor Segment Overview tab over the last year — segment revenue up 12.9%, BIC market share down 1.4%">
         </div>
       </div>
 
@@ -1274,10 +1403,9 @@
           <div class="ma-card-onel"><strong>ASP and price band</strong> — where your revenue sits in the price stack and how your ASP compares to the segment average over time.</div>
         </div>
         <div class="ma-card-img">
-          <img src="KYC%20Topic%202%20Quick%20Guide%204.png" alt="Pricing tab — ASP trend over time showing your ASP, the market average ASP, and trend with one week hovered">
+          <img src="KYC%20Topic%202%20Quick%20Guide%204.png" alt="Pricing tab — ASP trend over the last year showing your ASP, the market average ASP, and trend with one week hovered">
         </div>
       </div>
-
     </div>
 
 
@@ -1305,22 +1433,31 @@
 
     <div class="nav-block">
       <div class="nav-block-head"><span class="dot"></span> How to find it</div>
-      <div class="nav-paths">
-        <div class="nav-path">
-          Left-hand navigation <span class="arrow">→</span> <code>Category Performance</code> <span class="arrow">→</span> select your subcategory
+      <div class="nav-row">
+        <div class="nav-row-text">
+          <div class="nav-row-label"><span class="badge">Primary</span></div>
+          <div class="nav-row-path">
+            Left-hand navigation <span class="arrow">→</span> <code>Category Performance</code> <span class="arrow">→</span> select your subcategory
+          </div>
         </div>
-        <div class="nav-path-secondary">
-          <span class="secondary-lab">Don't know your subcategory?</span>
-          From the <strong>Home page</strong>, open the <code>Sales Breakdown</code> table and click any row — Category Performance opens pre-filtered to that subcategory.
+        <div class="nav-row-img">
+          <img src="KYC%20Topic%202%20Quick%20Guide%205.png" alt="Left-hand navigation with Category Performance selected and the tree expanded with Men's Disposable Shaving Razors highlighted">
         </div>
       </div>
-      <div class="nav-image">
-        <img src="KYC%20Topic%202%20Quick%20Guide%205.png" alt="Left-hand navigation with Category Performance selected and the tree expanded with Men's Disposable Shaving Razors highlighted">
+      <div class="nav-row">
+        <div class="nav-row-text">
+          <div class="nav-row-label"><span class="badge alt">If you don't know your subcategory</span></div>
+          <div class="nav-row-path">
+            From the <strong>Home page</strong>, open the <code>Sales Breakdown</code> table and click any row — Category Performance opens pre-filtered to that subcategory.
+          </div>
+        </div>
+        <div class="nav-row-img">
+          <img src="KYC%20Topic%202%20Quick%20Guide%2010.png" alt="Home page Sales Breakdown table with subcategory rows that can be clicked to open Category Performance pre-filtered">
+        </div>
       </div>
     </div>
 
     <div class="cp-list">
-
       <div class="cp-row">
         <div class="cp-num-cell"><div class="cp-num">1</div></div>
         <div class="cp-text">
@@ -1346,7 +1483,6 @@
           <img src="KYC%20Topic%202%20Quick%20Guide%207.png" alt="Category Performance breadcrumbs at the top of the page showing the category tree path">
         </div>
       </div>
-
     </div>
 
     <div class="recap blue">
@@ -1397,13 +1533,15 @@
 
     <div class="nav-block">
       <div class="nav-block-head"><span class="dot"></span> How to find it</div>
-      <div class="nav-paths">
-        <div class="nav-path">
-          Left-hand navigation <span class="arrow">→</span> <code>AI Analyst</code> <span class="arrow">→</span> click <strong>Benchmark Brand</strong>
+      <div class="nav-row">
+        <div class="nav-row-text">
+          <div class="nav-row-path">
+            Left-hand navigation <span class="arrow">→</span> <code>AI Analyst</code> <span class="arrow">→</span> click <strong>Benchmark Brand</strong>
+          </div>
         </div>
-      </div>
-      <div class="nav-image">
-        <img src="KYC%20Topic%202%20Quick%20Guide%208.png" alt="Left-hand navigation with AI Analyst selected and Benchmark Brand highlighted on the page">
+        <div class="nav-row-img">
+          <img src="KYC%20Topic%202%20Quick%20Guide%208.png" alt="Left-hand navigation with AI Analyst selected and Benchmark Brand highlighted on the page">
+        </div>
       </div>
     </div>
 
@@ -1411,8 +1549,8 @@
       <div class="ai-step">
         <div class="ai-step-n">1</div>
         <div class="ai-step-text">
-          <div class="ai-step-action">Open AI Analyst</div>
-          <div class="ai-step-detail">Click <strong>Benchmark Brand</strong> from the AI Analyst landing page to start a new report.</div>
+          <div class="ai-step-action">Choose Benchmark Brand</div>
+          <div class="ai-step-detail">Click <strong>Benchmark Brand</strong> from AI Analyst to start a new report.</div>
         </div>
       </div>
       <div class="ai-step">
@@ -1428,6 +1566,18 @@
           <div class="ai-step-action">Run Analysis</div>
           <div class="ai-step-detail">Reports generate in <strong>under a minute</strong>. If you navigate away, return to AI Analyst and refresh to find it under My Reports.</div>
         </div>
+      </div>
+    </div>
+
+    <div class="ai-modal">
+      <div class="ai-modal-text">
+        <div class="ai-modal-head"><span class="dot"></span> Inside the configuration modal</div>
+        <div class="ai-modal-body">
+          The <strong>Marketplace dropdown</strong> sits at the top, followed by the <strong>Brand selector</strong> and <strong>subcategory tree</strong>. Subcategories with a circle are selectable; arrow icons expand the tree to deeper levels. Pick one leaf-node subcategory per report.
+        </div>
+      </div>
+      <div class="ai-modal-img">
+        <img src="KYC%20Topic%202%20Quick%20Guide%2011.png" alt="AI Analyst Benchmark Brand configuration modal — Marketplace, Brand, and Subcategory selectors">
       </div>
     </div>
 
@@ -1470,43 +1620,70 @@
     <div class="sec-header">
       <div class="sec-title">Reading your numbers</div>
       <div class="sec-line"></div>
-      <div class="sec-tag">3 metrics, read together</div>
+      <div class="sec-tag">Read together, not in isolation</div>
     </div>
 
     <div class="metrics-bridge">
       <span class="lead-q">A reading lens for any of the methods above</span>
-      <div>Whichever method you used, you'll see these three metrics. The trick is <strong>reading them together, not in isolation</strong> — a brand losing units while holding revenue is raising prices to compensate, and you'd miss it looking at revenue alone.</div>
+      <div>Whichever method you used, you'll see these metrics. <strong>Market share</strong> is the headline — it tells you where you stand. <strong>Revenue, units, and ASP</strong> are the inputs that explain why share moved. Below is BIC's actual position in Men's Disposable Shaving Razors over the last 365 days.</div>
+    </div>
+
+    <!-- Market Share callout — sits ABOVE the 3 input metric cards -->
+    <div class="share-callout">
+      <div class="share-callout-left">
+        <div class="share-callout-label">BIC Market Share</div>
+        <div class="share-callout-value">8.1%</div>
+        <div class="share-callout-deltas">
+          <div class="share-callout-delta">
+            <span class="deltabel">Absolute</span>
+            <span class="deltaval">-1.4 pp</span>
+          </div>
+          <div class="share-callout-delta">
+            <span class="deltabel">Relative</span>
+            <span class="deltaval">-14.4%</span>
+          </div>
+        </div>
+      </div>
+      <div class="share-callout-right">
+        Two ways to describe the same drop. <span class="pp-tag">-1.4 pp</span> is the <strong>absolute change</strong> — the gap between this period's share and last period's. <span class="rel-tag">-14.4%</span> is the <strong>relative change</strong> — how much BIC's share shrank as a fraction of its former size. Both are correct. Cobalt shows the absolute change in the Brands table; the relative change appears in the brand slide-out view.
+      </div>
     </div>
 
     <div class="metrics">
       <div class="mcard">
-        <div class="mcard-head">
-          <div class="mcard-name">Revenue</div>
+        <div class="mcard-head"><div class="mcard-name">Revenue</div></div>
+        <div class="mcard-q">How much is BIC generating?</div>
+        <div class="mcard-data">
+          <div class="mcard-value">$3.75M</div>
+          <div class="mcard-delta"><span class="down">-3.3%</span> YoY (-$128.9K)</div>
         </div>
-        <div class="mcard-q">How much is this brand generating?</div>
-        <div class="mcard-watch">
-          <span class="lab">Signal to watch</span>
-          Revenue can grow while share shrinks if the market grows faster.
-        </div>
-      </div>
-      <div class="mcard">
-        <div class="mcard-head">
-          <div class="mcard-name">Units Sold</div>
-        </div>
-        <div class="mcard-q">How much demand is this brand capturing?</div>
-        <div class="mcard-watch">
-          <span class="lab">Signal to watch</span>
-          A brand losing units while holding revenue is raising prices to compensate.
+        <div class="mcard-context">
+          <span class="lab">Read together with the segment</span>
+          BIC revenue declined <strong>3.3%</strong> while the segment grew <strong>+12.9%</strong>. BIC is losing ground in a growing market — the <strong>Losing share</strong> pattern.
         </div>
       </div>
       <div class="mcard">
-        <div class="mcard-head">
-          <div class="mcard-name">ASP</div>
+        <div class="mcard-head"><div class="mcard-name">Units Sold</div></div>
+        <div class="mcard-q">How much demand is BIC capturing?</div>
+        <div class="mcard-data">
+          <div class="mcard-value">311,438</div>
+          <div class="mcard-delta"><span class="na">YoY change not shown by default</span></div>
         </div>
-        <div class="mcard-q">How is this brand competing on price?</div>
-        <div class="mcard-watch">
-          <span class="lab">Signal to watch</span>
-          A rising ASP with declining units suggests trading volume for margin.
+        <div class="mcard-context">
+          <span class="lab">Read together with revenue and ASP</span>
+          Units tell you the <strong>volume side</strong> of the story. To see YoY unit change, set the date range to the prior period and compare manually.
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-head"><div class="mcard-name">ASP</div></div>
+        <div class="mcard-q">How is BIC competing on price?</div>
+        <div class="mcard-data">
+          <div class="mcard-value">$12.04</div>
+          <div class="mcard-delta">vs. <strong>$11.60</strong> market average</div>
+        </div>
+        <div class="mcard-context">
+          <span class="lab">Read together with units</span>
+          BIC's ASP is <strong>$0.44 above</strong> the market — a <strong>premium position</strong>. With share declining, is the premium protecting margin or pricing BIC out?
         </div>
       </div>
     </div>
@@ -1514,7 +1691,6 @@
 
     <!-- ═══ LOWER STACK ═══ -->
     <div class="lower-stack">
-
       <div class="lower-card">
         <div class="lower-card-head"><div class="dot"></div>Quick wins</div>
         <div class="lower-card-body">
@@ -1580,10 +1756,9 @@
           </div>
         </div>
       </div>
-
     </div>
 
-  </div><!-- card-inner -->
+  </div>
 
   <div class="footer">
     <div class="footer-l">Scale Onboarding &nbsp;·&nbsp; Know Your Competition &nbsp;·&nbsp; Topic 2 of 3 &nbsp;·&nbsp; For full guide see your Learning Path</div>
